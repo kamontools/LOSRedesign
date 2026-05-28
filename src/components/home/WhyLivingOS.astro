@@ -66,14 +66,14 @@ const reasons = [
       </div>
 
       <!-- Right: Feature list -->
-      <div class="flex flex-col gap-px reveal-stagger">
+      <div class="why-cards flex flex-col gap-4">
         {reasons.map((r, i) => (
-          <div class="flex gap-4 p-5 rounded-xl hover:bg-white hover:shadow-sm transition-all duration-200 group">
-            <div class="w-10 h-10 rounded-lg bg-primary-50 border border-primary-100 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-200">
+          <div class="why-card flex gap-4 p-5 rounded-xl group">
+            <div class="why-icon w-10 h-10 rounded-lg bg-primary-50 border border-primary-100 text-primary flex items-center justify-center shrink-0">
               <Fragment set:html={r.icon} />
             </div>
             <div>
-              <div class="font-semibold text-text-1 mb-0.5">{r.title}</div>
+              <div class="why-title font-semibold text-text-1 mb-0.5">{r.title}</div>
               <div class="text-xs text-text-4 font-mono mb-2">{r.titleEN}</div>
               <p class="text-sm text-text-3 leading-relaxed">{r.description}</p>
             </div>
@@ -83,3 +83,31 @@ const reasons = [
     </div>
   </div>
 </section>
+
+<style>
+  .why-card {
+    position: relative;
+    transition:
+      background 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .why-card.is-active {
+    background: #ffffff;
+    box-shadow: var(--shadow-md);
+    transform: translateX(6px);
+  }
+
+  .why-card.is-active .why-icon {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #ffffff;
+  }
+
+  .why-card.is-active .why-title {
+    color: var(--color-primary);
+  }
+
+
+</style>

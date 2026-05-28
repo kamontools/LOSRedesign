@@ -84,6 +84,27 @@ gsap.utils.toArray<HTMLElement>('.reveal-right').forEach((el) => {
 
 // ── Stat counters ────────────────────────────────────────────────────────────
 
+// ── Why LivingOS — scroll-spotlight cards ────────────────────────────────────
+
+(function initWhyCards() {
+  const cards = gsap.utils.toArray<HTMLElement>('.why-card');
+  if (!cards.length) return;
+
+  cards.forEach((card) => {
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top 62%',
+      end: 'bottom 38%',
+      onEnter:     () => card.classList.add('is-active'),
+      onLeave:     () => card.classList.remove('is-active'),
+      onEnterBack: () => card.classList.add('is-active'),
+      onLeaveBack: () => card.classList.remove('is-active'),
+    });
+  });
+})();
+
+// ── Stat counters ────────────────────────────────────────────────────────────
+
 gsap.utils.toArray<HTMLElement>('.stat-number[data-target]').forEach((el) => {
   const target = parseInt(el.dataset.target ?? '0', 10);
   const isLarge = target >= 1000;
