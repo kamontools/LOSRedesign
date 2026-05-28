@@ -1,0 +1,99 @@
+---
+const reviews = [
+  {
+    name: 'คุณปรียา สุวรรณรัตน์',
+    role: 'ผู้จัดการนิติบุคคล',
+    project: 'The Room สุขุมวิท 21',
+    units: '320 ยูนิต',
+    rating: 5,
+    quote: 'ก่อนใช้ LivingOS เราใช้ Excel ออกใบแจ้งหนี้ทีละใบ ตอนนี้กดปุ่มเดียว ส่งทุกห้องพร้อมกัน ประหยัดเวลาได้หลายวันต่อเดือน',
+    quoteEN: 'Before LivingOS, we issued invoices one by one in Excel. Now it\'s one click for everyone — saving us days every month.',
+    avatar: 'ป',
+    color: 'bg-primary-100 text-primary-600',
+  },
+  {
+    name: 'คุณณัฐวุฒิ ทรัพย์มั่นคง',
+    role: 'Juristic Manager',
+    project: 'Aspire Ladprao',
+    units: '580 ยูนิต',
+    rating: 5,
+    quote: 'GuardOS ช่วยให้ทีม รปภ. ทำงานได้เป็นระบบมากขึ้น บันทึกผู้เยี่ยมชมแม่นยำ และ Patrol report ส่งอัตโนมัติ ไม่ต้องเขียนมือแล้ว',
+    quoteEN: 'GuardOS made our security team work systematically. Visitor logs are accurate and patrol reports are sent automatically.',
+    avatar: 'ณ',
+    color: 'bg-orange-100 text-orange',
+  },
+  {
+    name: 'คุณสุดารัตน์ อินทรา',
+    role: 'ทีมบัญชีโครงการ',
+    project: 'Plum Condo บางใหญ่',
+    units: '1,200 ยูนิต',
+    rating: 5,
+    quote: 'รายงานการเงินที่เคยใช้เวลา 3 วัน ตอนนี้ออกได้ใน 10 นาที ระบบบัญชีของ LivingOS เชื่อมกับงานบัญชีได้ดีมาก',
+    quoteEN: 'Financial reports that took 3 days now take 10 minutes. LivingOS accounting integrates perfectly with our workflow.',
+    avatar: 'ส',
+    color: 'bg-success-50 text-success-600',
+  },
+];
+---
+
+<section class="section-pad bg-warm-surface">
+  <div class="container-los">
+    <!-- Header -->
+    <div class="text-center mb-14 reveal-up">
+      <div class="overline mb-3">Customer Reviews</div>
+      <h2 class="text-3xl lg:text-4xl font-bold text-text-1 mb-4">
+        เสียงจากทีมงานจริง
+      </h2>
+      <p class="text-md text-text-3 font-light max-w-lg mx-auto">
+        Real feedback from juristic managers and accounting teams using LivingOS every day.
+      </p>
+    </div>
+
+    <!-- Review cards -->
+    <div class="grid md:grid-cols-3 gap-5 reveal-stagger">
+      {reviews.map((r) => (
+        <div class="flex flex-col gap-5 p-6 bg-white rounded-xl border border-warm-border-light shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+          <!-- Stars -->
+          <div class="flex gap-1">
+            {Array.from({ length: r.rating }).map(() => (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#F97316" stroke="none">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Quote -->
+          <blockquote class="flex-1">
+            <p class="text-sm text-text-2 leading-relaxed mb-2">"{r.quote}"</p>
+            <p class="text-xs text-text-4 italic">"{r.quoteEN}"</p>
+          </blockquote>
+
+          <!-- Reviewer -->
+          <div class="flex items-center gap-3 pt-3 border-t border-warm-border-light">
+            <div class={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold shrink-0 ${r.color}`}>
+              {r.avatar}
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-text-1">{r.name}</div>
+              <div class="text-xs text-text-4">{r.role} · {r.project}</div>
+              <div class="text-xs text-text-5 font-mono">{r.units}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-10 reveal-up">
+      <a
+        href="/solutions"
+        class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-600 transition-colors"
+      >
+        ดู Case Studies ทั้งหมด
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

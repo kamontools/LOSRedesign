@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+/* ── LivingOS Design Tokens (Tailwind v4 @theme) ──────────────────────────── */
+
+@theme {
+  /* Primary Blue */
+  --color-primary: #1C70F7;
+  --color-primary-600: #1560D8;
+  --color-primary-400: #4D8EF9;
+  --color-primary-100: #DDEAFF;
+  --color-primary-50: #EEF4FF;
+
+  /* Warm neutral base */
+  --color-warm-page: #FAF9F6;
+  --color-warm-surface: #F5F3EE;
+  --color-warm-overlay: #EEEAE2;
+  --color-warm-border-light: #E8E4DA;
+  --color-warm-border-mid: #D4CFC4;
+
+  /* Orange accent */
+  --color-orange: #F97316;
+  --color-orange-100: #FFEDD5;
+  --color-orange-50: #FFF7ED;
+
+  /* Text scale */
+  --color-text-1: #1A1A1A;
+  --color-text-2: #3D3D3D;
+  --color-text-3: #6B6B6B;
+  --color-text-4: #9A9A9A;
+  --color-text-5: #C4C4C4;
+
+  /* Semantic */
+  --color-success: #22C55E;
+  --color-success-600: #16A34A;
+  --color-success-50: #F0FDF4;
+
+  --color-warning: #EAB308;
+  --color-warning-50: #FEFCE8;
+
+  --color-danger: #EF4444;
+  --color-danger-600: #DC2626;
+  --color-danger-50: #FEF2F2;
+
+  /* Fonts */
+  --font-sans: "IBM Plex Sans Thai Looped", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Custom text size (not in Tailwind default scale) */
+  --text-md: 1.0625rem;   /* 17px */
+  --text-md--line-height: 1.65;
+
+  /* Border radius overrides */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  /* Warm-tinted shadows (override Tailwind defaults) */
+  --shadow-sm: 0 1px 4px rgba(60,45,20,.07), 0 1px 2px rgba(60,45,20,.05);
+  --shadow-md: 0 4px 16px rgba(60,45,20,.10), 0 2px 6px rgba(60,45,20,.06);
+  --shadow-lg: 0 12px 40px rgba(60,45,20,.13), 0 4px 12px rgba(60,45,20,.07);
+  --shadow-blue: 0 8px 24px rgba(28,112,247,.22), 0 2px 8px rgba(28,112,247,.14);
+}
+
+/* ── Base resets ─────────────────────────────────────────────────────────── */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-warm-page);
+    color: var(--color-text-2);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem; /* 15px */
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-1);
+    font-family: var(--font-sans);
+    line-height: 1.15;
+  }
+
+  /* Warm scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-warm-surface); }
+  ::-webkit-scrollbar-thumb { background: var(--color-warm-border-mid); border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-text-4); }
+}
+
+/* ── Component utilities ─────────────────────────────────────────────────── */
+
+@layer components {
+  .container-los {
+    width: 100%;
+    max-width: 80rem; /* 1280px */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .container-los {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+
+  .section-pad {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .section-pad {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  .overline {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem; /* 11px */
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--color-text-4);
+  }
+
+  /* ── 3D button — cofounder.co emboss style ───────────────────────────────
+     Adapted from cofounder.co's .cta-btn-dark technique:
+     layered gradient + inset top highlight + inset bottom shadow.
+     Apply alongside bg-primary (or any solid bg color).                     */
+
+  .btn-3d {
+    background-image:
+      linear-gradient(rgba(0,0,0,.07) 0% 100%),
+      linear-gradient(rgba(255,255,255,.12) 0%, rgba(0,0,0,.10) 100%);
+    background-blend-mode: overlay, normal;
+    box-shadow:
+      inset 0 1.5px rgba(255,255,255,.24),      /* top edge bevel highlight */
+      inset 0 -.5px 2px rgba(0,0,0,.28),        /* bottom inner shadow */
+      0 0 0 1px rgba(0,0,0,.16),                /* border ring */
+      0 2px 8px rgba(0,0,0,.06),                /* ambient drop */
+      0 3px 5px rgba(28,112,247,.32);           /* blue-tinted depth shadow */
+    transition:
+      transform 0.12s ease,
+      box-shadow 0.15s ease,
+      filter 0.08s ease;
+    will-change: transform, box-shadow;
+  }
+
+  .btn-3d:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1.5px rgba(255,255,255,.30),
+      inset 0 -.5px 2px rgba(0,0,0,.32),
+      0 0 0 1px rgba(0,0,0,.16),
+      0 4px 12px rgba(28,112,247,.28);
+  }
+
+  .btn-3d:active {
+    transform: translateY(1px);
+    filter: brightness(.88);
+    box-shadow:
+      inset 0 1.5px rgba(255,255,255,.08),
+      inset 0 2px 5px rgba(0,0,0,.30),
+      0 0 0 1px rgba(0,0,0,.18);
+  }
+
+  /* FAQ accordion transition */
+  .faq-answer {
+    transition: height 0.3s ease;
+    overflow: hidden;
+  }
+
+  /* Dot grid background */
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(28,112,247,.10) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Logo marquee */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 28s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* Scroll reveal — start invisible, GSAP animates to visible via fromTo() */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  /* Hero elements — visible by default; GSAP adds entrance animation via from() */
+  .hero-word {
+    display: inline-block;
+  }
+
+  .hero-mockup {
+    /* no initial hide — GSAP from() handles it */
+  }
+}
+
+/* ── Keyframes ───────────────────────────────────────────────────────────── */
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

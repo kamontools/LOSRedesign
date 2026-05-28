@@ -1,0 +1,85 @@
+---
+const reasons = [
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+    title: 'ใช้ง่าย ไม่ต้องฝึก',
+    titleEN: 'Intuitive by Design',
+    description: 'UI ออกแบบมาสำหรับทีมนิติบุคคลโดยเฉพาะ ไม่ต้องมีพื้นฐาน IT ก็ใช้ได้ทันที',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`,
+    title: 'ครบในระบบเดียว',
+    titleEN: 'Everything Connected',
+    description: 'บัญชี ลูกบ้าน รักษาความปลอดภัย และบริการ — เชื่อมถึงกันหมด ไม่ต้องสลับแอป',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    title: 'ปลอดภัยระดับองค์กร',
+    titleEN: 'Enterprise-Grade Security',
+    description: 'ข้อมูลเข้ารหัสทุกชั้น สำรองข้อมูลอัตโนมัติ มาตรฐาน ISO 27001',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+    title: 'ข้อมูล Real-Time',
+    titleEN: 'Live Data & Reports',
+    description: 'Dashboard อัปเดตทันที รายงานการเงินและสถิติพร้อมส่งออก PDF ได้เลย',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+    title: 'ทีม Support พร้อมช่วย',
+    titleEN: '24/7 Local Support',
+    description: 'ทีม CS คนไทย ตอบไว เข้าใจปัญหาที่เจอจริง ไม่ใช่ Bot',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    title: 'ติดตั้งเร็ว ใช้ได้ใน 1 สัปดาห์',
+    titleEN: 'Live in 7 Days',
+    description: 'Onboarding เร็ว พร้อม Turnkey Setup สำหรับโครงการที่ต้องการความช่วยเหลือ',
+  },
+];
+---
+
+<section class="section-pad bg-warm-surface">
+  <div class="container-los">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+      <!-- Left: Sticky headline -->
+      <div class="reveal-left lg:sticky lg:top-28">
+        <div class="overline mb-4 text-text-4">Why LivingOS</div>
+        <h2 class="text-3xl lg:text-4xl font-bold text-text-1 mb-5 leading-tight">
+          ทำไมนิติบุคคล<br />
+          <span class="text-primary">กว่า 500 โครงการ</span><br />
+          เลือก LivingOS
+        </h2>
+        <p class="text-md text-text-3 font-light leading-relaxed mb-8">
+          Built specifically for Thai property management. Not a generic tool adapted for Thailand — designed here, for teams like yours.
+        </p>
+        <a
+          href="/demo"
+          class="btn-3d inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-lg"
+        >
+          ขอ Demo ฟรี
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Right: Feature list -->
+      <div class="flex flex-col gap-px reveal-stagger">
+        {reasons.map((r, i) => (
+          <div class="flex gap-4 p-5 rounded-xl hover:bg-white hover:shadow-sm transition-all duration-200 group">
+            <div class="w-10 h-10 rounded-lg bg-primary-50 border border-primary-100 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-200">
+              <Fragment set:html={r.icon} />
+            </div>
+            <div>
+              <div class="font-semibold text-text-1 mb-0.5">{r.title}</div>
+              <div class="text-xs text-text-4 font-mono mb-2">{r.titleEN}</div>
+              <p class="text-sm text-text-3 leading-relaxed">{r.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

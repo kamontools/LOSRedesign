@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import ProductsOverview from '../components/home/ProductsOverview.astro';
+import WhyLivingOS from '../components/home/WhyLivingOS.astro';
+import Licensing from '../components/home/Licensing.astro';
+import DataSecurity from '../components/home/DataSecurity.astro';
+import SocialProof from '../components/home/SocialProof.astro';
+import CustomerReview from '../components/home/CustomerReview.astro';
+import FAQ from '../components/home/FAQ.astro';
+import CTABanner from '../components/home/CTABanner.astro';
+---
+
+<BaseLayout
+  title="The LivingOS — ระบบจัดการอาคารครบวงจร"
+  description="Property Management Platform สำหรับนิติบุคคลและโครงการที่อยู่อาศัย ครบทุกฟีเจอร์ในที่เดียว"
+>
+  <Hero />
+  <ProductsOverview />
+  <WhyLivingOS />
+  <Licensing />
+  <DataSecurity />
+  <SocialProof />
+  <CustomerReview />
+  <FAQ />
+  <CTABanner />
+</BaseLayout>
+
+<script>
+  import '../scripts/gsap-init';
+</script>

@@ -1,0 +1,64 @@
+---
+// Placeholder client names — replace with real logos later
+const clients = [
+  { name: 'Sansiri', abbr: 'SS' },
+  { name: 'Pruksa', abbr: 'PK' },
+  { name: 'Origin Property', abbr: 'OR' },
+  { name: 'LPN Development', abbr: 'LPN' },
+  { name: 'Ananda', abbr: 'AN' },
+  { name: 'Supalai', abbr: 'SU' },
+  { name: 'SC Asset', abbr: 'SC' },
+  { name: 'Quality Houses', abbr: 'QH' },
+  { name: 'Noble', abbr: 'NB' },
+  { name: 'AP Thailand', abbr: 'AP' },
+];
+
+// Duplicate for seamless loop
+const allClients = [...clients, ...clients];
+---
+
+<section class="py-14 bg-warm-page border-y border-warm-border-light">
+  <div class="container-los text-center mb-8 reveal-up">
+    <div class="overline text-text-4">ได้รับความไว้วางใจจาก</div>
+    <p class="text-sm text-text-3 mt-1">Trusted by leading property developers and juristic offices across Thailand</p>
+  </div>
+
+  <!-- Marquee container -->
+  <div class="relative overflow-hidden" style="mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);">
+    <div class="marquee-track">
+      {allClients.map((client) => (
+        <div class="flex items-center gap-3 mx-8 shrink-0 group cursor-default">
+          <!-- Logo placeholder box -->
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-warm-surface border border-warm-border-light text-xs font-mono font-semibold text-text-4 group-hover:border-warm-border-mid transition-colors">
+            {client.abbr}
+          </div>
+          <span class="text-sm font-medium text-text-4 group-hover:text-text-2 transition-colors whitespace-nowrap">
+            {client.name}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Stats row -->
+  <div class="container-los mt-12 reveal-up">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 px-6 bg-white rounded-2xl border border-warm-border-light shadow-sm">
+      <div class="text-center">
+        <div class="font-mono font-bold text-3xl text-primary stat-number" data-target="500">0</div>
+        <div class="mt-1 text-text-4 font-mono font-medium tracking-wide uppercase" style="font-size:18px;">โครงการ</div>
+      </div>
+      <div class="text-center">
+        <div class="font-mono font-bold text-3xl text-primary stat-number" data-target="120000">0</div>
+        <div class="mt-1 text-text-4 font-mono font-medium tracking-wide uppercase" style="font-size:18px;">ลูกบ้าน</div>
+      </div>
+      <div class="text-center">
+        <div class="font-mono font-bold text-3xl text-primary">99.9%</div>
+        <div class="mt-1 text-text-4 font-mono font-medium tracking-wide uppercase" style="font-size:18px;">Uptime</div>
+      </div>
+      <div class="text-center">
+        <div class="font-mono font-bold text-3xl text-primary">7 วัน</div>
+        <div class="mt-1 text-text-4 font-mono font-medium tracking-wide uppercase" style="font-size:18px;">Onboarding</div>
+      </div>
+    </div>
+  </div>
+</section>

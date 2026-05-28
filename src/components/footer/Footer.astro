@@ -1,0 +1,122 @@
+---
+const solutions = [
+  { label: 'Urbanice App', href: '/solutions/urbanice' },
+  { label: 'The LivingOS PMS', href: '/solutions/pms' },
+  { label: 'GuardOS', href: '/solutions/guardos' },
+  { label: 'i-Vote', href: '/solutions/services' },
+  { label: 'API Solution', href: '/solutions/api' },
+];
+
+const company = [
+  { label: 'About Us', href: '/company' },
+  { label: 'Investors', href: '/company/investors' },
+  { label: 'Contact Us', href: '/company#contact' },
+  { label: 'Blog', href: '/blog' },
+];
+
+const legal = [
+  { label: 'Privacy Policy', href: '/privacy' },
+  { label: 'Terms of Service', href: '/terms' },
+  { label: 'Cookie Policy', href: '/cookies' },
+];
+---
+
+<footer class="bg-text-1 text-white">
+  <!-- Main footer -->
+  <div class="container-los py-14">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Brand col -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <rect x="2" y="2" width="6" height="6" rx="1.5" fill="white"/>
+              <rect x="10" y="2" width="6" height="6" rx="1.5" fill="white" opacity="0.7"/>
+              <rect x="2" y="10" width="6" height="6" rx="1.5" fill="white" opacity="0.7"/>
+              <rect x="10" y="10" width="6" height="6" rx="1.5" fill="white" opacity="0.4"/>
+            </svg>
+          </div>
+          <span class="font-semibold text-white">The LivingOS</span>
+        </div>
+        <p class="text-sm text-white/50 leading-relaxed mb-5">
+          Property Management Platform สำหรับนิติบุคคลและโครงการที่อยู่อาศัยทั่วประเทศไทย
+        </p>
+        <a
+          href="/demo"
+          class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-primary rounded-lg hover:bg-primary-600 transition-all"
+        >
+          ขอ Demo ฟรี →
+        </a>
+      </div>
+
+      <!-- Solutions -->
+      <div>
+        <div class="overline text-white/30 mb-4">Solutions</div>
+        <ul class="flex flex-col gap-3">
+          {solutions.map((s) => (
+            <li>
+              <a href={s.href} class="text-sm text-white/60 hover:text-white transition-colors">
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <div class="overline text-white/30 mb-4">Company</div>
+        <ul class="flex flex-col gap-3">
+          {company.map((c) => (
+            <li>
+              <a href={c.href} class="text-sm text-white/60 hover:text-white transition-colors">
+                {c.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <div class="overline text-white/30 mb-4">Contact</div>
+        <div class="flex flex-col gap-3 text-sm text-white/60">
+          <a href="tel:+6620001000" class="hover:text-white transition-colors flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            02-000-1000
+          </a>
+          <a href="mailto:hello@livingos.co.th" class="hover:text-white transition-colors flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+            hello@livingos.co.th
+          </a>
+          <div class="flex items-start gap-2">
+            <svg class="shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>กรุงเทพมหานคร ประเทศไทย</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-white/10">
+    <div class="container-los py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-white/30 font-mono">
+        © {new Date().getFullYear()} The LivingOS Co., Ltd. All rights reserved.
+      </p>
+      <div class="flex items-center gap-5">
+        {legal.map((l) => (
+          <a href={l.href} class="text-xs text-white/30 hover:text-white/60 transition-colors">
+            {l.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,90 @@
+---
+const pillars = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    title: 'Data Encryption',
+    titleTH: 'เข้ารหัสข้อมูลทุกชั้น',
+    description: 'TLS 1.3 สำหรับ data in transit และ AES-256 สำหรับ data at rest ทุก record',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+    title: 'Access Control',
+    titleTH: 'ควบคุมการเข้าถึง',
+    description: 'Role-based permission ระดับผู้ใช้ สำหรับทีมนิติบุคคลและลูกบ้าน แบบ Granular',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+    title: 'Auto Backup',
+    titleTH: 'สำรองข้อมูลอัตโนมัติ',
+    description: 'Daily backup พร้อม point-in-time recovery สูงสุด 30 วัน ไม่มีข้อมูลสูญหาย',
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+    title: 'PDPA Compliant',
+    titleTH: 'เป็นไปตาม PDPA',
+    description: 'ออกแบบให้สอดคล้องกับพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562',
+  },
+];
+
+const certBadges = ['ISO 27001', 'PDPA', 'TLS 1.3', 'AES-256', '99.9% SLA'];
+---
+
+<section class="section-pad bg-white">
+  <div class="container-los">
+    <!-- Header -->
+    <div class="text-center mb-14 reveal-up">
+      <div class="overline mb-3">Data Security</div>
+      <h2 class="text-3xl lg:text-4xl font-bold text-text-1 mb-4">
+        ข้อมูลของคุณ<br />
+        <span class="text-primary">ปลอดภัยกับเรา</span>
+      </h2>
+      <p class="text-md text-text-3 font-light max-w-lg mx-auto">
+        We take data protection seriously. Your residents' information is encrypted, backed up, and always under your control.
+      </p>
+
+      <!-- Cert badges -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mt-6">
+        {certBadges.map((badge) => (
+          <span class="px-3 py-1.5 text-xs font-mono font-medium text-text-3 bg-warm-surface border border-warm-border-light rounded-full">
+            {badge}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Pillars -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal-stagger">
+      {pillars.map((p) => (
+        <div class="flex flex-col gap-4 p-6 rounded-xl border border-warm-border-light bg-warm-page hover:bg-white hover:shadow-sm transition-all duration-200">
+          <div class="w-11 h-11 rounded-lg bg-primary-50 border border-primary-100 text-primary flex items-center justify-center">
+            <Fragment set:html={p.icon} />
+          </div>
+          <div>
+            <div class="font-semibold text-text-1 mb-0.5">{p.titleTH}</div>
+            <div class="text-xs font-mono text-text-4 mb-2">{p.title}</div>
+            <p class="text-sm text-text-3 leading-relaxed">{p.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Infrastructure note -->
+    <div class="mt-10 p-5 rounded-xl bg-primary-50 border border-primary-100 flex flex-col sm:flex-row items-start sm:items-center gap-4 reveal-up">
+      <div class="w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center shrink-0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/>
+          <line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
+        </svg>
+      </div>
+      <div>
+        <div class="font-semibold text-text-1 text-sm">Hosted on AWS Asia Pacific (Singapore)</div>
+        <div class="text-xs text-primary-600 mt-0.5">ข้อมูลเก็บในภูมิภาค APAC · Low-latency · Multi-AZ redundancy</div>
+      </div>
+      <div class="sm:ml-auto shrink-0">
+        <a href="/company" class="text-sm font-medium text-primary hover:text-primary-600 transition-colors">
+          อ่านนโยบายความปลอดภัย →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
