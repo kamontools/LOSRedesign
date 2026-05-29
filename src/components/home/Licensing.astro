@@ -1,74 +1,63 @@
 ---
 const tiers = [
   {
-    name: 'Starter',
-    nameEN: 'สำหรับโครงการเล็ก',
-    price: '฿ 2,900',
-    period: '/เดือน',
-    description: 'เหมาะสำหรับโครงการที่มีน้อยกว่า 100 ยูนิต',
+    name: 'โครงการขนาดเล็ก',
+    nameEN: 'Small Project',
+    fit: 'ต่ำกว่า 100 ยูนิต',
+    description: 'เหมาะสำหรับโครงการที่เพิ่งเริ่มต้น หรือต้องการระบบพื้นฐานที่ครบถ้วน',
     features: [
-      'Urbanice App (ลูกบ้านไม่จำกัด)',
+      'Urbanice App สำหรับลูกบ้าน',
       'PMS — บัญชีและใบแจ้งหนี้',
       'Resident Directory',
       'ประกาศ & แจ้งเตือน',
       'Email Support',
     ],
-    notIncluded: ['GuardOS', 'API Access', 'Dedicated Account Manager'],
-    cta: 'เริ่มใช้งาน',
     featured: false,
-    badge: '',
   },
   {
-    name: 'Professional',
-    nameEN: 'สำหรับโครงการกลาง-ใหญ่',
-    price: '฿ 7,900',
-    period: '/เดือน',
-    description: 'ครบทุกฟีเจอร์สำหรับโครงการ 100–500 ยูนิต',
+    name: 'โครงการขนาดกลาง-ใหญ่',
+    nameEN: 'Mid–Large Project',
+    fit: '100 – 500 ยูนิต',
+    description: 'ฟีเจอร์ครบสำหรับทีมนิติบุคคลที่ต้องการระบบรักษาความปลอดภัยและ Analytics',
     features: [
-      'ทุกอย่างใน Starter',
+      'ทุกอย่างในแพ็กเกจเล็ก',
       'GuardOS — i-Pass & i-Check',
       'Facility Booking Advanced',
       'รายงานและ Analytics',
       'Priority Support (Line OA)',
-      'Onboarding Session 2 ครั้ง',
+      'Onboarding Session',
     ],
-    notIncluded: ['API Access เต็มรูปแบบ', 'Dedicated Account Manager'],
-    cta: 'ขอ Demo',
     featured: true,
-    badge: 'Most Popular',
   },
   {
-    name: 'Enterprise',
-    nameEN: 'สำหรับองค์กรและ Multi-Site',
-    price: 'ติดต่อทีมงาน',
-    period: '',
-    description: 'Custom pricing สำหรับโครงการ 500+ ยูนิต หรือหลายโครงการ',
+    name: 'หลายโครงการ / องค์กร',
+    nameEN: 'Multi-Site & Enterprise',
+    fit: '500+ ยูนิต หรือหลายโครงการ',
+    description: 'Custom สำหรับกลุ่มโครงการขนาดใหญ่ที่ต้องการ SLA และ Integration เต็มรูปแบบ',
     features: [
-      'ทุกอย่างใน Professional',
-      'API Access เต็มรูปแบบ',
+      'ทุกอย่างในแพ็กเกจกลาง-ใหญ่',
       'Multi-property Dashboard',
+      'API Access เต็มรูปแบบ',
       'Dedicated Account Manager',
       'SLA 99.9% Guarantee',
       'Custom Integration',
     ],
-    notIncluded: [],
-    cta: 'ติดต่อฝ่ายขาย',
     featured: false,
-    badge: '',
   },
 ];
 ---
 
 <section class="section-pad bg-warm-page">
   <div class="container-los">
+
     <!-- Header -->
     <div class="text-center mb-14 reveal-up">
       <div class="overline mb-3">Licensing</div>
       <h2 class="text-3xl lg:text-4xl font-bold text-text-1 mb-4">
-        ราคาตรงไปตรงมา
+        แพ็กเกจที่ปรับได้<br class="hidden lg:block" />ตามขนาดโครงการ
       </h2>
       <p class="text-md text-text-3 font-light max-w-lg mx-auto">
-        No hidden fees. Transparent pricing that scales with your project size.
+        ราคาขึ้นอยู่กับจำนวนยูนิต โมดูลที่เลือกใช้ และระดับการ Support — ทีมงานพร้อมออกใบเสนอราคาที่เหมาะกับคุณ
       </p>
     </div>
 
@@ -76,70 +65,82 @@ const tiers = [
     <div class="grid md:grid-cols-3 gap-5 items-start reveal-stagger">
       {tiers.map((tier) => (
         <div
-          class={`flex flex-col gap-6 p-6 rounded-2xl border transition-all ${
+          class={`flex flex-col gap-5 p-6 rounded-2xl border transition-all ${
             tier.featured
-              ? 'border-primary bg-white shadow-blue ring-1 ring-primary/20'
+              ? 'border-primary bg-white shadow-blue ring-1 ring-primary/10'
               : 'border-warm-border-light bg-white shadow-sm'
           }`}
           style={tier.featured ? 'border-width: 2px;' : 'border-width: 1.5px;'}
         >
-          <!-- Badge -->
-          {tier.badge && (
+          <!-- Featured badge -->
+          {tier.featured && (
             <div class="inline-flex w-fit items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-50 border border-primary-100 text-primary text-xs font-mono uppercase tracking-widest">
               <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-              {tier.badge}
+              Most Popular
             </div>
           )}
 
-          <!-- Name & price -->
+          <!-- Name & fit -->
           <div>
             <div class="font-semibold text-lg text-text-1">{tier.name}</div>
             <div class="text-xs text-text-4 font-mono mt-0.5 mb-3">{tier.nameEN}</div>
-            <div class="flex items-end gap-1">
-              <span class="font-mono font-bold text-2xl text-text-1">{tier.price}</span>
-              {tier.period && <span class="text-sm text-text-4 mb-0.5">{tier.period}</span>}
+            <!-- Project size indicator -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-warm-surface border border-warm-border-light text-xs font-medium text-text-3">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              {tier.fit}
             </div>
-            <p class="text-xs text-text-3 mt-2 leading-relaxed">{tier.description}</p>
+            <p class="text-xs text-text-3 mt-3 leading-relaxed">{tier.description}</p>
           </div>
 
-          <!-- CTA -->
-          <a
-            href="/demo"
-            class={`py-2.5 rounded-lg text-sm font-semibold text-center transition-all ${
-              tier.featured
-                ? 'btn-3d bg-primary text-white'
-                : 'bg-warm-surface text-text-2 border border-warm-border-mid hover:bg-warm-overlay'
-            }`}
-          >
-            {tier.cta}
-          </a>
-
           <!-- Feature list -->
-          <div class="flex flex-col gap-2.5">
+          <div class="flex flex-col gap-2.5 flex-1">
             {tier.features.map((f) => (
               <div class="flex items-start gap-2 text-sm text-text-2">
-                <svg class="w-4 h-4 text-success-600 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-4 h-4 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
                 {f}
               </div>
             ))}
-            {tier.notIncluded.map((f) => (
-              <div class="flex items-start gap-2 text-sm text-text-5">
-                <svg class="w-4 h-4 text-text-5 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-                {f}
-              </div>
-            ))}
           </div>
+
+          <!-- CTA -->
+          <a
+            href="/demo"
+            class={`py-2.5 rounded-lg text-sm font-semibold text-center transition-all mt-2 ${
+              tier.featured
+                ? 'btn-3d bg-primary text-white'
+                : 'bg-warm-surface text-text-2 border border-warm-border-mid hover:bg-warm-overlay'
+            }`}
+          >
+            ขอใบเสนอราคา
+          </a>
         </div>
       ))}
     </div>
 
-    <!-- Footer note -->
-    <p class="text-center text-sm text-text-4 mt-8 reveal-up">
-      ราคาทั้งหมดยังไม่รวม VAT 7% · ทดลองใช้งานฟรี 30 วัน ไม่ต้องใช้บัตรเครดิต
-    </p>
+    <!-- Contact sales banner -->
+    <div class="mt-10 reveal-up">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 px-8 py-7 rounded-2xl bg-white border border-warm-border-light shadow-sm">
+        <div>
+          <div class="font-semibold text-text-1 mb-1">ไม่แน่ใจว่าแพ็กเกจไหนเหมาะกับโครงการของคุณ?</div>
+          <p class="text-sm text-text-3">ทีมขายพร้อมให้คำแนะนำ และออกใบเสนอราคาที่ตรงกับความต้องการ — ฟรี ไม่มีข้อผูกมัด</p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <a href="/demo" class="btn-3d inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-lg whitespace-nowrap">
+            คุยกับทีมขาย
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <a href="/demo" class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-text-2 bg-warm-surface border border-warm-border-light rounded-lg whitespace-nowrap hover:bg-warm-overlay transition-all">
+            ขอ Demo ฟรี
+          </a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
