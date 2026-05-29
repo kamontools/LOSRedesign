@@ -21,7 +21,7 @@
         <path d="M12 15v4" stroke="#7A4F00" stroke-width="2" stroke-linecap="round"/>
         <path d="M8 22h8" stroke="#7A4F00" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="eyebrow-gold-text">Property Management System · No.1 in Thailand</span>
+      <span class="eyebrow-gold-text"><span class="eyebrow-text-full">Property Management System · No.1 in Thailand</span><span class="eyebrow-text-short">PMS No.1 IN THAILAND</span></span>
       <!-- Shimmer overlay -->
       <span class="eyebrow-shimmer" aria-hidden="true"></span>
     </div>
@@ -397,20 +397,49 @@
       </div><!-- end mockup frame -->
       </div><!-- end mockup-desktop -->
 
-      <!-- ── Mockup Frame (mobile — video) ─────────────────────────────── -->
+      <!-- ── Mockup Frame (mobile — video player) ──────────────────────── -->
       <div class="mockup-mobile">
-        <video
-          id="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          src="/demo-video.mp4"
-          style="width:100%;border-radius:20px;border:1.5px solid var(--color-warm-border-light);box-shadow:var(--shadow-lg);display:block;"
-        >
-          <!-- fallback: placeholder poster when video not yet available -->
-          <div style="aspect-ratio:16/9;background:var(--color-warm-surface);border-radius:20px;border:1.5px solid var(--color-warm-border-light);display:flex;align-items:center;justify-content:center;color:var(--color-text-4);font-size:13px;">ตัวอย่างวิดีโอ</div>
-        </video>
+        <div style="position:relative;border-radius:20px;overflow:hidden;border:1.5px solid var(--color-warm-border-light);box-shadow:var(--shadow-lg);background:#111827;aspect-ratio:16/9;">
+          <!-- Background gradient -->
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0D1B2A 0%,#1C2B3A 45%,#0A1628 100%);"></div>
+          <!-- Blue glow -->
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 42%,rgba(28,112,247,.14) 0%,transparent 70%);"></div>
+
+          <!-- Top-left label -->
+          <div style="position:absolute;top:14px;left:16px;display:flex;align-items:center;gap:7px;z-index:2;">
+            <span style="width:6px;height:6px;border-radius:50%;background:#FC5F57;display:inline-block;"></span>
+            <span style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.09em;">DEMO VIDEO</span>
+          </div>
+
+          <!-- Center play button -->
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;">
+            <div style="width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.10);border:1.5px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,.88)" stroke="none" style="margin-left:3px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+          </div>
+
+          <!-- Title overlay -->
+          <div style="position:absolute;bottom:48px;left:16px;right:16px;z-index:2;">
+            <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,.88);">ดูการทำงานของ LivingOS PMS</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.40);margin-top:3px;">Property Management System · 2 min</div>
+          </div>
+
+          <!-- Controls bar -->
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:8px 16px 12px;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 100%);z-index:2;">
+            <!-- Progress bar -->
+            <div style="height:3px;background:rgba(255,255,255,.18);border-radius:9999px;margin-bottom:8px;overflow:hidden;">
+              <div style="width:0%;height:100%;background:var(--color-primary);border-radius:9999px;"></div>
+            </div>
+            <!-- Controls row -->
+            <div style="display:flex;align-items:center;gap:10px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,.65)" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.45);">0:00 / 2:14</span>
+              <div style="flex:1;"></div>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            </div>
+          </div>
+        </div>
       </div><!-- end mockup-mobile -->
     </div><!-- end hero-mockup -->
   </div>
@@ -505,6 +534,7 @@
 
   /* ── Mobile: icon-only tabs + video mockup ── */
   .mockup-mobile { display: none; }
+  .eyebrow-text-short { display: none; }
 
   @media (max-width: 450px) {
     .tab-label { display: none; }
@@ -516,6 +546,9 @@
 
     .mockup-desktop { display: none; }
     .mockup-mobile  { display: block; }
+
+    .eyebrow-text-full  { display: none; }
+    .eyebrow-text-short { display: inline; }
   }
 </style>
 
