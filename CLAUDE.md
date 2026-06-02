@@ -201,19 +201,20 @@ Hero → ProductsOverview → WhyLivingOS → Licensing → DataSecurity → Soc
 ## Key Components
 
 ### Hero (`Hero.astro`)
-- Background: `var(--color-warm-page)`, `min-height: 100vh`, centered flex column
+- Layout: full-width YouTube video at top + `.hero-copy-card` overlapping up from below
+- Video: 16:9 iframe, `border-radius: 20px`, `box-shadow: var(--shadow-lg)`, inside `.hero-stage` (max-width 1210px)
+- Copy card: `margin-top: -208px`, `margin-left: 64px`, `border-radius: 28px 28px 0 0`, `background: var(--color-warm-page)`
 - Gold eyebrow pill with shimmer sweep animation (award/No.1 only — never blue on hero)
-- H1: `clamp(44px, 7vw, 72px)`, keyword in `var(--color-primary)`
-- CTA row: `.hero-cta` — primary blue button + warm secondary button
-- Trust pills row: `.hero-cta` — 3 checkmark items
-- YouTube iframe (`.hero-mockup`): 16:9, `border-radius: 20px`, autoplay muted loop
-  - `src: https://www.youtube.com/embed/ibMLcCWiobY?autoplay=1&mute=1&loop=1&playlist=ibMLcCWiobY&controls=0&...`
+- H1: `clamp(28px, 3.8vw, 48px)`, keyword in `var(--color-primary)`
+- CTA row: primary blue button + warm surface secondary button + inline trust pills after divider
+- Trust pills: simple checkmark + text label, hidden on tablet/mobile (`display: none` at `max-width: 1279px`)
 
 ### WhyLivingOS (`WhyLivingOS.astro`)
 - Layout: CSS Grid `220px 1fr`, `gap: 64px`, `align-items: start`
 - Left aside `.why-nav` has `align-self: stretch` (required so GSAP pin has room to scroll)
 - `#whyNav` div inside aside is pinned by GSAP ScrollTrigger — **do not use CSS `position: sticky`**
 - Right side: 4 `.why-panel-anchor` stacked divs — each a colored gradient card (blue / teal-navy / dark-navy / orange)
+- Each card has: top row (heading + body text + white CTA pill) + bottom row (glass UI illustration only — no bullet points)
 - Nav active state driven by `IntersectionObserver` (threshold 0.4)
 
 ### Navbar (`Navbar.astro`)
@@ -245,7 +246,6 @@ All animations live in one file, imported once in `index.astro`:
 
 ## What NOT to Do
 
-- ~~No pure `#FFFFFF` page background~~ — page bg is now `#FFFFFF` (changed by design decision)
 - No cool gray shadows `rgba(0,0,0,...)` — always warm-tinted
 - No Bootstrap palette (#0d6efd, #6c757d) or fonts (Inter, Roboto, Sarabun)
 - No blue eyebrow badge on hero — gold plate only

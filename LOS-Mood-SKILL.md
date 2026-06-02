@@ -49,15 +49,14 @@ Blue 100       #DDEAFF   — Soft bg ของ badge, alert info
 Blue 50        #EEF4FF   — Hover bg, section bg แบบ subtle
 ```
 
-### Base — Warm White (ไม่ใช่ pure white)
+### Base
 
 ```
-Page bg        #FAF9F6   — พื้นหลักทั้งหน้า
+Page bg        #FFFFFF   — พื้นหลักทั้งหน้า (pure white — design decision)
 Surface        #F5F3EE   — Card, section สลับ
 Overlay        #EEEAE2   — Nav pill bg, tab strip bg
 Border light   #E8E4DA   — Border ทั่วไป
 Border mid     #D4CFC4   — Border เน้น, divider
-White          #FFFFFF   — Card surface, pill badge bg, button bg
 ```
 
 > **หลักการ**: ห้ามใช้ #F0F0F0 หรือ cool gray เด็ดขาด ทุก neutral ต้องมี warm undertone
@@ -407,53 +406,29 @@ inactive hover: bg rgba(255,255,255,.5), color Text 2
 ### Hero Section (Landing Page)
 
 ```
-Layout: full viewport height, centered content stack
-Max-width container: 1120px centered
+Layout: full-width video at top + overlapping copy card below
+Max-width stage: 1210px centered
 
-- Eyebrow badge: Gold plate pill — gradient gold bg + shimmer sweep animation
-  → ใช้แสดง award/No.1 positioning เท่านั้น
-  → ไม่ใช้ blue eyebrow pill บน hero หลัก
+- Video: YouTube iframe, aspect-ratio 16/9, border-radius 20px
+  box-shadow: shadow-lg + 0 0 0 1px rgba(28,112,247,.06)
+  padding: 8px 24px 0 (gutter around video)
 
-- Headline: clamp(44px, 7vw, 72px), weight 700, letter-spacing −0.03em, color #1A1A1A
-  → keyword สำคัญ: color #1C70F7
+- Copy card (.hero-copy-card): overlaps video bottom with margin-top: -208px
+  background: #FFFFFF (var --color-warm-page)
+  border-radius: 28px 28px 0 0  (top corners only — bleeds to section bottom)
+  margin-left: 64px (left-aligned within stage)
+  z-index: 10
 
-- CTA row: Primary .btn-3d + Ghost (white bg) btn, gap 12px, justify center
+  → Eyebrow badge: Gold plate pill — gradient gold bg + shimmer sweep animation
+    ใช้แสดง award/No.1 positioning เท่านั้น — ไม่ใช้ blue pill บน hero
 
-- Trust row: floating white pill badges, gap 10px, justify center
-  → แต่ละ pill: white bg, border #E8E4DA, shadow warm, green dot with halo
+  → Headline: clamp(28px, 3.8vw, 48px), weight 700, letter-spacing −0.025em, color #1A1A1A
+    keyword สำคัญ: color #1C70F7
 
-- Product tab strip: bg #EEEAE2, border-radius 16px top only (0 bottom)
-  → active tab: white bg, border #E8E4DA, shadow-sm
-  → tab icon: 22×22 brand SVG logo inlined
+  → CTA row: Primary blue btn + Warm surface btn, inline trust pills after divider
+    Trust pills: simple checkmark + text, color Text 3, hidden on tablet/mobile
 
-- Mockup frame: browser chrome (traffic lights + URL bar) + screen content below tabs
-  → border-radius: 0 20px 20px 20px (top-left flat matches tab)
-```
-
-### Hero Background (Photo + Gradient Mask)
-
-```
-Layer 1 — Photo (bottom):
-  position: absolute; inset: 0;
-  background: url('/bangkok-hero.jpg') center 38% / cover no-repeat;
-  filter: saturate(1.4) brightness(1.06);
-
-Layer 2 — Warm gradient mask (top):
-  background:
-    radial-gradient(ellipse 88% 72% at 55% 42%,
-      transparent 0%,
-      rgba(250,249,246,.55) 45%,
-      rgba(250,249,246,.88) 100%
-    ),
-    linear-gradient(to bottom,
-      rgba(250,249,246,.97) 0%,
-      rgba(250,249,246,.30) 18%,
-      rgba(250,249,246,.25) 65%,
-      rgba(250,249,246,.97) 100%
-    );
-
-ภาพที่ใช้: cityscape จริง — เมือง + ป่า/ต้นไม้ foreground สร้าง contrast
-ห้ามใช้: dot grid, abstract blob, noise/grain บน hero photo
+- No photo background — white page bg behind video + card
 ```
 
 ### Background Decorations (non-hero sections)
@@ -512,7 +487,7 @@ Design system นี้ใช้ได้กับทุก product แต่ Se
 ## 11. What NOT to Do
 
 - ❌ ใช้ Bootstrap default color (#0d6efd, #6c757d, #f8f9fa)
-- ❌ Pure white (#FFFFFF) เป็น page background — ใช้ #FAF9F6 แทน
+- ❌ Cool gray / #F0F0F0 เป็น neutral — ทุก neutral ต้องมี warm undertone
 - ❌ Cold gray shadow (`rgba(0,0,0,...)`) — ใช้ warm tinted เสมอ
 - ❌ Font Inter, Roboto, Sarabun (ถ้าไม่ได้รับอนุญาตพิเศษ)
 - ❌ Section bg สลับขาว/เทาซ้ำๆ โดยไม่มี accent section
