@@ -142,8 +142,10 @@ const headlineHtml = accentWord
   position: relative;
   z-index: 10;
   background: var(--color-warm-page);
-  border-radius: 28px 28px 0 0;
-  box-shadow: 0 -12px 48px rgba(60,45,20,.02);
+  border-radius: 24px;
+  margin-bottom: 24px;
+  border: 1.5px solid var(--color-warm-border-light);
+  box-shadow: 0 -8px 32px rgba(60,45,20,.08), 0 -2px 8px rgba(60,45,20,.05), var(--shadow-sm);
 }
 
 .ih-badge {
@@ -224,11 +226,12 @@ const headlineHtml = accentWord
 @media (max-width: 768px) {
   .ih-visual-inner { aspect-ratio: 16 / 9; }
   .ih-copy-card {
-    margin-left: 0;
+    margin-left: 16px;
+    margin-right: 16px;
     margin-top: -100px;
     padding: 28px 20px 36px;
-    border-radius: 20px 20px 0 0;
-    width: 100%;
+    border-radius: 24px;
+    width: calc(100% - 32px);
     box-sizing: border-box;
   }
   .ih-headline { white-space: normal; }
@@ -238,7 +241,7 @@ const headlineHtml = accentWord
   .ih-visual-outer { padding: 12px 16px 0; }
   .ih-copy-card {
     margin-top: 20px;
-    border-radius: 20px;
+    border-radius: 24px;
   }
 }
 </style>
