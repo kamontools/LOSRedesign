@@ -61,6 +61,8 @@ const products = [
             <div class="folder-doc doc-b"></div>
           </div>
 
+          <!-- Folder inner: tab + body unified for drop-shadow -->
+          <div class="folder-inner">
           <!-- Folder tab (raised top-left edge) -->
           <div class="folder-tab"></div>
 
@@ -100,6 +102,7 @@ const products = [
 
             </div>
           </div>
+          </div>{/* /folder-inner */}
         </a>
       ))}
     </div>
@@ -193,6 +196,20 @@ const products = [
     transform: translateY(-29px) translateX(18px) rotate(20deg);
   }
 
+  /* ── Inner wrapper: tab + body move and shadow together ── */
+  .folder-inner {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  .folder-card:hover .folder-inner {
+    transform: translateY(-4px);
+    filter: drop-shadow(0 4px 16px rgba(60,45,20,.10)) drop-shadow(0 2px 6px rgba(60,45,20,.06));
+  }
+
   /* ── Raised tab (top-left) ── */
   .folder-tab {
     align-self: flex-start;
@@ -205,7 +222,6 @@ const products = [
     position: relative;
     z-index: 2;
     margin-bottom: -1.5px;
-    transition: transform 0.3s ease;
   }
 
   /* ── Main card body ── */
@@ -218,12 +234,6 @@ const products = [
     flex: 1;
     position: relative;
     z-index: 1;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-  }
-  .folder-card:hover .folder-body,
-  .folder-card:hover .folder-tab {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
   }
 
   /* ── Thumbnail frame (mat / padding around the image) ── */
