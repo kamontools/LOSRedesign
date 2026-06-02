@@ -72,6 +72,9 @@ const faqs = [
   { q: 'ลูกบ้านต้องสมัครสมาชิกเองไหม?', a: 'นิติบุคคลเชิญลูกบ้านผ่าน SMS หรืออีเมลได้ ลูกบ้านลงทะเบียนครั้งเดียวและยืนยันตัวตนผ่านหมายเลขห้อง ไม่ต้องใช้เอกสารเพิ่มเติม' },
   { q: 'แอปใช้งานออฟไลน์ได้ไหมถ้าอินเทอร์เน็ตหลุด?', a: 'ฟีเจอร์หลักบางอย่าง เช่น ดูใบแจ้งหนี้ที่โหลดไว้แล้วและประวัติพัสดุ ใช้งานแบบ Offline ได้ ส่วนฟีเจอร์ที่ต้องการข้อมูลสด เช่น Booking จะต้องเชื่อมต่อ' },
   { q: 'ข้อมูลส่วนตัวลูกบ้านปลอดภัยไหม?', a: 'ข้อมูลถูกเข้ารหัสด้วย AES-256 และจัดเก็บบนเซิร์ฟเวอร์ในประเทศไทย เป็นไปตาม PDPA ลูกบ้านสามารถขอดู แก้ไข หรือลบข้อมูลส่วนตัวได้ตลอดเวลา' },
+  { q: 'Living Mart Home Service ต่างจากการแจ้งซ่อมปกติอย่างไร?', a: 'การแจ้งซ่อมปกติใช้สำหรับงานซ่อมบำรุงส่วนกลางที่นิติบุคคลดูแล ส่วน Living Mart Home Service คือบริการที่ลูกบ้านสั่งและชำระเองสำหรับห้องส่วนตัว เช่น ทำความสะอาด ซักรีด ล้างแอร์' },
+  { q: 'Living Mart มีสินค้าและดีลประเภทไหนบ้าง?', a: 'มีทั้งของใช้ในบ้าน เครื่องใช้ไฟฟ้า สินค้าไลฟ์สไตล์ และดีลพิเศษจาก Partner ที่คัดสรรมาสำหรับลูกบ้านในโครงการ พร้อมส่งตรงถึงห้องโดยไม่ต้องออกจากคอนโด' },
+  { q: 'นิติบุคคลสามารถเพิ่ม Vendor หรือ Partner ของตัวเองได้ไหม?', a: 'ได้ นิติบุคคลสามารถเพิ่ม Vendor ที่ได้รับการอนุมัติเข้าสู่ระบบ Living Mart ของโครงการได้ผ่าน PMS Dashboard และกำหนด Commission Report ได้ด้วย' },
 ];
 ---
 
@@ -202,6 +205,77 @@ const faqs = [
     </div>
   </section>
 
+  <!-- Home Service + Living Mart — 2 Cards -->
+  <section class="section-pad" style="background:#fff;">
+    <div class="container-los">
+      <div class="text-center mb-10 reveal-up">
+        <h2 class="text-3xl lg:text-4xl font-bold text-text-1">และดีลสุดพิเศษ!</h2>
+      </div>
+
+      <div class="two-cards-grid">
+
+        <!-- Card 1: Home Service -->
+        <div class="service-card reveal-up">
+          <div style="background:#fff;padding:28px 28px 22px;flex-shrink:0;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+              <span style="background:#fff;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:500;color:#3D3D3D;">ในแอป Urbanice</span>
+              <span style="background:#fff;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:500;color:#3D3D3D;">Vendor คัดสรร</span>
+              <div style="margin-left:auto;width:22px;height:22px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 38% 35%,#FF6B6B,#C0000C);box-shadow:inset 2px 2px 3px rgba(255,180,180,.65),inset -1.5px -1.5px 3px rgba(80,0,0,.45),0 3px 8px rgba(180,0,20,.35);"></div>
+            </div>
+            <h2 style="font-size:34px;font-weight:700;line-height:1.15;color:#1A1A1A;margin-bottom:10px;">Home Service</h2>
+            <p style="font-size:14px;color:#6B6B6B;line-height:1.65;">สั่งทำความสะอาด ซักรีด ล้างแอร์ และอีกมากมาย ได้ทันทีในแอป Vendor ผ่านการคัดสรรจากนิติบุคคล</p>
+          </div>
+          <div style={`flex:1;position:relative;background:linear-gradient(180deg,#B2E8EA 0%,#7ACFD3 100%);display:flex;align-items:center;justify-content:center;padding:28px;min-height:280px;`}>
+            <div style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:280px;">
+              {[
+                { emoji: '🧹', name: 'ทำความสะอาด', tag: 'ใน 2 ชม.' },
+                { emoji: '👕', name: 'ซักรีด', tag: 'ส่งคืนวันถัดไป' },
+                { emoji: '🚿', name: 'ล้างแอร์', tag: 'นัดได้ทันที' },
+                { emoji: '🌿', name: 'ดูแลต้นไม้', tag: 'รายเดือน' },
+              ].map((s) => (
+                <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.88);border-radius:12px;padding:10px 16px;box-shadow:var(--shadow-sm);">
+                  <span style="font-size:18px;">{s.emoji}</span>
+                  <span style="font-size:13px;font-weight:600;color:#1A1A1A;flex:1;">{s.name}</span>
+                  <span style={`font-family:var(--font-mono);font-size:11px;font-weight:700;color:${ACCENT};`}>{s.tag}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Living Mart -->
+        <div class="service-card reveal-up">
+          <div style="background:#fff;padding:28px 28px 22px;flex-shrink:0;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+              <span style="background:#fff;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:500;color:#3D3D3D;">ดีลพิเศษ</span>
+              <span style="background:#fff;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:500;color:#3D3D3D;">ส่งถึงห้อง</span>
+              <div style="margin-left:auto;width:22px;height:22px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 38% 35%,#FF6B6B,#C0000C);box-shadow:inset 2px 2px 3px rgba(255,180,180,.65),inset -1.5px -1.5px 3px rgba(80,0,0,.45),0 3px 8px rgba(180,0,20,.35);"></div>
+            </div>
+            <h2 style="font-size:34px;font-weight:700;line-height:1.15;color:#1A1A1A;margin-bottom:10px;">Living Mart</h2>
+            <p style="font-size:14px;color:#6B6B6B;line-height:1.65;">ช้อปสินค้าคัดสรรและดีลเอกสิทธิ์สำหรับลูกบ้าน ราคาต่ำกว่าตลาด ส่งตรงถึงหน้าห้องโดยไม่ต้องออกจากคอนโด</p>
+          </div>
+          <div style="flex:1;position:relative;background:linear-gradient(180deg,#FFEDD5 0%,#FDC090 100%);display:flex;align-items:center;justify-content:center;padding:28px;min-height:280px;">
+            <div style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:280px;">
+              {[
+                { emoji: '🏠', name: 'บ้านและห้องนอน', disc: '-20%' },
+                { emoji: '🍳', name: 'ครัวและเครื่องใช้', disc: '-15%' },
+                { emoji: '✨', name: 'ไลฟ์สไตล์', disc: '-25%' },
+                { emoji: '🧴', name: 'ของใช้ประจำวัน', disc: '-10%' },
+              ].map((item) => (
+                <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.88);border-radius:12px;padding:10px 16px;box-shadow:var(--shadow-sm);">
+                  <span style="font-size:18px;">{item.emoji}</span>
+                  <span style="font-size:13px;font-weight:600;color:#1A1A1A;flex:1;">{item.name}</span>
+                  <span style="font-family:var(--font-mono);font-size:11px;font-weight:700;color:#F97316;">{item.disc}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <InnerFAQ items={faqs} accentHex={ACCENT} />
   <CTABanner />
 </BaseLayout>
@@ -214,4 +288,20 @@ const faqs = [
   .feat-reverse { direction: rtl; }
   .feat-reverse > * { direction: ltr; }
   @media (max-width: 768px) { .feat-reverse { direction: ltr; } }
+
+  .two-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .service-card {
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-md);
+  }
+  @media (max-width: 768px) {
+    .two-cards-grid { grid-template-columns: 1fr; }
+  }
 </style>

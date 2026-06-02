@@ -47,8 +47,7 @@ Sections ในหน้าแรก:
 - Visitor E-Stamp
 - Car Directory
 - FAQ
-
-#### Home Service
+- Home Service
 - Living Mart
 
 #### The LivingOS PMS
