@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+import InnerFAQ from '../../components/shared/InnerFAQ.astro';
+import CTABanner from '../../components/home/CTABanner.astro';
+import SolutionOverview from '../../components/shared/SolutionOverview.astro';
+
+const ACCENT = '#062986';
+const ACCENT_LIGHT = '#E8ECFF';
+
+const faqs = [
+  { q: 'SOS ใช้ channel ไหนส่ง Alert?', a: 'ส่งพร้อมกันทั้ง Push Notification, SMS และ Line OA ทีมรักษาความปลอดภัยได้รับทั้ง 3 ช่องทาง มั่นใจว่าถึงถึงแม้สัญญาณมือถือจะอ่อน' },
+  { q: 'ลูกบ้านกด SOS จากที่ไหนได้บ้าง?', a: 'กดได้จาก Urbanice App ตลอด 24 ชั่วโมง หรือจากป่ม SOS ฮาร์ดแวร์ที่ติดตั้งในลิฟต์หรือพื้นที่ส่วนกลาง' },
+  { q: 'มีระบบป้องกัน False Alarm ไหม?', a: 'มีขั้นตอน Confirmation 5 วินาทีก่อนส่ง Alert เต็ม และ Supervisor สามารถ Acknowledge แล้ว Cancel ได้ภายใน 60 วินาทีก่อนระบบ Escalate' },
+  { q: 'Alert ถึง รปภ. ที่ใกล้ที่สุดได้ไหม?', a: 'ได้ ระบบส่ง Alert หา รปภ. ที่ใกล้จุดเกิดเหตุที่สุดก่อน โดยใช้ตำแหน่ง GPS ของ รปภ. ณ ขณะนั้น' },
+];
+---
+
+<BaseLayout
+  title="SOS — ระบบแจ้งเหตุฉุกเฉิน Real-time | GuardOS"
+  description="ลูกบ้านกด SOS ผ่านแอป ทีมรักษาความปลอดภัยรับแจ้งเหตุทันที ระบุประเภทเหตุ ติดตาม Live ได้จาก Dashboard"
+>
+  <InnerHero
+    badge="GUARDOS · SOS"
+    breadcrumb="SOLUTIONS · GUARDOS"
+    headline="รับมือเหตุฉุกเฉินได้ทันทีทุกที่"
+    accentWord="ทันที"
+    subheadline="SOS เชื่อมลูกบ้านกับทีมรักษาความปลอดภัยโดยตรง กดปุ่มเดียวส่ง Alert พร้อมตำแหน่ง ประเภทเหตุ และ Live Status Tracking จนสถานการณ์คลี่คลาย"
+    cta1={{ label: 'ขอ Demo SOS', href: '/request-demo' }}
+    cta2={{ label: 'ดูระบบทั้งหมด', href: '#features' }}
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  >
+    <div slot="visual" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:32px;">
+      <div style={`background:#fff;border-radius:50%;width:100px;height:100px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(6,41,134,.15),0 0 0 24px rgba(6,41,134,.07);`}>
+        <span style={`font-family:var(--font-mono);font-size:24px;font-weight:700;color:${ACCENT};`}>SOS</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        {['🚨 ส่ง Alert ทันที','📍 ระบุตำแหน่ง GPS','📞 แจ้ง รปภ. ใกล้สุด','✅ ติดตาม Live Status'].map((t) => (
+          <div style={`background:#fff;border-radius:10px;padding:8px 16px;font-size:12px;font-weight:500;color:#3D3D3D;box-shadow:0 2px 8px rgba(6,41,134,.12);border-left:3px solid ${ACCENT};`}>{t}</div>
+        ))}
+      </div>
+    </div>
+  </InnerHero>
+
+  <SolutionOverview
+    headline="รับมือเหตุฉุกเฉินทุกประเภท ทันทีที่เกิดเหตุ"
+    subheadline="SOS เชื่อมลูกบ้านกับทีมรักษาความปลอดภัยโดยตรง Alert 3 ช่องทางพร้อมกัน พร้อม Live Status Tracking"
+    bgColor={ACCENT}
+    cards={[
+      {
+        title: 'Alert 3 ช่องทางพร้อมกัน',
+        description: 'Push Notification, SMS และ Line OA ส่งพร้อมกัน มั่นใจว่าถึงทีม รปภ. แม้สัญญาณมือถืออ่อน',
+        emoji: '🚨',
+        badge: 'Triple Alert',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'GPS ระบุตำแหน่งแม่นยำ',
+        description: 'พิกัดจุดเกิดเหตุแบบ Real-time ระบบ Route Alert ถึง รปภ. ที่ใกล้ที่สุดอัตโนมัติ',
+        emoji: '📍',
+        badge: 'GPS Routing',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'ระบุประเภทเหตุชัดเจน',
+        description: 'ลูกบ้านเลือกประเภทก่อนส่ง เช่น ขโมย ไฟไหม้ อุบัติเหตุ ระบบ Route Alert ไปยังทีมที่รับผิดชอบโดยตรง',
+        emoji: '⚠️',
+        badge: 'Smart Route',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'ติดตาม Status Live ตั้งแต่รับจนเสร็จ',
+        description: 'ลูกบ้านและ Supervisor เห็น Timeline Real-time ทุก Action บันทึกเป็น Audit Log',
+        emoji: '✅',
+        badge: 'Live Track',
+        badgeHex: ACCENT,
+      },
+    ]}
+  />
+
+  <section id="features" class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+
+      {[
+        { label: 'Real-Time Emergency Alerts', headline: 'Alert ถึงทีมรักษาความปลอดภัยทันที', desc: 'เมื่อลูกบ้านกด SOS ทีม รปภ. ที่ใกล้ที่สุดและ Supervisor ได้รับแจ้งพร้อมกันทุกช่องทาง Push Notification, SMS และ Line OA พร้อมพิกัด GPS ที่แม่นยำ', points: ['Alert 3 ช่องทางพร้อมกัน ไม่มีพลาด','GPS พิกัดจุดเกิดเหตุแบบ Real-time','Escalation อัตโนมัติหาก รปภ. ไม่ตอบ'], icon:`<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6 6l.95-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16l.19.92z"/>` },
+        { label: 'Emergency Category Selection', headline: 'ระบุประเภทเหตุฉุกเฉินชัดเจน', desc: 'ลูกบ้านเลือกประเภทเหตุก่อนส่ง เช่น ขโมย ไฟไหม้ อุบัติเหตุ หรือเหตุฉุกเฉินทางการแพทย์ ระบบ Route Alert ไปยังทีมที่รับผิดชอบโดยตรง ไม่ต้องผ่านตัวกลาง', points: ['หมวดหมู่เหตุฉุกเฉินปรับแต่งได้','Route ถึงทีมที่ถูกต้องอัตโนมัติ','ประวัติ Alert จัดเก็บทุกเหตุการณ์'], icon:`<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>` },
+        { label: 'Live Alert Tracking', headline: 'ติดตาม Status Live ตั้งแต่รับเรื่องถึงเสร็จสิ้น', desc: 'ลูกบ้านที่แจ้งเหตุและ Supervisor เห็น Status Real-time: รับเรื่อง → รปภ. กำลังไป → ถึงจุด → แก้ไขแล้ว พร้อมบันทึก Timeline ทุก Action เพื่อการตรวจสอบ', points: ['Timeline ทุก Action ชัดเจน','ลูกบ้านเห็น ETA ของ รปภ. ที่กำลังมา','รายงานสรุปเหตุการณ์หลังเสร็จ'], icon:`<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>` },
+      ].map((f, i) => (
+        <div class={`feat-row ${i % 2 !== 0 ? 'feat-reverse' : ''}`} style={i > 0 ? 'margin-top:96px;' : ''}>
+          <div class={i % 2 !== 0 ? 'reveal-right' : 'reveal-left'}>
+            <div class="overline mb-3" style={`color:${ACCENT};`}>{f.label}</div>
+            <h3 class="text-2xl font-bold text-text-1 mb-4">{f.headline}</h3>
+            <p class="text-md font-light text-text-3 mb-6">{f.desc}</p>
+            <ul class="feat-list">
+              {f.points.map((p) => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class={`feat-visual ${i % 2 !== 0 ? 'reveal-left' : 'reveal-right'}`} style={`background: linear-gradient(135deg, ${ACCENT_LIGHT} 0%, #fff 100%); border: 1.5px solid ${ACCENT}22;`}>
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(6,41,134,.1) 1px,transparent 1px);background-size:28px 28px;"></div>
+            <div style="position:relative;z-index:1;text-align:center;">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px;" set:html={f.icon}></svg>
+              <p style={`font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${ACCENT};`}>{f.label}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </section>
+
+  <InnerFAQ items={faqs} accentHex={ACCENT} />
+  <CTABanner />
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .feat-reverse { direction: rtl; }
+  .feat-reverse > * { direction: ltr; }
+  @media (max-width: 768px) { .feat-reverse { direction: ltr; } }
+</style>

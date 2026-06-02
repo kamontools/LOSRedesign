@@ -11,7 +11,7 @@
   --color-primary-50: #EEF4FF;
 
   /* Warm neutral base */
-  --color-warm-page: #FAF9F6;
+  --color-warm-page: #FFFFFF;
   --color-warm-surface: #F5F3EE;
   --color-warm-overlay: #EEEAE2;
   --color-warm-border-light: #E8E4DA;
@@ -40,6 +40,10 @@
   --color-danger: #EF4444;
   --color-danger-600: #DC2626;
   --color-danger-50: #FEF2F2;
+
+  /* Responsive breakpoints */
+  --breakpoint-tablet: 476px;    /* tablet: 476–1279px */
+  --breakpoint-desktop: 1280px;  /* desktop: 1280px+ */
 
   /* Fonts */
   --font-sans: "IBM Plex Sans Thai Looped", sans-serif;
@@ -100,11 +104,18 @@
     max-width: 80rem; /* 1280px */
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 476px) {
+    .container-los {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
     .container-los {
       padding-left: 2.5rem;
       padding-right: 2.5rem;
@@ -112,11 +123,18 @@
   }
 
   .section-pad {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 476px) {
+    .section-pad {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
     .section-pad {
       padding-top: 6rem;
       padding-bottom: 6rem;
@@ -220,9 +238,104 @@
   .hero-mockup {
     /* no initial hide — GSAP from() handles it */
   }
+
+  /* ── Inner page: feature section layout ─────────────────────────────────── */
+
+  .feat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .feat-row + .feat-row { margin-top: 96px; }
+
+  .feat-visual {
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .feat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .feat-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--color-text-2);
+    line-height: 1.55;
+  }
+
+  .feat-list li svg { flex-shrink: 0; margin-top: 2px; }
+
+  /* ── Inner page: stats row ──────────────────────────────────────────────── */
+
+  .stats-row {
+    display: flex;
+    gap: 0;
+    border: 1.5px solid var(--color-warm-border-light);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stat-cell {
+    flex: 1;
+    padding: 28px 24px;
+    text-align: center;
+    border-right: 1px solid var(--color-warm-border-light);
+  }
+
+  .stat-cell:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: var(--font-mono);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-text-1);
+    margin-bottom: 6px;
+  }
+
+  .stat-lbl {
+    font-size: 13px;
+    color: var(--color-text-3);
+  }
+
+  @media (max-width: 900px) {
+    .feat-row {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .feat-row + .feat-row { margin-top: 56px; }
+  }
+
+  @media (max-width: 767px) {
+    .stats-row { flex-wrap: wrap; }
+    .stat-cell { flex: 1 1 50%; border-bottom: 1px solid var(--color-warm-border-light); }
+    .stat-cell:last-child { border-bottom: none; }
+  }
+
+  @media (max-width: 475px) {
+    .stat-cell { flex: 1 1 100%; border-right: none; }
+    .stat-cell:last-child { border-bottom: none; }
+  }
 }
 
-/* ── Keyframes ───────────────────────────────────────────────────────────── */
+/* ── Keyframes ────────────────────────────────────────────────────────────── */
 
 @keyframes marquee {
   0%   { transform: translateX(0); }

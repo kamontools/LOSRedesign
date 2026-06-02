@@ -1,0 +1,391 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+import CTABanner from '../../components/home/CTABanner.astro';
+
+const ACCENT = '#1C70F7';
+const ACCENT_LIGHT = '#EEF4FF';
+
+const values = [
+  { emoji: '🏠', title: 'Resident First', desc: 'ทุกฟีเจอร์ออกแบบโดยเริ่มจากชีวิตจริงของลูกบ้านและทีมนิติบุคคล ไม่ใช่ Technology เพื่อ Technology' },
+  { emoji: '🔒', title: 'Trust & Transparency', desc: 'ข้อมูลโปร่งใส ไม่มีค่าใช้จ่ายซ่อนเร้น ยกเลิกได้ทุกเมื่อ และ PDPA Compliant ทุกจุด' },
+  { emoji: '⚡', title: 'Move Fast, Stay Reliable', desc: 'ออกฟีเจอร์ใหม่ทุกสัปดาห์โดยไม่กระทบ Uptime เป้าหมายคือ 99.9% SLA ทุกปี' },
+  { emoji: '🇹🇭', title: 'Thai-first', desc: 'ออกแบบสำหรับโครงการในประเทศไทยโดยเฉพาะ เข้าใจ พ.ร.บ. อาคารชุด วัฒนธรรม และภาษาไทย' },
+];
+
+const team = [
+  { name: 'คุณ สมศักดิ์ พ.', role: 'CEO & Co-founder', bio: 'ประสบการณ์ PropTech กว่า 12 ปี อดีต VP Product ที่โครงการที่อยู่อาศัยชั้นนำ' },
+  { name: 'คุณ วิภา ร.', role: 'CTO & Co-founder', bio: 'วิศวกรซอฟต์แวร์ 15 ปี เชี่ยวชาญ Cloud Architecture และ IoT Integration' },
+  { name: 'คุณ ธนา อ.', role: 'Head of Product', bio: 'อดีต Product Manager จาก Fintech และ Real Estate Tech สนใจ UX สำหรับ B2B Thai market' },
+  { name: 'คุณ มาลี ก.', role: 'Head of Customer Success', bio: 'ดูแลทีม CS กว่า 50 คน Onboard โครงการใหม่กว่า 300 แห่งในช่วง 3 ปีที่ผ่านมา' },
+];
+
+const milestones = [
+  {
+    year: '2019',
+    headline: 'จุดเริ่มต้น',
+    detail: 'ก่อตั้ง LivingOS เริ่มสร้าง PMS กับ 3 โครงการนำร่อง',
+    color: ACCENT,
+    ring: ACCENT,
+  },
+  {
+    year: '2020',
+    headline: 'Urbanice App',
+    detail: 'รองรับลูกบ้านกว่า 10,000 คน ภายในปีแรก',
+    color: '#F97316',
+    ring: '#F97316',
+  },
+  {
+    year: '2021',
+    headline: 'GuardOS & i-Pass',
+    detail: 'เปิดตัวระบบความปลอดภัย ทีมขยายเป็น 80 คน',
+    color: ACCENT,
+    ring: ACCENT,
+  },
+  {
+    year: '2022',
+    headline: 'Series A ฿120M',
+    detail: 'ระดมทุนและเปิด LivingOS Academy',
+    color: '#F97316',
+    ring: '#F97316',
+  },
+  {
+    year: '2023',
+    headline: '500 โครงการ',
+    detail: 'เปิดตัว Smart Gate และ i-Vote',
+    color: ACCENT,
+    ring: ACCENT,
+  },
+  {
+    year: '2024',
+    headline: 'ก้าวสู่ ASEAN',
+    detail: 'ขยายสู่ตลาดภูมิภาค เปิดตัว API Solution',
+    color: '#F97316',
+    ring: '#F97316',
+  },
+];
+---
+
+<BaseLayout
+  title="About Us — The LivingOS | ทีมงานและพันธกิจ"
+  description="LivingOS คือ PropTech Startup จากประเทศไทย มีพันธกิจสร้างระบบจัดการอาคารที่ดีที่สุดสำหรับโครงการที่อยู่อาศัย"
+>
+  <InnerHero
+    badge="ABOUT US"
+    breadcrumb="COMPANY"
+    headline="สร้างชีวิตในคอนโดให้ดีขึ้น ด้วยเทคโนโลยี"
+    accentWord="ดีขึ้น"
+    subheadline="LivingOS ก่อตั้งในปี 2019 ด้วยพันธกิจเดียว — ทำให้ชีวิตของลูกบ้าน ทีมนิติบุคคล และผู้จัดการอาคารในประเทศไทยง่ายขึ้นผ่านเทคโนโลยีที่ใช้งานได้จริง"
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  />
+
+  <!-- Mission & Stats -->
+  <section class="section-pad" style="background:var(--color-warm-page);">
+    <div class="container-los">
+      <div class="stats-row reveal-up">
+        <div class="stat-cell"><div class="stat-num" style={`color:${ACCENT};`}>2019</div><div class="stat-lbl">ก่อตั้งบริษัท</div></div>
+        <div class="stat-cell"><div class="stat-num" style={`color:${ACCENT};`}>1,000+</div><div class="stat-lbl">โครงการที่ใช้งาน</div></div>
+        <div class="stat-cell"><div class="stat-num" style={`color:${ACCENT};`}>200K+</div><div class="stat-lbl">ลูกบ้านใช้แอป</div></div>
+        <div class="stat-cell"><div class="stat-num" style={`color:${ACCENT};`}>150+</div><div class="stat-lbl">ทีมงาน</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+      <div class="text-center mb-14 reveal-up">
+        <div class="overline mb-3" style={`color:${ACCENT};`}>Our Values</div>
+        <h2 class="text-3xl font-bold text-text-1">สิ่งที่เราเชื่อและยึดถือ</h2>
+      </div>
+      <div class="values-grid reveal-stagger">
+        {values.map((v) => (
+          <div class="value-card">
+            <div class="value-emoji">{v.emoji}</div>
+            <h3 class="value-title">{v.title}</h3>
+            <p class="value-desc">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline — Horizontal -->
+  <section class="section-pad" style="background:var(--color-warm-page);">
+    <div class="container-los">
+      <div class="text-center mb-16 reveal-up">
+        <div class="overline mb-3" style={`color:${ACCENT};`}>Our Journey</div>
+        <h2 class="text-3xl font-bold text-text-1">เส้นทางที่เราสร้างมาด้วยกัน</h2>
+        <p style="font-size:17px;color:var(--color-text-3);margin-top:12px;">จาก 3 โครงการนำร่อง สู่กว่า 1,000 โครงการทั่วประเทศ</p>
+      </div>
+
+      <div class="tl-outer reveal-up">
+        <div class="tl-track">
+          {milestones.map((m, i) => {
+            const isTop = i % 2 === 0;
+            return (
+              <div style="display:contents">
+                {i > 0 && (
+                  <div class="tl-gap">
+                    <div class="tl-gap-top"></div>
+                    <div class="tl-gap-dot"></div>
+                    <div class="tl-gap-bot"></div>
+                  </div>
+                )}
+                <div class="tl-node">
+                  <div class={`tl-slot${isTop ? '' : ' tl-slot--empty'}`}>
+                    {isTop && (
+                      <div class="tl-card">
+                        <div class="tl-headline">{m.headline}</div>
+                        <p class="tl-detail">{m.detail}</p>
+                      </div>
+                    )}
+                  </div>
+                  <div
+                    class="tl-circle"
+                    style={`background:${m.color};box-shadow:0 0 0 4px white,0 0 0 7px ${m.ring},0 8px 24px ${m.color}44;`}
+                  >
+                    {m.year}
+                  </div>
+                  <div class={`tl-slot tl-slot--below${!isTop ? '' : ' tl-slot--empty'}`}>
+                    {!isTop && (
+                      <div class="tl-card">
+                        <div class="tl-headline">{m.headline}</div>
+                        <p class="tl-detail">{m.detail}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+      <div class="text-center mb-14 reveal-up">
+        <div class="overline mb-3" style={`color:${ACCENT};`}>Leadership</div>
+        <h2 class="text-3xl font-bold text-text-1">ทีมผู้บริหาร</h2>
+      </div>
+      <div class="team-grid reveal-stagger">
+        {team.map((t) => (
+          <div class="team-card">
+            <div class="team-avatar" style={`background:${ACCENT_LIGHT};color:${ACCENT};`}>{t.name.charAt(4)}</div>
+            <h3 class="team-name">{t.name}</h3>
+            <div class="team-role" style={`color:${ACCENT};`}>{t.role}</div>
+            <p class="team-bio">{t.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section-pad" style="background:var(--color-warm-page);">
+    <div class="container-los">
+      <div class="text-center mb-14 reveal-up">
+        <div class="overline mb-3" style={`color:${ACCENT};`}>Contact</div>
+        <h2 class="text-3xl font-bold text-text-1">ติดต่อเรา</h2>
+        <p style="font-size:17px;color:var(--color-text-3);margin-top:12px;">ก้าวสู่ชีวิตที่ดีกว่าไปด้วยกัน</p>
+      </div>
+      <div class="contact-grid reveal-stagger">
+        <div class="contact-card">
+          <div class="contact-icon-wrap" style={`background:${ACCENT_LIGHT};`}>📍</div>
+          <h3 class="contact-label">ที่อยู่</h3>
+          <p class="contact-val">
+            46/8 อาคาร Rung Rojn Thanakul ชั้น 6<br />
+            ถ.รัชดาภิเษก แขวงห้วยขวาง<br />
+            เขตห้วยขวาง กรุงเทพฯ 10310
+          </p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon-wrap" style={`background:${ACCENT_LIGHT};`}>📞</div>
+          <h3 class="contact-label">โทรศัพท์</h3>
+          <a class="contact-link contact-val" href="tel:024815234">02-481-5234</a>
+          <p class="contact-sub">ฝ่าย Partnership: ต่อ 1</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon-wrap" style={`background:${ACCENT_LIGHT};`}>✉️</div>
+          <h3 class="contact-label">อีเมล</h3>
+          <div class="contact-emails">
+            <a class="contact-link" href="mailto:sales@thelivingos.com">sales@thelivingos.com</a>
+            <a class="contact-link" href="mailto:business@thelivingos.com">business@thelivingos.com</a>
+            <a class="contact-link" href="mailto:people@thelivingos.com">people@thelivingos.com</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon-wrap" style={`background:${ACCENT_LIGHT};`}>🌐</div>
+          <h3 class="contact-label">ช่องทางออนไลน์</h3>
+          <div class="contact-socials">
+            <a class="contact-social-btn" href="https://facebook.com/thelivingos" target="_blank" rel="noopener">Facebook</a>
+            <a class="contact-social-btn" href="https://lin.ee/5gLcWyn" target="_blank" rel="noopener">LINE Official</a>
+            <a class="contact-social-btn" href="https://youtube.com/channel/UCW_um4EEWZdSMua8p_Tzo4w" target="_blank" rel="noopener">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  /* ── Values ─────────────────────────────────────────────── */
+  .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .value-card { background: #fff; border: 1.5px solid var(--color-warm-border-light); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); }
+  .value-emoji { font-size: 28px; margin-bottom: 12px; }
+  .value-title { font-size: 15px; font-weight: 700; color: var(--color-text-1); margin-bottom: 8px; }
+  .value-desc { font-size: 13px; color: var(--color-text-3); line-height: 1.6; }
+
+  /* ── Timeline Horizontal ─────────────────────────────────── */
+  .tl-outer { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
+
+  .tl-track {
+    display: flex;
+    align-items: stretch;
+    /* min-width keeps it from collapsing on small containers */
+    min-width: 760px;
+    position: relative;
+  }
+
+  /*
+   * Backbone line at circle midpoint.
+   * tl-slot height = 120px, circle radius = 40px → center at 160px from track top.
+   * left/right offset = circle radius (40px) so the line starts/ends at circle edges.
+   */
+  .tl-track::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    top: calc(120px + 40px);
+    height: 2px;
+    background: var(--color-warm-border-mid);
+    z-index: 0;
+  }
+
+  /* Each year node */
+  .tl-node {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+  }
+
+  /* Fixed-height text slots so all circles sit on the same baseline */
+  .tl-slot {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 8px 18px;
+    text-align: center;
+    width: 100%;
+  }
+  .tl-slot--below {
+    justify-content: flex-start;
+    padding: 18px 8px 0;
+  }
+  /* visibility:hidden keeps the height; hides the content */
+  .tl-slot--empty { visibility: hidden; }
+
+  .tl-card { max-width: 150px; }
+  .tl-headline { font-size: 13px; font-weight: 700; color: var(--color-text-1); margin-bottom: 4px; line-height: 1.35; }
+  .tl-detail { font-size: 12px; color: var(--color-text-3); line-height: 1.55; }
+
+  /* Year circles */
+  .tl-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  /* Small connector dot between nodes */
+  .tl-gap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 36px;
+    flex-shrink: 0;
+  }
+  /*
+   * tl-gap-top height = tl-slot height (120) + circle radius (40) - dot radius (5) = 155px
+   * This places the dot center at 160px, matching the circle centers.
+   */
+  .tl-gap-top { height: 155px; flex-shrink: 0; }
+  .tl-gap-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-warm-border-mid);
+    border: 2px solid white;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+  .tl-gap-bot { flex: 1; }
+
+  /* ── Team ────────────────────────────────────────────────── */
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .team-card { background: #fff; border: 1.5px solid var(--color-warm-border-light); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); text-align: center; }
+  .team-avatar { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; margin: 0 auto 14px; }
+  .team-name { font-size: 15px; font-weight: 700; color: var(--color-text-1); margin-bottom: 4px; }
+  .team-role { font-size: 12px; font-weight: 600; font-family: var(--font-mono); letter-spacing: .06em; margin-bottom: 10px; }
+  .team-bio { font-size: 12px; color: var(--color-text-3); line-height: 1.6; }
+
+  /* ── Contact ─────────────────────────────────────────────── */
+  .contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .contact-card { background: #fff; border: 1.5px solid var(--color-warm-border-light); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); }
+  .contact-icon-wrap { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 14px; }
+  .contact-label { font-size: 11px; font-weight: 600; font-family: var(--font-mono); letter-spacing: .10em; text-transform: uppercase; color: var(--color-text-3); margin-bottom: 10px; }
+  .contact-val { font-size: 14px; color: var(--color-text-2); line-height: 1.65; }
+  .contact-sub { font-size: 12px; color: var(--color-text-3); margin-top: 4px; }
+  .contact-link { color: var(--color-primary); text-decoration: none; font-size: 14px; }
+  .contact-link:hover { text-decoration: underline; }
+  .contact-emails { display: flex; flex-direction: column; gap: 6px; }
+  .contact-socials { display: flex; flex-direction: column; gap: 8px; }
+  .contact-social-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1.5px solid var(--color-warm-border-light);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-2);
+    text-decoration: none;
+    width: fit-content;
+    transition: border-color .15s, color .15s;
+  }
+  .contact-social-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .values-grid, .team-grid, .contact-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .values-grid, .team-grid, .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>

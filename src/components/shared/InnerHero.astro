@@ -1,0 +1,244 @@
+---
+interface Props {
+  badge: string;
+  breadcrumb?: string;
+  headline: string;
+  accentWord?: string;
+  subheadline: string;
+  cta1?: { label: string; href: string };
+  cta2?: { label: string; href: string };
+  accentHex?: string;
+  accentLightHex?: string;
+}
+
+const {
+  badge,
+  breadcrumb,
+  headline,
+  accentWord,
+  subheadline,
+  cta1,
+  cta2,
+  accentHex = '#1C70F7',
+  accentLightHex = '#EEF4FF',
+} = Astro.props;
+
+function hexToRgb(hex: string): string {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return `${r},${g},${b}`;
+}
+
+const rgb = hexToRgb(accentHex);
+const headlineHtml = accentWord
+  ? headline.replace(accentWord, `<span style="color:${accentHex}">${accentWord}</span>`)
+  : headline;
+---
+
+<section class="ih-section">
+  <div class="ih-stage">
+
+    <!-- Visual panel (replaces home hero video) -->
+    <div class="ih-visual-outer">
+      <div
+        class="ih-visual-inner"
+        style={`background:${accentLightHex};`}
+      >
+        <div
+          class="ih-glow"
+          style={`background: radial-gradient(ellipse 80% 60% at 65% 38%, rgba(${rgb},.22) 0%, transparent 70%);`}
+          aria-hidden="true"
+        ></div>
+        <div
+          class="ih-dots"
+          style={`background-image: radial-gradient(circle, rgba(${rgb},.18) 1px, transparent 1px);`}
+          aria-hidden="true"
+        ></div>
+        <slot name="visual" />
+      </div>
+    </div>
+
+    <!-- Content card — overlaps visual panel from below -->
+    <div class="ih-copy-card">
+      <span
+        class="ih-badge"
+        style={`background: rgba(${rgb},.10); color:${accentHex}; border: 1.5px solid rgba(${rgb},.28);`}
+      >
+        {badge}
+      </span>
+      <h1 class="ih-headline" set:html={headlineHtml} />
+      <p class="ih-sub">{subheadline}</p>
+      {(cta1 || cta2) && (
+        <div class="ih-ctas">
+          {cta1 && (
+            <a
+              href={cta1.href}
+              class="ih-cta-primary"
+              style={`background:${accentHex}; box-shadow: 0 4px 18px rgba(${rgb},.38);`}
+            >
+              {cta1.label}
+            </a>
+          )}
+          {cta2 && (
+            <a href={cta2.href} class="ih-cta-secondary">{cta2.label}</a>
+          )}
+        </div>
+      )}
+    </div>
+
+  </div>
+</section>
+
+<style>
+.ih-section {
+  background: var(--color-warm-page);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ih-stage {
+  width: 100%;
+  max-width: 1210px;
+}
+
+.ih-visual-outer {
+  width: 100%;
+  padding: 8px 24px 0;
+}
+
+.ih-visual-inner {
+  position: relative;
+  aspect-ratio: 16 / 6.2;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(28,112,247,.04);
+}
+
+.ih-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ih-dots {
+  position: absolute;
+  inset: 0;
+  background-size: 32px 32px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.ih-copy-card {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 40px 48px 52px;
+  margin-top: -178px;
+  margin-left: 64px;
+  position: relative;
+  z-index: 10;
+  background: var(--color-warm-page);
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -12px 48px rgba(60,45,20,.02);
+}
+
+.ih-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 20px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+
+.ih-headline {
+  font-size: clamp(26px, 3.4vw, 44px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--color-text-1);
+  margin-bottom: 16px;
+  white-space: nowrap;
+}
+
+.ih-sub {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--color-text-3);
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+
+.ih-ctas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ih-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .15s, filter .15s;
+}
+.ih-cta-primary:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.ih-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 26px;
+  border-radius: 12px;
+  background: var(--color-warm-surface);
+  color: var(--color-text-1);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid var(--color-warm-border-light);
+  transition: background .15s, border-color .15s;
+}
+.ih-cta-secondary:hover {
+  background: var(--color-warm-overlay);
+  border-color: var(--color-warm-border-mid);
+}
+
+@media (max-width: 768px) {
+  .ih-visual-inner { aspect-ratio: 16 / 9; }
+  .ih-copy-card {
+    margin-left: 0;
+    margin-top: -100px;
+    padding: 28px 20px 36px;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .ih-headline { white-space: normal; }
+}
+
+@media (max-width: 480px) {
+  .ih-visual-outer { padding: 12px 16px 0; }
+  .ih-copy-card {
+    margin-top: 20px;
+    border-radius: 20px;
+  }
+}
+</style>

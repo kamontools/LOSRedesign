@@ -1,113 +1,921 @@
 ---
-const reasons = [
+const groups = [
   {
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
-    title: 'คุ้นเคยตั้งแต่วันแรก',
-    titleEN: 'Familiar from Day One',
-    description: 'UI ออกแบบตาม Pattern มาตรฐานอุตสาหกรรมที่ทีมงานคุ้นเคยอยู่แล้ว — มีคู่มือพร้อมให้เรียน ไม่ต้องห่วงว่าจะใช้งานไม่ได้',
+    id: 'easy',
+    navNum: '01',
+    tabLabel: 'ใช้งานง่าย',
+    tabLabelEN: 'Easy to Start',
+    heading: 'คุ้นเคยตั้งแต่วันแรก',
+    headingEN: 'Familiar from Day One',
+    body: 'UI ออกแบบตาม Pattern มาตรฐานที่ทีมงานคุ้นเคย มีคู่มือภาษาไทยพร้อมทุกขั้นตอน — และ Turnkey Setup ช่วยให้โครงการ Go-live ได้ภายใน 7 วัน โดยไม่ต้องผ่านการฝึกอบรมนาน',
+    points: ['UI มาตรฐาน เรียนรู้ได้ทันที', 'คู่มือและ Training ภาษาไทย', 'Turnkey Setup สำหรับโครงการใหม่', 'Go-live ภายใน 7 วัน'],
+    gradient: 'linear-gradient(145deg, #1C70F7 0%, #0a4eaa 100%)',
   },
   {
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`,
-    title: 'ครบในระบบเดียว',
-    titleEN: 'Everything Connected',
-    description: 'บัญชี ลูกบ้าน รักษาความปลอดภัย และบริการ — เชื่อมถึงกันหมด ไม่ต้องสลับแอป',
+    id: 'integrated',
+    navNum: '02',
+    tabLabel: 'ครบในระบบเดียว',
+    tabLabelEN: 'All-in-One',
+    heading: 'เชื่อมทุกงานในที่เดียว',
+    headingEN: 'Everything Connected',
+    body: 'บัญชี ลูกบ้าน รักษาความปลอดภัย และบริการ — ทุกโมดูลเชื่อมถึงกัน ข้อมูล Real-Time Dashboard อัปเดตทันที ไม่ต้องสลับหน้าจอ',
+    points: ['Urbanice App สำหรับลูกบ้าน', 'PMS ครบทุกงานนิติบุคคล', 'GuardOS ระบบรักษาความปลอดภัย', 'Dashboard และรายงาน Real-Time'],
+    gradient: 'linear-gradient(145deg, #13A8AE 0%, #062986 100%)',
   },
   {
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-    title: 'ปลอดภัยระดับองค์กร',
-    titleEN: 'Enterprise-Grade Security',
-    description: 'ข้อมูลเข้ารหัสทุกชั้น สำรองข้อมูลอัตโนมัติ มาตรฐาน ISO 27001',
+    id: 'secure',
+    navNum: '03',
+    tabLabel: 'ปลอดภัย',
+    tabLabelEN: 'Enterprise Security',
+    heading: 'ปลอดภัยทุกชั้น มาตรฐานองค์กร',
+    headingEN: 'Enterprise-Grade Security',
+    body: 'ข้อมูลเข้ารหัสทุกชั้น สำรองข้อมูลอัตโนมัติทุกวัน ได้มาตรฐาน ISO 27001 — มั่นใจได้ว่าข้อมูลลูกบ้านและการเงินปลอดภัยเสมอ',
+    points: ['เข้ารหัสข้อมูลทุกชั้น (AES-256)', 'สำรองข้อมูลอัตโนมัติทุกวัน', 'มาตรฐาน ISO 27001', 'Audit Log ทุกการกระทำ'],
+    gradient: 'linear-gradient(145deg, #2d3a8c 0%, #0f172a 100%)',
   },
   {
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
-    title: 'ข้อมูล Real-Time',
-    titleEN: 'Live Data & Reports',
-    description: 'Dashboard อัปเดตทันที รายงานการเงินและสถิติพร้อมส่งออก PDF ได้เลย',
-  },
-  {
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
-    title: 'ทีม Support พร้อมช่วย',
-    titleEN: '24/7 Local Support',
-    description: 'ทีม CS คนไทย ตอบไว เข้าใจปัญหาที่เจอจริง ไม่ใช่ Bot',
-  },
-  {
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
-    title: 'ติดตั้งเร็ว ใช้ได้ใน 1 สัปดาห์',
-    titleEN: 'Live in 7 Days',
-    description: 'Onboarding เร็ว พร้อม Turnkey Setup สำหรับโครงการที่ต้องการความช่วยเหลือ',
+    id: 'support',
+    navNum: '04',
+    tabLabel: 'ทีมไทย',
+    tabLabelEN: 'Local Support',
+    heading: 'Support คนไทย เข้าใจปัญหาจริง',
+    headingEN: '24/7 Local Support',
+    body: 'ทีม CS คนไทยตอบไว เข้าใจบริบทและปัญหาจริงของนิติบุคคลไทย — ไม่ใช่ Bot ไม่ต้องรอตอบกลับเป็นวัน มี SLA ชัดเจนติดตามได้',
+    points: ['ทีม CS คนไทย ตอบเร็ว', 'Line / Phone / Email พร้อมรับ', 'ฝึกอบรมทีมงานอาคาร', 'SLA ชัดเจน ติดตามได้'],
+    gradient: 'linear-gradient(145deg, #f97316 0%, #b45309 100%)',
   },
 ];
 ---
 
-<section class="section-pad bg-warm-surface">
+<section class="why-section section-pad bg-warm-page" id="why-livingos">
   <div class="container-los">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-      <!-- Left: Sticky headline -->
-      <div class="reveal-left lg:sticky lg:top-28">
-        <div class="overline mb-4 text-text-4">Why LivingOS</div>
-        <h2 class="text-3xl lg:text-4xl font-bold text-text-1 mb-5 leading-tight">
-          ทำไมนิติบุคคล<br />
-          <span class="text-primary">กว่า 500 โครงการ</span><br />
-          เลือก LivingOS
-        </h2>
-        <p class="text-md text-text-3 font-light leading-relaxed mb-8">
-          Built specifically for Thai property management. Not a generic tool adapted for Thailand — designed here, for teams like yours.
-        </p>
-        <a
-          href="/demo"
-          class="btn-3d inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-lg"
-        >
-          ขอ Demo ฟรี
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
-      </div>
+    <!-- Header -->
+    <div class="why-header reveal-up">
+      <div class="overline mb-3 text-text-4">Why LivingOS</div>
+      <h2 class="text-3xl lg:text-4xl font-bold text-text-1 mb-4 leading-tight">
+        ทำไมนิติบุคคล<br />
+        <span class="text-primary">กว่า 500 โครงการ</span> เลือก LivingOS
+      </h2>
+      <p class="text-md text-text-3 font-light max-w-sm">
+        Built for Thai property management — not a generic tool adapted for Thailand.
+      </p>
+    </div>
 
-      <!-- Right: Feature list -->
-      <div class="why-cards flex flex-col gap-4">
-        {reasons.map((r, i) => (
-          <div class="why-card flex gap-4 p-5 rounded-xl group">
-            <div class="why-icon w-10 h-10 rounded-lg bg-primary-50 border border-primary-100 text-primary flex items-center justify-center shrink-0">
-              <Fragment set:html={r.icon} />
-            </div>
-            <div>
-              <div class="why-title font-semibold text-text-1 mb-0.5">{r.title}</div>
-              <div class="text-xs text-text-4 font-mono mb-2">{r.titleEN}</div>
-              <p class="text-sm text-text-3 leading-relaxed">{r.description}</p>
+    <!-- 2-column: sticky nav left + scrolling panels right -->
+    <div class="why-layout">
+
+      <!-- Left: Sticky nav -->
+      <aside class="why-nav" aria-label="Benefits navigation">
+        <div class="why-nav-inner" id="whyNav">
+          {groups.map((g, i) => (
+            <button
+              class={`why-nav-item${i === 0 ? ' is-active' : ''}`}
+              data-nav={i}
+              type="button"
+            >
+              <span class="nav-dot" aria-hidden="true"></span>
+              <div class="nav-body">
+                <span class="nav-num">{g.navNum}</span>
+                <span class="nav-label-th">{g.tabLabel}</span>
+                <span class="nav-label-en">{g.tabLabelEN}</span>
+              </div>
+            </button>
+          ))}
+        </div>
+      </aside>
+
+      <!-- Right: Stacked panels -->
+      <div class="why-panels-stack" id="whyPanelsStack">
+        {groups.map((g, i) => (
+          <div
+            class="why-panel-anchor"
+            id={`why-p-${i}`}
+            data-panel-anchor={i}
+          >
+            <div class="why-panel-card" style={`background: ${g.gradient}`}>
+
+              <!-- Top row: text block + CTA -->
+              <div class="card-top-row">
+                <div>
+                  <p class="card-en">{g.headingEN}</p>
+                  <h3 class="card-heading">{g.heading}</h3>
+                  <p class="card-body">{g.body}</p>
+                </div>
+                <a href="/demo" class="card-cta">
+                  ขอ Demo ฟรี
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Bottom: points + visual side by side -->
+              <div class="card-bottom-row">
+
+                <!-- Bullet points -->
+                <ul class="card-points">
+                  {g.points.map(pt => (
+                    <li>
+                      <span class="card-check">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                      </span>
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+
+                <!-- Visual illustration (glass card) -->
+                <div class="card-vis">
+
+                  {g.id === 'easy' && (
+                    <div class="glass-card">
+                      <div class="g-header">
+                        <span class="g-badge g-badge-light">Go-live Checklist</span>
+                        <span class="g-badge g-badge-light">วันที่ 7</span>
+                      </div>
+                      <div class="g-steps">
+                        {[
+                          { label: 'ลงทะเบียนและตั้งค่าโครงการ', time: '30 นาที' },
+                          { label: 'นำเข้าข้อมูลลูกบ้าน', time: '2 ชั่วโมง' },
+                          { label: 'ตั้งค่า Billing และบัญชี', time: '1 วัน' },
+                          { label: 'Training ทีมงาน', time: '2 วัน' },
+                        ].map(s => (
+                          <div class="g-step">
+                            <span class="g-check">
+                              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <span class="g-step-label">{s.label}</span>
+                            <span class="g-step-time">{s.time}</span>
+                          </div>
+                        ))}
+                        <div class="g-step g-step-live">
+                          <span class="g-live-dot"></span>
+                          <span class="g-step-label" style="font-weight:700">Go-live!</span>
+                          <span class="g-step-time">วันนี้</span>
+                        </div>
+                      </div>
+                      <div class="g-progress-row">
+                        <span class="g-progress-label">Progress</span>
+                        <div class="g-progress-bar"><div class="g-progress-fill" style="width:100%"></div></div>
+                        <span class="g-progress-pct">100%</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {g.id === 'integrated' && (
+                    <div class="glass-card">
+                      <div class="g-header">
+                        <span class="g-badge g-badge-light">LivingOS Platform</span>
+                        <span class="g-live-pill">● Real-Time</span>
+                      </div>
+                      <div class="g-modules">
+                        <div class="g-module" style="background:rgba(19,168,174,.5)">
+                          <span class="g-module-name">Urbanice</span>
+                          <span class="g-module-sub">Resident App</span>
+                        </div>
+                        <div class="g-module" style="background:rgba(28,112,247,.5)">
+                          <span class="g-module-name">PMS</span>
+                          <span class="g-module-sub">Property Mgmt</span>
+                        </div>
+                        <div class="g-module" style="background:rgba(77,109,195,.5)">
+                          <span class="g-module-name">GuardOS</span>
+                          <span class="g-module-sub">Security</span>
+                        </div>
+                        <div class="g-module" style="background:rgba(255,104,87,.5)">
+                          <span class="g-module-name">Services</span>
+                          <span class="g-module-sub">Professional</span>
+                        </div>
+                      </div>
+                      <p class="g-connect-label">→ ทุกโมดูลเชื่อมถึงกัน ไม่ต้องสลับแอป</p>
+                    </div>
+                  )}
+
+                  {g.id === 'secure' && (
+                    <div class="glass-card">
+                      <div class="g-shield-banner">
+                        <div class="g-shield-icon">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div>
+                          <div class="g-shield-sub">System Status</div>
+                          <div class="g-shield-status">Protected</div>
+                        </div>
+                        <span class="g-badge g-badge-green" style="margin-left:auto">All Clear</span>
+                      </div>
+                      <div class="g-sec-list">
+                        {[
+                          { label: 'AES-256 Encryption', value: 'Active' },
+                          { label: 'Daily Auto Backup', value: '02:00 AM' },
+                          { label: 'ISO 27001', value: 'Certified' },
+                          { label: 'Audit Log', value: '1,247 events' },
+                        ].map(item => (
+                          <div class="g-sec-row">
+                            <span class="g-dot-green"></span>
+                            <span class="g-sec-label">{item.label}</span>
+                            <span class="g-sec-value">{item.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {g.id === 'support' && (
+                    <div class="glass-card">
+                      <div class="g-chat-header">
+                        <div class="g-avatar">CS</div>
+                        <div>
+                          <div class="g-chat-name">LivingOS Support</div>
+                          <div class="g-chat-online">● Online</div>
+                        </div>
+                        <span class="g-badge g-badge-light" style="margin-left:auto">&lt; 5 นาที</span>
+                      </div>
+                      <div class="g-chat-body">
+                        <div class="g-msg g-msg-user">มีปัญหาเรื่องใบแจ้งหนี้เดือนนี้ครับ</div>
+                        <div class="g-msg g-msg-agent">รับทราบค่ะ ขอดูรายละเอียดได้เลยนะคะ 😊</div>
+                        <div class="g-msg g-msg-agent">แก้ไขให้แล้วค่ะ ✅</div>
+                        <div class="g-msg g-msg-user">ขอบคุณมากครับ เร็วมากเลย!</div>
+                      </div>
+                      <div class="g-chat-input">
+                        <span class="g-input-hint">พิมพ์ข้อความ...</span>
+                        <span class="g-send-btn">ส่ง</span>
+                      </div>
+                    </div>
+                  )}
+
+                </div>
+              </div>
+
             </div>
           </div>
         ))}
       </div>
+
     </div>
   </div>
 </section>
 
 <style>
-  .why-card {
-    position: relative;
-    transition:
-      background 0.3s ease,
-      box-shadow 0.3s ease,
-      transform 0.3s ease;
+  /* ── Section header sits above the 2-col layout ── */
+  .why-header {
+    max-width: 480px;
+    margin-bottom: 3.5rem;
   }
 
-  .why-card.is-active {
-    background: #ffffff;
-    box-shadow: var(--shadow-md);
-    transform: translateX(6px);
+  /* ── 2-column layout ── */
+  .why-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 64px;
+    align-items: start;
   }
 
-  .why-card.is-active .why-icon {
+  /* ── Left nav ── */
+  /* Stretch aside to match right column height so GSAP pin has space to work */
+  .why-nav {
+    align-self: stretch;
+  }
+
+  /* position: sticky removed — GSAP ScrollTrigger pins #whyNav */
+  .why-nav-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Nav item */
+  .why-nav-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 12px 18px 0;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-left: 2px solid var(--color-warm-border-light);
+    padding-left: 20px;
+    cursor: pointer;
+    transition: border-color 0.25s ease;
+  }
+
+  .why-nav-item:hover:not(.is-active) {
+    border-left-color: var(--color-warm-border-mid);
+  }
+
+  .why-nav-item.is-active {
+    border-left-color: var(--color-primary);
+  }
+
+  /* Dot */
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-text-5);
+    flex-shrink: 0;
+    margin-top: 5px;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+
+  .why-nav-item.is-active .nav-dot {
     background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: #ffffff;
+    transform: scale(1.25);
   }
 
-  .why-card.is-active .why-title {
+  .nav-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-num {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--color-text-4);
+    transition: color 0.25s ease;
+  }
+
+  .why-nav-item.is-active .nav-num {
     color: var(--color-primary);
   }
 
+  .nav-label-th {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-text-4);
+    line-height: 1.3;
+    transition: color 0.25s ease;
+  }
 
+  .why-nav-item.is-active .nav-label-th {
+    color: var(--color-text-1);
+  }
+
+  .nav-label-en {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: var(--color-text-5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── Right panels stack ── */
+  .why-panels-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .why-panel-anchor {
+    /* natural height — IntersectionObserver fires when in view */
+  }
+
+  /* ── Colored panel card ── */
+  .why-panel-card {
+    border-radius: 20px;
+    padding: 40px 44px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-height: 460px;
+  }
+
+  /* Top row: text block + CTA aligned */
+  .card-top-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .card-en {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+    margin-bottom: 10px;
+  }
+
+  .card-heading {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .card-body {
+    font-size: 14px;
+    color: rgba(255,255,255,.7);
+    line-height: 1.7;
+    max-width: 420px;
+  }
+
+  /* CTA button — white pill */
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    background: #ffffff;
+    color: var(--color-text-1);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,.18);
+  }
+  .card-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 18px rgba(0,0,0,.24);
+  }
+
+  /* Bottom row: points + visual */
+  .card-bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+    flex: 1;
+  }
+
+  /* Bullet points */
+  .card-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card-points li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,.88);
+  }
+
+  .card-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+  }
+
+  /* ── Glass visual card ── */
+  .card-vis {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .glass-card {
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 14px;
+    padding: 18px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Glass badges */
+  .g-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .g-badge {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 5px;
+    letter-spacing: 0.04em;
+  }
+
+  .g-badge-light {
+    background: rgba(255,255,255,.15);
+    color: rgba(255,255,255,.85);
+    border: 1px solid rgba(255,255,255,.2);
+  }
+
+  .g-badge-green {
+    background: rgba(34,197,94,.2);
+    color: #6ee7b7;
+    border: 1px solid rgba(34,197,94,.3);
+  }
+
+  .g-live-pill {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: #6ee7b7;
+    margin-left: auto;
+  }
+
+  /* ── Easy vis: steps ── */
+  .g-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .g-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 9px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 7px;
+  }
+
+  .g-step-live {
+    background: rgba(34,197,94,.12);
+    border-color: rgba(34,197,94,.25);
+  }
+
+  .g-check {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(34,197,94,.25);
+    border: 1px solid rgba(34,197,94,.4);
+    color: #6ee7b7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .g-live-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(34,197,94,.2);
+    border: 2px solid #22c55e;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .g-live-dot::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: #22c55e;
+  }
+
+  .g-step-label {
+    font-size: 11px;
+    color: rgba(255,255,255,.8);
+    flex: 1;
+  }
+
+  .g-step-time {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: rgba(255,255,255,.4);
+  }
+
+  .g-progress-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .g-progress-label {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: rgba(255,255,255,.4);
+  }
+
+  .g-progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,.12);
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  .g-progress-fill {
+    height: 100%;
+    background: #22c55e;
+    border-radius: 9999px;
+  }
+
+  .g-progress-pct {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: #6ee7b7;
+    font-weight: 600;
+  }
+
+  /* ── Integrated vis: modules ── */
+  .g-modules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+
+  .g-module {
+    border-radius: 8px;
+    padding: 12px 10px;
+    border: 1px solid rgba(255,255,255,.15);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .g-module-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .g-module-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,.55);
+    font-family: var(--font-mono);
+  }
+
+  .g-connect-label {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: rgba(255,255,255,.4);
+    padding-top: 4px;
+    border-top: 1px solid rgba(255,255,255,.1);
+    text-align: center;
+  }
+
+  /* ── Secure vis ── */
+  .g-shield-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 9px;
+  }
+
+  .g-shield-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.18);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .g-shield-sub {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: rgba(255,255,255,.4);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .g-shield-status {
+    font-size: 13px;
+    font-weight: 700;
+    color: #6ee7b7;
+  }
+
+  .g-sec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .g-sec-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 9px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 7px;
+  }
+
+  .g-dot-green {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    flex-shrink: 0;
+  }
+
+  .g-sec-label {
+    font-size: 11px;
+    color: rgba(255,255,255,.75);
+    flex: 1;
+  }
+
+  .g-sec-value {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: rgba(255,255,255,.4);
+  }
+
+  /* ── Support vis: chat ── */
+  .g-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+
+  .g-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .g-chat-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,.9);
+  }
+
+  .g-chat-online {
+    font-size: 10px;
+    color: #6ee7b7;
+    font-family: var(--font-mono);
+  }
+
+  .g-chat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .g-msg {
+    max-width: 88%;
+    font-size: 11px;
+    line-height: 1.5;
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+
+  .g-msg-user {
+    align-self: flex-end;
+    background: rgba(255,255,255,.18);
+    color: #fff;
+    border-radius: 10px 10px 2px 10px;
+  }
+
+  .g-msg-agent {
+    align-self: flex-start;
+    background: rgba(255,255,255,.08);
+    color: rgba(255,255,255,.8);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 10px 10px 10px 2px;
+  }
+
+  .g-chat-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 9999px;
+    padding: 6px 6px 6px 12px;
+    margin-top: 2px;
+  }
+
+  .g-input-hint {
+    flex: 1;
+    font-size: 10px;
+    color: rgba(255,255,255,.3);
+  }
+
+  .g-send-btn {
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255,255,255,.18);
+    padding: 4px 10px;
+    border-radius: 9999px;
+  }
+
+  /* ── Tablet + Mobile: stack layout (2-col only at desktop 1280px+) ── */
+  @media (max-width: 1279px) {
+    .why-layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .why-nav-inner {
+      position: static;
+      flex-direction: row;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 0;
+      border-bottom: 1.5px solid var(--color-warm-border-light);
+      padding-bottom: 0;
+      background: #FFFFFF;
+      box-shadow: 0 2px 12px rgba(60,45,20,.07);
+      z-index: 40;
+    }
+    .why-nav-inner::-webkit-scrollbar { display: none; }
+
+    .why-nav-item {
+      border-left: none;
+      border-bottom: 2px solid transparent;
+      padding: 12px 16px;
+      min-width: 100px;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
+    }
+
+    .why-nav-item.is-active {
+      border-bottom-color: var(--color-primary);
+    }
+
+    .nav-dot { display: none; }
+
+    .card-top-row {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card-bottom-row {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .why-panel-card {
+      padding: 28px 24px;
+      min-height: auto;
+    }
+  }
 </style>
+
+<script>
+  (function () {
+    const navItems = Array.from(document.querySelectorAll<HTMLElement>('#whyNav .why-nav-item'));
+    const anchors  = Array.from(document.querySelectorAll<HTMLElement>('[data-panel-anchor]'));
+
+    function setActive(index: number) {
+      navItems.forEach((n, i) => n.classList.toggle('is-active', i === index));
+    }
+
+    // Scroll-based: update nav when panel enters viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number((entry.target as HTMLElement).dataset.panelAnchor);
+            setActive(idx);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    anchors.forEach((a) => observer.observe(a));
+
+    // Click nav: smooth scroll to that panel
+    navItems.forEach((item, i) => {
+      item.addEventListener('click', () => {
+        anchors[i]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  })();
+</script>

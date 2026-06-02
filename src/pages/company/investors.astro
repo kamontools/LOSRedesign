@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+
+const ACCENT = '#1C70F7';
+const ACCENT_LIGHT = '#EEF4FF';
+
+const metrics = [
+  { label: 'ARR (Annual Recurring Revenue)', value: '฿120M+', note: 'FY2024' },
+  { label: 'YoY Revenue Growth', value: '68%', note: '2023 → 2024' },
+  { label: 'Paying Projects', value: '1,000+', note: 'ณ Q4 2024' },
+  { label: 'Net Revenue Retention', value: '118%', note: 'NRR 12 เดือน' },
+  { label: 'Gross Margin', value: '72%', note: 'SaaS + Hardware' },
+  { label: 'Headcount', value: '150+', note: 'ณ ม.ค. 2025' },
+];
+---
+
+<BaseLayout
+  title="Investors — The LivingOS | Investor Relations"
+  description="ข้อมูลสำหรับนักลงทุน: ผลการดำเนินงาน เอกสารสำคัญ และข้อมูลการระดมทุน"
+>
+  <InnerHero
+    badge="INVESTORS"
+    breadcrumb="COMPANY"
+    headline="PropTech Leader สำหรับโครงการที่อยู่อาศัยในไทย"
+    accentWord="PropTech Leader"
+    subheadline="LivingOS เป็น SaaS Platform ชั้นนำสำหรับการจัดการอาคารในประเทศไทย ด้วยการเติบโตแบบก้าวกระโดดและ NRR สูง เราพร้อมเป็น Infrastructure ของทุกโครงการที่อยู่อาศัย"
+    cta1={{ label: 'ติดต่อ IR Team', href: '/company/contact' }}
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  />
+
+  <!-- Key Metrics -->
+  <section class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+      <div class="text-center mb-14 reveal-up">
+        <div class="overline mb-3" style={`color:${ACCENT};`}>Key Metrics</div>
+        <h2 class="text-3xl font-bold text-text-1">ตัวเลขที่สำคัญ</h2>
+      </div>
+
+      <div class="metrics-grid reveal-stagger">
+        {metrics.map((m) => (
+          <div class="metric-card">
+            <div class="metric-label">{m.label}</div>
+            <div class="metric-value" style={`color:${ACCENT};`}>{m.value}</div>
+            <div class="metric-note">{m.note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Funding History -->
+  <section class="section-pad" style="background:var(--color-warm-page);">
+    <div class="container-los">
+      <div class="text-center mb-14 reveal-up">
+        <div class="overline mb-3" style={`color:${ACCENT};`}>Funding History</div>
+        <h2 class="text-3xl font-bold text-text-1">ประวัติการระดมทุน</h2>
+      </div>
+
+      <div class="max-w-2xl mx-auto reveal-stagger">
+        {[
+          { round: 'Seed', year: '2019', amount: '฿15M', investors: 'Angel Investors + Founders' },
+          { round: 'Pre-Series A', year: '2021', amount: '฿45M', investors: 'PropTech Fund Asia' },
+          { round: 'Series A', year: '2022', amount: '฿120M', investors: 'Thai VC Consortium + Strategic Partners' },
+        ].map((f) => (
+          <div class="funding-row">
+            <div class="funding-round" style={`color:${ACCENT};`}>{f.round}</div>
+            <div class="funding-details">
+              <div class="funding-amount">{f.amount}</div>
+              <div class="funding-meta">{f.year} · {f.investors}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents -->
+  <section class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+      <div class="text-center mb-14 reveal-up">
+        <div class="overline mb-3" style={`color:${ACCENT};`}>Documents</div>
+        <h2 class="text-3xl font-bold text-text-1">เอกสารสำหรับนักลงทุน</h2>
+        <p class="text-md text-text-3 font-light max-w-lg mx-auto mt-4">เอกสารโดยละเอียดให้กับ Qualified Investors ติดต่อทีม IR เพื่อขอรับ NDA</p>
+      </div>
+
+      <div class="docs-grid reveal-stagger">
+        {[
+          { icon: '📊', title: 'Investor Deck', desc: 'Company overview, market opportunity, product roadmap และ financial projections' },
+          { icon: '📈', title: 'Financial Reports', desc: 'Audited financial statements, MRR/ARR breakdown และ unit economics' },
+          { icon: '🗺️', title: 'Product Roadmap', desc: '12-month roadmap พร้อม milestone และ expansion strategy' },
+          { icon: '📋', title: 'Cap Table', desc: 'ข้อมูล shareholding structure สำหรับ Accredited Investors' },
+        ].map((d) => (
+          <div class="doc-card">
+            <div style="font-size:28px;margin-bottom:12px;">{d.icon}</div>
+            <h3 style="font-size:15px;font-weight:700;color:var(--color-text-1);margin-bottom:8px;">{d.title}</h3>
+            <p style="font-size:13px;color:var(--color-text-3);line-height:1.6;margin-bottom:16px;">{d.desc}</p>
+            <a href="/company/contact" style={`font-size:13px;font-weight:600;color:${ACCENT};text-decoration:none;`}>ขอรับเอกสาร →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- IR Contact -->
+  <section class="section-pad" style="background:var(--color-warm-page);">
+    <div class="container-los max-w-xl mx-auto text-center reveal-up">
+      <div class="overline mb-3" style={`color:${ACCENT};`}>Investor Relations</div>
+      <h2 class="text-3xl font-bold text-text-1 mb-4">ติดต่อทีม IR</h2>
+      <p class="text-md text-text-3 font-light mb-8">สำหรับนักลงทุนสถาบันและ Strategic Partners กรุณาติดต่อเราโดยตรง</p>
+      <a href="/company/contact" style={`background:${ACCENT};color:#fff;padding:14px 32px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 4px 18px rgba(28,112,247,.38);display:inline-flex;align-items:center;gap:8px;`}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        ติดต่อ IR Team
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .metric-card { background: #fff; border: 1.5px solid var(--color-warm-border-light); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); }
+  .metric-label { font-size: 12px; color: var(--color-text-4); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+  .metric-value { font-family: var(--font-mono); font-size: 32px; font-weight: 700; line-height: 1; margin-bottom: 6px; }
+  .metric-note { font-size: 11px; color: var(--color-text-4); }
+
+  .funding-row { display: flex; align-items: center; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--color-warm-border-light); }
+  .funding-row:last-child { border-bottom: none; }
+  .funding-round { font-family: var(--font-mono); font-size: 13px; font-weight: 700; width: 120px; flex-shrink: 0; }
+  .funding-amount { font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--color-text-1); }
+  .funding-meta { font-size: 12px; color: var(--color-text-4); margin-top: 2px; }
+
+  .docs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .doc-card { background: #fff; border: 1.5px solid var(--color-warm-border-light); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); }
+
+  @media (max-width: 900px) { .metrics-grid { grid-template-columns: 1fr 1fr; } .docs-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .metrics-grid, .docs-grid { grid-template-columns: 1fr; } }
+</style>

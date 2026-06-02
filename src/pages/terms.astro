@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lastUpdated = '1 มกราคม 2568';
+---
+
+<BaseLayout
+  title="ข้อกำหนดการใช้บริการ — The LivingOS"
+  description="ข้อกำหนดการใช้บริการ (Terms of Service) ของ The LivingOS สำหรับผู้ใช้งานแพลตฟอร์มและแอปพลิเคชันทั้งหมด"
+>
+  <div class="legal-hero">
+    <div class="container-los">
+      <p class="overline mb-3">LEGAL</p>
+      <h1 class="text-4xl font-bold text-text-1 mb-4">ข้อกำหนดการใช้บริการ</h1>
+      <p class="text-md text-text-3 font-light">อัปเดตล่าสุด: {lastUpdated}</p>
+    </div>
+  </div>
+
+  <div class="legal-body section-pad">
+    <div class="container-los">
+      <div class="legal-content">
+
+        <section>
+          <h2>1. การยอมรับข้อกำหนด</h2>
+          <p>การใช้งานบริการของ The LivingOS ถือว่าคุณยอมรับข้อกำหนดและเงื่อนไขทั้งหมดที่ระบุในเอกสารนี้ หากคุณไม่ยอมรับ กรุณายุติการใช้งานบริการ</p>
+        </section>
+
+        <section>
+          <h2>2. บริการที่ให้</h2>
+          <p>The LivingOS ให้บริการซอฟต์แวร์บริหารจัดการอาคาร (Property Management Software) รวมถึงแต่ไม่จำกัดเพียง: The LivingOS PMS, Urbanice App, GuardOS, i-Pass, i-Check, SOS, i-Vote, Living Mart และ LivingOS Academy</p>
+        </section>
+
+        <section>
+          <h2>3. บัญชีผู้ใช้งาน</h2>
+          <ul>
+            <li>คุณต้องรับผิดชอบต่อการรักษาความปลอดภัยของบัญชีและรหัสผ่าน</li>
+            <li>ห้ามแชร์ Credential กับบุคคลที่ไม่ได้รับอนุญาต</li>
+            <li>LivingOS สงวนสิทธิ์ระงับบัญชีที่ตรวจพบการใช้งานผิดปกติ</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. การชำระเงินและการยกเลิก</h2>
+          <ul>
+            <li>ค่าบริการเรียกเก็บตามรอบที่ระบุในสัญญา (รายเดือนหรือรายปี)</li>
+            <li>ยกเลิกได้ทุกเมื่อ โดยแจ้งล่วงหน้า 30 วัน</li>
+            <li>ราคาแสดงไม่รวม VAT 7%</li>
+            <li>การขอคืนเงินพิจารณาเป็นกรณีๆ ไป</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>5. ทรัพย์สินทางปัญญา</h2>
+          <p>ซอฟต์แวร์ รหัสต้นฉบับ การออกแบบ และเนื้อหาทั้งหมดของ The LivingOS เป็นทรัพย์สินทางปัญญาของบริษัท เดอะ ลิฟวิ่งโอเอส จำกัด การคัดลอก ดัดแปลง หรือแจกจ่ายโดยไม่ได้รับอนุญาตเป็นลายลักษณ์อักษรเป็นสิ่งต้องห้าม</p>
+        </section>
+
+        <section>
+          <h2>6. ข้อมูลของลูกค้า</h2>
+          <p>ข้อมูลที่คุณนำเข้าสู่ระบบ LivingOS ยังคงเป็นของคุณ LivingOS มีสิทธิ์ประมวลผลข้อมูลเพื่อให้บริการตามสัญญาเท่านั้น และจะไม่ใช้ข้อมูลของลูกค้าเพื่อวัตถุประสงค์อื่นนอกจากที่ระบุในนโยบายความเป็นส่วนตัว</p>
+        </section>
+
+        <section>
+          <h2>7. การจำกัดความรับผิด</h2>
+          <p>LivingOS ให้บริการตามสภาพ (as-is) และไม่รับประกันว่าบริการจะไม่มีข้อผิดพลาดตลอดเวลา ความรับผิดสูงสุดของ LivingOS จำกัดไว้ที่ค่าบริการที่คุณชำระในช่วง 12 เดือนก่อนหน้า</p>
+        </section>
+
+        <section>
+          <h2>8. กฎหมายที่ใช้บังคับ</h2>
+          <p>ข้อกำหนดนี้อยู่ภายใต้กฎหมายไทย ข้อพิพาทใดๆ ให้อยู่ในเขตอำนาจศาลของศาลแพ่งกรุงเทพฯ</p>
+        </section>
+
+        <section>
+          <h2>9. การติดต่อ</h2>
+          <p>หากมีคำถามเกี่ยวกับข้อกำหนดนี้ ติดต่อ <a href="mailto:legal@thelivingos.co">legal@thelivingos.co</a></p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .legal-hero { padding: 80px 0 48px; background: var(--color-warm-surface); border-bottom: 1px solid var(--color-warm-border-light); }
+  .legal-body { background: var(--color-warm-page); }
+  .legal-content { max-width: 720px; display: flex; flex-direction: column; gap: 40px; }
+  .legal-content section { display: flex; flex-direction: column; gap: 12px; }
+  .legal-content h2 { font-size: 20px; font-weight: 700; color: var(--color-text-1); }
+  .legal-content p, .legal-content li { font-size: 15px; color: var(--color-text-2); line-height: 1.75; }
+  .legal-content ul { padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .legal-content a { color: var(--color-primary); text-decoration: underline; }
+</style>

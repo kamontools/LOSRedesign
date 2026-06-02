@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+import InnerFAQ from '../../components/shared/InnerFAQ.astro';
+import CTABanner from '../../components/home/CTABanner.astro';
+import SolutionOverview from '../../components/shared/SolutionOverview.astro';
+
+const ACCENT = '#91BBFF';
+const ACCENT_LIGHT = '#EBF3FF';
+const SOV_BG = '#1E40AF';
+
+const courses = [
+  { level: 'BEGINNER', title: 'PMS เริ่มต้น', desc: 'ทำความรู้จัก Dashboard บัญชี และการจัดการลูกบ้านเบื้องต้น', duration: '4 ชั่วโมง', badge: 'LivingOS Certified User' },
+  { level: 'INTERMEDIATE', title: 'บัญชีและการเงิน', desc: 'ออกใบแจ้งหนี้ รับชำระ และจัดทำรายงานบัญชีมาตรฐาน', duration: '6 ชั่วโมง', badge: 'LivingOS Finance Pro' },
+  { level: 'INTERMEDIATE', title: 'GuardOS Operations', desc: 'ใช้งาน i-Pass, i-Check และ SOS สำหรับทีมรักษาความปลอดภัย', duration: '4 ชั่วโมง', badge: 'LivingOS Security Pro' },
+  { level: 'ADVANCED', title: 'Admin & Configuration', desc: 'ตั้งค่าระบบ จัดการสิทธิ์ผู้ใช้ และ Integration กับ API', duration: '8 ชั่วโมง', badge: 'LivingOS System Admin' },
+  { level: 'ADVANCED', title: 'AGM & i-Vote', desc: 'บริหารการประชุมใหญ่ออนไลน์ มอบฉันทะ และจัดทำรายงาน', duration: '3 ชั่วโมง', badge: 'LivingOS AGM Specialist' },
+  { level: 'ADVANCED', title: 'API Integration', desc: 'เชื่อมระบบภายนอกผ่าน REST API, Webhook และ SDK', duration: '6 ชั่วโมง', badge: 'LivingOS Developer' },
+];
+
+const levelColors: Record<string, string> = {
+  BEGINNER: '#16A34A',
+  INTERMEDIATE: ACCENT,
+  ADVANCED: '#B45309',
+};
+
+const faqs = [
+  { q: 'เรียนออนไลน์หรือ On-site?', a: 'มีทั้งสองแบบ: Recorded Course (On-demand) ดูตอนไหนก็ได้ผ่าน Academy Portal และ Live Training กับผู้เชี่ยวชาญตามตารางเวลา' },
+  { q: 'ใบรับรองที่ได้ใช้ประโยชน์อะไรได้บ้าง?', a: 'ใบรับรอง LivingOS Academy เป็นที่รับรองในวงการนิติบุคคล ใช้แสดงความสามารถในการสัมภาษณ์งาน และโครงการที่ใช้ LivingOS บางแห่งกำหนดให้เจ้าหน้าที่มีใบรับรองก่อนเปิดสิทธิ์ Admin' },
+  { q: 'มีค่าใช้จ่ายในการสอบ Certificate ไหม?', a: 'สำหรับผู้ใช้งาน LivingOS ที่อยู่ในแพ็กเกจ Professional ขึ้นไป การสอบ Certification รวมอยู่ในแพ็กเกจ ส่วนการสอบเพิ่มเติมมีค่าธรรมเนียมตามหลักสูตร' },
+  { q: 'ใบรับรองหมดอายุไหม?', a: 'ใบรับรองมีอายุ 2 ปี หลังจากนั้นสามารถ Renew ด้วย Short Refresher Course โดยไม่ต้องสอบใหม่ทั้งหมด' },
+];
+---
+
+<BaseLayout
+  title="LivingOS Academy — เรียนรู้และรับใบรับรอง | The LivingOS"
+  description="หลักสูตรออนไลน์และ On-site สำหรับนิติบุคคล รปภ. และทีม Admin — เรียนได้ทุกที่ รับ Certificate จาก LivingOS"
+>
+  <InnerHero
+    badge="SERVICES · ACADEMY"
+    breadcrumb="SOLUTIONS · SERVICES"
+    headline="LivingOS Academy เรียนรู้ พัฒนา รับใบรับรอง"
+    accentWord="รับใบรับรอง"
+    subheadline="หลักสูตรออกแบบมาสำหรับทีมนิติบุคคล รปภ. และผู้ดูแลระบบโดยเฉพาะ เรียน Online On-demand ได้ตลอดเวลา หรือเข้า Live Training — จบได้ใบรับรองจาก LivingOS"
+    cta1={{ label: 'ดูหลักสูตรทั้งหมด', href: '#courses' }}
+    cta2={{ label: 'ลงทะเบียนเรียน', href: '#register' }}
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  />
+
+  <SolutionOverview
+    headline="เรียนรู้ระบบ LivingOS ได้ทุกที่ ทุกเวลา รับใบรับรอง"
+    subheadline="หลักสูตรออกแบบสำหรับทีมนิติบุคคล รปภ. และ Admin โดยเฉพาะ เรียน Online On-demand หรือ Live Training"
+    bgColor={SOV_BG}
+    cards={[
+      {
+        title: '6 หลักสูตรครอบคลุมทุก Role',
+        description: 'ตั้งแต่ Beginner ถึง Advanced ครอบคลุมนิติบุคคล รปภ. ฝ่ายบัญชี และ System Admin',
+        emoji: '📚',
+        badge: '6 Courses',
+        badgeHex: SOV_BG,
+      },
+      {
+        title: 'เรียน On-demand หรือ Live',
+        description: 'ดูวิดีโอตอนไหนก็ได้ผ่าน Academy Portal หรือเข้า Live Training กับผู้เชี่ยวชาญ LivingOS',
+        emoji: '🎥',
+        badge: 'Flexible',
+        badgeHex: SOV_BG,
+      },
+      {
+        title: 'ใบรับรองที่ได้รับการยอมรับ',
+        description: 'Certificate มีอายุ 2 ปี พร้อม QR Verification ใช้อ้างอิงในวงการนิติบุคคลทั่วประเทศ',
+        emoji: '🏆',
+        badge: 'Certified',
+        badgeHex: SOV_BG,
+      },
+      {
+        title: 'รวมอยู่ในแพ็กเกจ Professional',
+        description: 'ผู้ใช้ Professional ขึ้นไปเข้าสอบ Certification ได้ฟรีไม่จำกัดครั้ง',
+        emoji: '✅',
+        badge: 'Included',
+        badgeHex: SOV_BG,
+      },
+    ]}
+  />
+
+  <!-- Courses Catalogue -->
+  <section id="courses" class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+      <div class="text-center mb-14 reveal-up">
+        <div class="overline mb-3" style={`color:${ACCENT};`}>Courses Catalogue</div>
+        <h2 class="text-3xl font-bold text-text-1 mb-4">หลักสูตรทั้งหมด</h2>
+        <p class="text-md text-text-3 font-light max-w-lg mx-auto">ครอบคลุมทุก Role และระดับความสามารถ</p>
+      </div>
+
+      <div class="courses-grid reveal-stagger">
+        {courses.map((c) => (
+          <div class="course-card">
+            <div class="course-level" style={`background:rgba(${levelColors[c.level] === '#16A34A' ? '22,163,74' : levelColors[c.level] === '#B45309' ? '180,83,9' : '145,187,255'},.1);color:${levelColors[c.level]};`}>{c.level}</div>
+            <h3 class="course-title">{c.title}</h3>
+            <p class="course-desc">{c.desc}</p>
+            <div class="course-meta">
+              <span class="course-duration">⏱ {c.duration}</span>
+            </div>
+            <div class="course-badge" style={`background:${ACCENT_LIGHT};color:${ACCENT};border:1.5px solid ${ACCENT}25;`}>
+              🏆 {c.badge}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Certification Info -->
+  <section class="section-pad" style="background:var(--color-warm-page);">
+    <div class="container-los">
+      <div class="text-center mb-12 reveal-up">
+        <div class="overline mb-3" style={`color:${ACCENT};`}>Certification Information</div>
+        <h2 class="text-3xl font-bold text-text-1 mb-4">ใบรับรองที่ได้รับการยอมรับ</h2>
+        <p class="text-md text-text-3 font-light max-w-lg mx-auto">ใบรับรอง LivingOS Academy เป็นที่ยอมรับในโครงการที่อยู่อาศัยชั้นนำทั่วประเทศ</p>
+      </div>
+
+      <div class="cert-grid reveal-stagger">
+        {[
+          { icon: '🎓', title: 'ดิจิทัล Certificate', desc: 'รับใบรับรองดิจิทัลพร้อม QR Verification ทันทีหลังสอบผ่าน' },
+          { icon: '✅', title: 'Verified Online', desc: 'นายจ้างหรือโครงการตรวจสอบความถูกต้องได้ผ่าน QR Code' },
+          { icon: '📅', title: 'อายุ 2 ปี', desc: 'ใบรับรองมีอายุ 2 ปี Renew ด้วย Refresher Course ง่ายๆ' },
+          { icon: '🏆', title: 'Industry Recognized', desc: 'ใช้อ้างอิงในวงการนิติบุคคลและโครงการที่อยู่อาศัยกว่า 1,000 แห่ง' },
+        ].map((item) => (
+          <div style="background:#fff;border:1.5px solid var(--color-warm-border-light);border-radius:16px;padding:24px;text-align:center;box-shadow:var(--shadow-sm);">
+            <div style="font-size:32px;margin-bottom:12px;">{item.icon}</div>
+            <h3 style="font-size:15px;font-weight:700;color:var(--color-text-1);margin-bottom:8px;">{item.title}</h3>
+            <p style="font-size:13px;color:var(--color-text-3);line-height:1.6;">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Register -->
+  <section id="register" class="section-pad" style={`background:linear-gradient(135deg,${ACCENT} 0%,#3730A3 100%);`}>
+    <div class="container-los text-center reveal-up">
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:9999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#FDE68A;"></span>
+        เปิดรับสมัครแล้ว
+      </div>
+      <h2 style="font-size:clamp(26px,3vw,38px);font-weight:700;color:#fff;margin-bottom:16px;">เริ่มต้นเรียนได้เลยวันนี้</h2>
+      <p style="font-size:17px;color:rgba(255,255,255,.8);margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;">ลงทะเบียนและเริ่มเรียน Course แรกได้ทันที ไม่ต้องรอ</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="/request-demo" style="background:#fff;color:#91BBFF;padding:14px 32px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.2);">ลงทะเบียนเรียน</a>
+        <a href="/company/contact" style="background:rgba(255,255,255,.15);color:#fff;padding:14px 32px;border-radius:12px;font-weight:500;font-size:15px;text-decoration:none;border:1.5px solid rgba(255,255,255,.35);">ติดต่อสอบถาม</a>
+      </div>
+    </div>
+  </section>
+
+  <InnerFAQ items={faqs} accentHex={ACCENT} />
+  <CTABanner />
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .course-card {
+    background: #fff;
+    border: 1.5px solid var(--color-warm-border-light);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .course-level {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .08em;
+  }
+  .course-title { font-size: 16px; font-weight: 700; color: var(--color-text-1); }
+  .course-desc { font-size: 13px; color: var(--color-text-3); line-height: 1.6; flex: 1; }
+  .course-meta { display: flex; gap: 12px; }
+  .course-duration { font-size: 12px; color: var(--color-text-4); }
+  .course-badge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 5px 12px;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 900px) { .courses-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .courses-grid, .cert-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .cert-grid { grid-template-columns: 1fr 1fr; } }
+</style>

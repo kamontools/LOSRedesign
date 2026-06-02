@@ -74,7 +74,10 @@ Sections ในหน้าแรก:
 - Real-Time Dashboard
 - E-Stamp for Visitors
 - Automatic Parking Fee Calculation
-- LivingOS Smart Gate
+- FAQ
+
+#### LivingOS Smart Gate
+- Overview
 - FAQ
 
 #### i-Check

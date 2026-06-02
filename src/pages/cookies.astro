@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lastUpdated = '1 มกราคม 2568';
+---
+
+<BaseLayout
+  title="นโยบายคุกกี้ — The LivingOS"
+  description="นโยบายคุกกี้ (Cookie Policy) ของ The LivingOS ว่าด้วยการใช้ Cookie บนเว็บไซต์และแอปพลิเคชัน"
+>
+  <div class="legal-hero">
+    <div class="container-los">
+      <p class="overline mb-3">LEGAL</p>
+      <h1 class="text-4xl font-bold text-text-1 mb-4">นโยบายคุกกี้</h1>
+      <p class="text-md text-text-3 font-light">อัปเดตล่าสุด: {lastUpdated}</p>
+    </div>
+  </div>
+
+  <div class="legal-body section-pad">
+    <div class="container-los">
+      <div class="legal-content">
+
+        <section>
+          <h2>คุกกี้คืออะไร?</h2>
+          <p>คุกกี้ (Cookie) คือไฟล์ข้อมูลขนาดเล็กที่ถูกจัดเก็บในเบราว์เซอร์ของคุณเมื่อคุณเข้าชมเว็บไซต์ของเรา คุกกี้ช่วยให้เว็บไซต์จดจำการตั้งค่าของคุณและปรับปรุงประสบการณ์การใช้งาน</p>
+        </section>
+
+        <section>
+          <h2>ประเภทคุกกี้ที่เราใช้</h2>
+          <div class="cookie-table">
+            <div class="cookie-row header">
+              <div>ประเภท</div>
+              <div>วัตถุประสงค์</div>
+              <div>อายุ</div>
+            </div>
+            {[
+              ['Strictly Necessary', 'จำเป็นสำหรับการทำงานของเว็บไซต์ เช่น Session Login และ CSRF Protection', 'Session'],
+              ['Performance', 'วัดประสิทธิภาพและ Analytics เพื่อปรับปรุงบริการ', '2 ปี'],
+              ['Functionality', 'จดจำการตั้งค่าภาษาและ Preference ของผู้ใช้', '1 ปี'],
+              ['Marketing', 'ติดตาม Conversion และแสดงโฆษณาที่เกี่ยวข้อง (ปิดได้)', '1 ปี'],
+            ].map(([type, purpose, duration]) => (
+              <div class="cookie-row">
+                <div><strong>{type}</strong></div>
+                <div>{purpose}</div>
+                <div style="font-family:var(--font-mono);font-size:12px;">{duration}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2>การจัดการคุกกี้</h2>
+          <p>คุณสามารถควบคุมคุกกี้ได้ผ่านการตั้งค่าเบราว์เซอร์ของคุณ โดยสามารถปฏิเสธคุกกี้ที่ไม่จำเป็นได้ทุกเมื่อ อย่างไรก็ตาม การปิด Strictly Necessary Cookies อาจทำให้บางฟีเจอร์ของเว็บไซต์ไม่ทำงาน</p>
+          <p>วิธีจัดการคุกกี้สำหรับเบราว์เซอร์หลัก:</p>
+          <ul>
+            <li>Chrome: Settings → Privacy and Security → Cookies</li>
+            <li>Firefox: Options → Privacy & Security → Cookies</li>
+            <li>Safari: Preferences → Privacy → Manage Website Data</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>คุกกี้จากบุคคลที่สาม</h2>
+          <p>เว็บไซต์ของเราอาจมีคุกกี้จากบุคคลที่สาม เช่น Google Analytics สำหรับการวัดประสิทธิภาพ และ YouTube สำหรับวิดีโอ Embedded คุกกี้เหล่านี้อยู่ภายใต้นโยบายของบุคคลที่สามนั้นๆ</p>
+        </section>
+
+        <section>
+          <h2>การติดต่อ</h2>
+          <p>หากมีคำถามเกี่ยวกับนโยบายคุกกี้ ติดต่อ <a href="mailto:privacy@thelivingos.co">privacy@thelivingos.co</a></p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .legal-hero { padding: 80px 0 48px; background: var(--color-warm-surface); border-bottom: 1px solid var(--color-warm-border-light); }
+  .legal-body { background: var(--color-warm-page); }
+  .legal-content { max-width: 720px; display: flex; flex-direction: column; gap: 40px; }
+  .legal-content section { display: flex; flex-direction: column; gap: 12px; }
+  .legal-content h2 { font-size: 20px; font-weight: 700; color: var(--color-text-1); }
+  .legal-content p, .legal-content li { font-size: 15px; color: var(--color-text-2); line-height: 1.75; }
+  .legal-content ul { padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .legal-content a { color: var(--color-primary); text-decoration: underline; }
+
+  .cookie-table { border: 1.5px solid var(--color-warm-border-light); border-radius: 12px; overflow: hidden; }
+  .cookie-row { display: grid; grid-template-columns: 180px 1fr 80px; gap: 0; }
+  .cookie-row > div { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--color-warm-border-light); border-right: 1px solid var(--color-warm-border-light); color: var(--color-text-2); }
+  .cookie-row > div:last-child { border-right: none; }
+  .cookie-row:last-child > div { border-bottom: none; }
+  .cookie-row.header > div { background: var(--color-warm-surface); font-weight: 600; color: var(--color-text-1); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; font-family: var(--font-mono); }
+</style>

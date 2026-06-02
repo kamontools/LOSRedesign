@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+import InnerFAQ from '../../components/shared/InnerFAQ.astro';
+import CTABanner from '../../components/home/CTABanner.astro';
+import SolutionOverview from '../../components/shared/SolutionOverview.astro';
+
+const ACCENT = '#062986';
+const ACCENT_LIGHT = '#E8ECFF';
+
+const faqs = [
+  { q: 'Smart Gate รองรับกี่โปรโตคอลการเข้าถึง?', a: 'รองรับ QR Code, RFID Card, Face Recognition (กล้อง AI) และ License Plate Recognition ทั้งหมดในอุปกรณ์เดียว สามารถเลือกเปิดเฉพาะโปรโตคอลที่ต้องการ' },
+  { q: 'ต้องต่อสายไฟหรือใช้ Battery?', a: 'ต้องต่อสายไฟ AC 220V มาตรฐาน ไม่รองรับ Battery เนื่องจากระบบทำงาน 24/7 มี Backup Power Relay ป้องกันไฟดับ ประตูจะค้างในตำแหน่ง "เปิด" เพื่อความปลอดภัย' },
+  { q: 'Smart Gate ทำงานได้โดยไม่ต้องเชื่อมอินเทอร์เน็ตไหม?', a: 'ได้ Smart Gate มี Local Cache ที่เก็บ Whitelist อุปกรณ์ไว้ Local ทำงาน Offline ได้ชั่วคราว Sync ข้อมูลกับ i-Pass เมื่อเชื่อมอินเทอร์เน็ตกลับ' },
+  { q: 'ติดตั้งใช้เวลานานไหม?', a: 'ทีม Installation ของ LivingOS ใช้เวลาติดตั้งต่อจุดประมาณ 2-4 ชั่วโมง รวม Configuration และ Training รปภ. โครงการขนาดกลาง 2-3 จุดใช้เวลา 1 วันทำการ' },
+];
+---
+
+<BaseLayout
+  title="LivingOS Smart Gate — ประตูอัจฉริยะสำหรับโครงการที่อยู่อาศัย"
+  description="ประตูอัจฉริยะรองรับ QR Code, RFID, Face Recognition และ License Plate ทำงานร่วมกับ i-Pass แบบ Real-time"
+>
+  <InnerHero
+    badge="SMART GATE"
+    breadcrumb="SOLUTIONS · GUARDOS"
+    headline="ประตูอัจฉริยะ ปลอดภัย ควบคุมได้ทุกช่องทาง"
+    accentWord="อัจฉริยะ"
+    subheadline="LivingOS Smart Gate รองรับ QR Code, RFID, Face Recognition และ License Plate Recognition ทำงานร่วมกับ i-Pass แบบ Real-time ควบคุมทุก Point of Entry ของโครงการ"
+    cta1={{ label: 'ขอใบเสนอราคา', href: '/request-demo' }}
+    cta2={{ label: 'ดูสเปก Hardware', href: '#features' }}
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  >
+    <div slot="visual" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:20px;">
+      <div style={`background:#fff;border-radius:16px;padding:24px;box-shadow:0 8px 32px rgba(6,41,134,.18);text-align:center;`}>
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <div style={`font-family:var(--font-mono);font-size:10px;font-weight:600;color:${ACCENT};letter-spacing:.1em;margin-bottom:16px;`}>SMART GATE PRO</div>
+        <div style="display:flex;flex-direction:column;gap:6px;text-align:left;">
+          {['QR Code ✓','RFID Card ✓','Face ID ✓','LPR ✓'].map((m) => (
+            <div style="font-size:12px;color:#3D3D3D;font-weight:500;padding:4px 8px;background:#F5F3EE;border-radius:6px;">{m}</div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </InnerHero>
+
+  <SolutionOverview
+    headline="ประตูอัจฉริยะรองรับทุกโปรโตคอล ปลอดภัยตลอด 24 ชั่วโมง"
+    subheadline="Smart Gate ทำงานร่วมกับ i-Pass แบบ Real-time ควบคุมทุก Point of Entry ของโครงการ"
+    bgColor={ACCENT}
+    cards={[
+      {
+        title: '4 โปรโตคอลในอุปกรณ์เดียว',
+        description: 'QR Code, RFID Card, Face Recognition และ License Plate Recognition รวมในเครื่องเดียว ไม่ต้องซื้อหลายอุปกรณ์',
+        emoji: '🔑',
+        badge: 'Multi-Protocol',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'Sync กับ i-Pass Real-time',
+        description: 'ทุกการเข้า-ออกสร้าง Log ใน i-Pass อัตโนมัติ จัดการ Whitelist และ E-Stamp จาก Dashboard เดียว',
+        emoji: '🔗',
+        badge: 'i-Pass Sync',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'ทำงาน Offline ได้',
+        description: 'Local Cache เก็บ Whitelist บนอุปกรณ์ ทำงานได้แม้ไม่มีอินเทอร์เน็ต Sync กลับเมื่อออนไลน์',
+        emoji: '⚡',
+        badge: 'Offline Ready',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'ติดตั้งได้ใน 1 วัน',
+        description: 'ทีม Installation ของ LivingOS ติดตั้งและ Training รปภ. ต่อจุดใช้เวลา 2–4 ชั่วโมง พร้อมใช้ทันที',
+        emoji: '🛠️',
+        badge: 'Quick Setup',
+        badgeHex: ACCENT,
+      },
+    ]}
+  />
+
+  <section id="features" class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+
+      <div class="feat-row reveal-up">
+        <div class="reveal-left">
+          <div class="overline mb-3" style={`color:${ACCENT};`}>Multi-Protocol Access</div>
+          <h2 class="text-2xl font-bold text-text-1 mb-4">ทุกวิธีการเข้าถึงในอุปกรณ์เดียว</h2>
+          <p class="text-md font-light text-text-3 mb-6">Smart Gate รองรับ 4 โปรโตคอลในอุปกรณ์เดียว: QR Code สำหรับผู้เยี่ยมชมชั่วคราว, RFID สำหรับลูกบ้าน, Face Recognition สำหรับ Touchless Entry และ License Plate Recognition สำหรับยานพาหนะ</p>
+          <ul class="feat-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>QR Code สร้างจาก i-Pass หรือ Urbanice App</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Face Recognition ความแม่นยำ 99.5%+</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>License Plate อ่านได้ทั้งกลางวันและกลางคืน</li>
+          </ul>
+        </div>
+        <div class="feat-visual reveal-right" style={`background: linear-gradient(135deg, ${ACCENT_LIGHT} 0%, #fff 100%); border: 1.5px solid ${ACCENT}22;`}>
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(6,41,134,.1) 1px,transparent 1px);background-size:28px 28px;"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <p style={`font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${ACCENT};`}>ACCESS CONTROL</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-row feat-reverse" style="margin-top:96px;">
+        <div class="reveal-right">
+          <div class="overline mb-3" style={`color:${ACCENT};`}>i-Pass Integration</div>
+          <h2 class="text-2xl font-bold text-text-1 mb-4">ทำงานร่วมกับ i-Pass แบบ Real-time</h2>
+          <p class="text-md font-light text-text-3 mb-6">Smart Gate เชื่อมต่อกับ i-Pass Dashboard โดยตรง ทุกการเข้า-ออกผ่านประตูสร้าง Log ใน i-Pass อัตโนมัติ นิติบุคคลจัดการ Whitelist ผ่าน Dashboard เดียวกัน ไม่ต้องเข้าหน้าต่างแยก</p>
+          <ul class="feat-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sync ข้อมูลแบบ Real-time ผ่าน Cloud</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>ออก E-Stamp จาก Urbanice ใช้กับประตูได้เลย</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Offline Cache ทำงานได้เมื่อไม่มีอินเทอร์เน็ต</li>
+          </ul>
+        </div>
+        <div class="feat-visual reveal-left" style={`background: linear-gradient(135deg, ${ACCENT_LIGHT} 0%, #fff 100%); border: 1.5px solid ${ACCENT}22;`}>
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(6,41,134,.1) 1px,transparent 1px);background-size:28px 28px;"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <p style={`font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${ACCENT};`}>INTEGRATION</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <InnerFAQ items={faqs} accentHex={ACCENT} />
+  <CTABanner />
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .feat-reverse { direction: rtl; }
+  .feat-reverse > * { direction: ltr; }
+  @media (max-width: 768px) { .feat-reverse { direction: ltr; } }
+</style>

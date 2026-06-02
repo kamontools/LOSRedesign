@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+import InnerFAQ from '../../components/shared/InnerFAQ.astro';
+import CTABanner from '../../components/home/CTABanner.astro';
+import SolutionOverview from '../../components/shared/SolutionOverview.astro';
+
+const ACCENT = '#91BBFF';
+const ACCENT_LIGHT = '#EBF3FF';
+const SOV_BG = '#1E40AF';
+
+const timeline = [
+  { phase: '01', title: 'รับงานและรวบรวมข้อมูล', duration: '1–2 สัปดาห์', desc: 'ทีมผู้เชี่ยวชาญเข้าสำรวจพื้นที่และรวบรวมข้อมูลพื้นฐาน' },
+  { phase: '02', title: 'ประเมินผลกระทบ', duration: '2–4 สัปดาห์', desc: 'วิเคราะห์ผลกระทบด้านสิ่งแวดล้อม สังคม และเศรษฐกิจ' },
+  { phase: '03', title: 'จัดทำรายงาน EIA', duration: '4–6 สัปดาห์', desc: 'จัดทำรายงานตามมาตรฐาน สผ. พร้อม Mitigation Plan' },
+  { phase: '04', title: 'ยื่นและติดตาม', duration: 'ตามระยะเวลา EIA', desc: 'ยื่นรายงานและประสานงานกับหน่วยงานราชการจนได้รับอนุมัติ' },
+];
+
+const faqs = [
+  { q: 'โครงการแบบไหนต้องทำ EIA?', a: 'โครงการอาคารชุดหรือหมู่บ้านจัดสรรที่มีพื้นที่มากกว่า 10,000 ตร.ม. หรือตามที่ประกาศกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อมกำหนด LivingOS จะประเมินให้เบื้องต้นโดยไม่มีค่าใช้จ่าย' },
+  { q: 'ใช้เวลาทำ EIA นานแค่ไหน?', a: 'โดยรวมประมาณ 8–16 สัปดาห์ตั้งแต่เริ่มงานจนยื่นรายงาน ขึ้นอยู่กับขนาดและความซับซ้อนของโครงการ' },
+  { q: 'LivingOS ช่วยประสานงานกับหน่วยงานราชการได้ไหม?', a: 'ได้ ทีมที่ปรึกษาของเรามีประสบการณ์ประสานงานกับ สผ. และหน่วยงานที่เกี่ยวข้อง ติดตามสถานะและแก้ไขเพิ่มเติมตามที่หน่วยงานร้องขอ' },
+  { q: 'ราคาเริ่มต้นเท่าไร?', a: 'ราคาขึ้นอยู่กับขนาดและประเภทโครงการ กรุณาติดต่อขอรับใบเสนอราคาโดยทีมงานจะประเมินและส่งให้ภายใน 2 วันทำการ' },
+];
+---
+
+<BaseLayout
+  title="EIA — รายงานผลกระทบสิ่งแวดล้อมโดยผู้เชี่ยวชาญ | The LivingOS"
+  description="บริการจัดทำรายงาน EIA ครบวงจร ตั้งแต่สำรวจพื้นที่ จัดทำรายงาน ยื่นและติดตามจนได้รับอนุมัติ"
+>
+  <InnerHero
+    badge="SERVICES · EIA"
+    breadcrumb="SOLUTIONS · SERVICES"
+    headline="EIA ครบวงจร โดยทีมผู้เชี่ยวชาญ"
+    accentWord="ผู้เชี่ยวชาญ"
+    subheadline="LivingOS ให้บริการจัดทำรายงานการประเมินผลกระทบสิ่งแวดล้อม (EIA) ครบวงจร ตั้งแต่สำรวจพื้นที่ จัดทำรายงานตามมาตรฐาน สผ. ยื่นและติดตามจนได้รับอนุมัติ"
+    cta1={{ label: 'ขอใบเสนอราคา EIA', href: '/request-demo' }}
+    cta2={{ label: 'ดูขั้นตอนการทำงาน', href: '#process' }}
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  />
+
+  <SolutionOverview
+    headline="EIA ครบวงจรโดยผู้เชี่ยวชาญ จากสำรวจจนได้รับอนุมัติ"
+    subheadline="LivingOS ดูแลทุกขั้นตอน EIA ตั้งแต่สำรวจพื้นที่ จัดทำรายงาน ยื่น สผ. จนได้รับอนุมัติ"
+    bgColor={SOV_BG}
+    cards={[
+      {
+        title: 'ทีมผู้เชี่ยวชาญ EIA โดยตรง',
+        description: 'ทีมที่ปรึกษามีประสบการณ์ตรงด้านอาคารชุด ไม่ต้องหาผู้รับเหมาหลายราย ดูแลโดย LivingOS',
+        emoji: '👨‍💼',
+        badge: 'Expert Team',
+        badgeHex: SOV_BG,
+      },
+      {
+        title: 'กระบวนการมาตรฐาน Timeline ชัดเจน',
+        description: '4 Phase ชัดเจน: สำรวจ ประเมิน รายงาน และยื่น Timeline กำหนดล่วงหน้าตั้งแต่วันแรก',
+        emoji: '📅',
+        badge: 'Clear Timeline',
+        badgeHex: SOV_BG,
+      },
+      {
+        title: 'รายงานตามมาตรฐาน สผ.',
+        description: 'จัดทำรายงานตามรูปแบบที่ สผ. กำหนด พร้อม Mitigation Plan และเอกสารประกอบครบถ้วน',
+        emoji: '📄',
+        badge: 'สผ. Standard',
+        badgeHex: SOV_BG,
+      },
+      {
+        title: 'ประสานงานราชการให้ครบ',
+        description: 'ทีมงานติดตาม แก้ไขเพิ่มเติมตามที่หน่วยงานร้องขอ จนได้รับอนุมัติ ไม่ต้องติดตามเอง',
+        emoji: '🏛️',
+        badge: 'Full Service',
+        badgeHex: SOV_BG,
+      },
+    ]}
+  />
+
+  <!-- Process & Timeline -->
+  <section id="process" class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+      <div class="text-center mb-14 reveal-up">
+        <div class="overline mb-3" style={`color:${ACCENT};`}>Process & Timeline</div>
+        <h2 class="text-3xl font-bold text-text-1 mb-4">ขั้นตอนการจัดทำ EIA</h2>
+        <p class="text-md text-text-3 font-light max-w-lg mx-auto">กระบวนการมาตรฐานที่ชัดเจน ทีมงานประสานงานทุกขั้นตอนให้</p>
+      </div>
+
+      <div class="timeline-grid reveal-stagger">
+        {timeline.map((t) => (
+          <div class="timeline-card">
+            <div class="timeline-phase" style={`color:${ACCENT};`}>{t.phase}</div>
+            <h3 class="timeline-title">{t.title}</h3>
+            <div class="timeline-duration" style={`color:${ACCENT};`}>{t.duration}</div>
+            <p class="timeline-desc">{t.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Request a Quote -->
+  <section class="section-pad" style="background:var(--color-warm-page);">
+    <div class="container-los max-w-2xl mx-auto text-center reveal-up">
+      <div class="overline mb-3" style={`color:${ACCENT};`}>Request a Quote</div>
+      <h2 class="text-3xl font-bold text-text-1 mb-4">ขอรับใบเสนอราคา EIA</h2>
+      <p class="text-md text-text-3 font-light mb-8">ทีมผู้เชี่ยวชาญจะประเมินโครงการของคุณและส่งใบเสนอราคาภายใน 2 วันทำการ ไม่มีค่าใช้จ่ายในการขอรับใบเสนอราคา</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="/request-demo" style={`background:${ACCENT};color:#fff;padding:14px 32px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 4px 18px rgba(145,187,255,.35);`}>ขอใบเสนอราคาฟรี</a>
+        <a href="/company/contact" style="background:var(--color-warm-surface);color:var(--color-text-1);padding:14px 32px;border-radius:12px;font-weight:500;font-size:15px;text-decoration:none;border:1.5px solid var(--color-warm-border-light);">ติดต่อทีมงาน</a>
+      </div>
+    </div>
+  </section>
+
+  <InnerFAQ items={faqs} accentHex={ACCENT} />
+  <CTABanner />
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .timeline-card {
+    background: #fff;
+    border: 1.5px solid var(--color-warm-border-light);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+  .timeline-phase {
+    font-family: var(--font-mono);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+    opacity: .35;
+  }
+  .timeline-title { font-size: 15px; font-weight: 700; color: var(--color-text-1); margin-bottom: 6px; }
+  .timeline-duration { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .06em; margin-bottom: 10px; }
+  .timeline-desc { font-size: 13px; color: var(--color-text-3); line-height: 1.6; }
+  @media (max-width: 768px) { .timeline-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .timeline-grid { grid-template-columns: 1fr; } }
+</style>

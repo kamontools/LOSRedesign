@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+import InnerFAQ from '../../components/shared/InnerFAQ.astro';
+import CTABanner from '../../components/home/CTABanner.astro';
+import SolutionOverview from '../../components/shared/SolutionOverview.astro';
+
+const ACCENT = '#062986';
+const ACCENT_LIGHT = '#E8ECFF';
+
+const faqs = [
+  { q: 'รปภ. ต้องใช้อุปกรณ์พิเศษไหมสำหรับ i-Check?', a: 'ไม่ต้อง i-Check ทำงานบน Smartphone Android หรือ iOS ทั่วไป รปภ. ติดตั้งแอปจาก Store ได้เลย ไม่ต้องซื้อ Hardware เพิ่มเติม' },
+  { q: 'Checkpoint สามารถกำหนดแบบ GPS หรือ QR Code?', a: 'ทั้งสองแบบ แบบ QR Code ติด Sticker ที่จุด รปภ. สแกนเพื่อ Check-in แบบ GPS กำหนด Geofence รัศมี รปภ. ต้องอยู่ในรัศมีเพื่อ Check-in' },
+  { q: 'ถ้า รปภ. ไม่ Check-in ตามเวลา ระบบทำอะไร?', a: 'ระบบส่ง Alert อัตโนมัติถึง Supervisor ผ่าน Push Notification และ SMS ทันที พร้อม Log ระบุ Checkpoint และเวลาที่ขาด สามารถ Escalate ไปยัง Supervisor ระดับถัดไปได้' },
+  { q: 'Photo Verification ป้องกันการโกงได้จริงไหม?', a: 'ภาพถ่ายต้องถ่ายจากกล้องในขณะนั้น ไม่สามารถอัปโหลดภาพเก่าได้ ระบบ Timestamp และ Geotag ภาพทุกรูปพร้อมตรวจสอบ' },
+];
+---
+
+<BaseLayout
+  title="i-Check — ระบบลาดตระเวนอัจฉริยะสำหรับรปภ. | GuardOS"
+  description="กำหนด Checkpoint ไม่จำกัด แจ้งเตือนอัตโนมัติ ยืนยันด้วยรูปถ่าย Real-time และรายงานการลาดตระเวนอัตโนมัติ"
+>
+  <InnerHero
+    badge="GUARDOS · i-CHECK"
+    breadcrumb="SOLUTIONS · GUARDOS"
+    headline="ลาดตระเวนอัจฉริยะ ป้องกันครบทุกจุด"
+    accentWord="อัจฉริยะ"
+    subheadline="i-Check เปลี่ยนการลาดตระเวนแบบเดิมให้ดิจิทัล กำหนด Checkpoint ได้ไม่จำกัด รปภ. ยืนยันด้วยรูปถ่าย Real-time ระบบแจ้งเตือน Supervisor อัตโนมัติเมื่อมีความผิดปกติ"
+    cta1={{ label: 'ขอ Demo i-Check', href: '/request-demo' }}
+    cta2={{ label: 'ดูฟีเจอร์ทั้งหมด', href: '#features' }}
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  />
+
+  <SolutionOverview
+    headline="การลาดตระเวนที่โปร่งใส ตรวจสอบได้ทุก Checkpoint"
+    subheadline="i-Check เปลี่ยนการลาดตระเวนแบบเดิมให้ดิจิทัล แจ้งเตือนอัตโนมัติ ป้องกันโกง Check-in ด้วยรูปถ่าย Real-time"
+    bgColor={ACCENT}
+    cards={[
+      {
+        title: 'Checkpoint ได้ไม่จำกัด',
+        description: 'ครอบคลุมทุกจุดด้วย QR Sticker หรือ GPS Geofence เพิ่ม/แก้ไขได้ทันทีไม่ต้องรอ IT',
+        emoji: '📍',
+        badge: 'Unlimited',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'แจ้งเตือน Supervisor อัตโนมัติ',
+        description: 'หาก รปภ. ไม่ Check-in ตามรอบ ระบบส่ง Alert ถึง Supervisor ทันที พร้อม Escalation อัตโนมัติ',
+        emoji: '🔔',
+        badge: 'Auto Alert',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'ยืนยันด้วยรูปถ่าย Real-time',
+        description: 'รูปถ่ายถ่ายจากกล้องขณะนั้น Geotag + Timestamp ทุกรูป Supervisor เห็น Feed ภาพ Real-time',
+        emoji: '📷',
+        badge: 'Anti-Cheat',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'รายงานสร้างอัตโนมัติทุกกะ',
+        description: 'Compliance Rate, Heatmap Checkpoint ปัญหา และ Trend Chart Export PDF ได้ทันทีหลังกะจบ',
+        emoji: '📊',
+        badge: 'Auto Report',
+        badgeHex: ACCENT,
+      },
+    ]}
+  />
+
+  <section id="features" class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+
+      {[
+        { label: 'Auto Patrol Alerts', headline: 'แจ้งเตือน รปภ. อัตโนมัติตามรอบ', desc: 'กำหนดตารางลาดตระเวนล่วงหน้า ระบบส่ง Push Notification ถึง รปภ. ก่อนถึงเวลา 5 นาที และแจ้ง Supervisor ทันทีหาก Check-in ล่าช้า', points: ['ตารางลาดตระเวนยืดหยุ่น กำหนดได้รายวัน/รายสัปดาห์','Alert Supervisor เมื่อ รปภ. ไม่ Check-in ตามเวลา','บันทึก Log การปฏิบัติงานครบถ้วน'], icon:`<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>` },
+        { label: 'Unlimited Checkpoints', headline: 'กำหนด Checkpoint ได้ไม่จำกัด', desc: 'ครอบคลุมทุกจุดของโครงการ ทั้ง QR Code และ GPS Geofence รองรับอาคารหลายหลัง ชั้นจอดรถ ชั้นดาดฟ้า สระว่ายน้ำ และพื้นที่ส่วนกลางทุกจุด', points: ['QR Sticker หรือ GPS Geofence ตามความเหมาะสม','จัดกลุ่ม Checkpoint ตามโซนหรืออาคาร','เพิ่ม/แก้ไข Checkpoint ได้ทันทีโดยไม่ต้องรอทีม IT'], icon:`<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>` },
+        { label: 'Real-Time Photo Verification', headline: 'ยืนยันตัวตนด้วยรูปถ่าย Real-time', desc: 'รปภ. ต้องถ่ายรูปในขณะนั้น ณ Checkpoint ระบบตรวจสอบ Timestamp และ Geotag Supervisor เห็นภาพและตำแหน่งจริงทันที ป้องกันการโกง Check-in', points: ['Liveness Detection ป้องกันอัปโหลดภาพเก่า','Geotag + Timestamp ทุกรูป','Supervisor เห็น Feed ภาพ Real-time'], icon:`<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>` },
+        { label: 'Inspection Reports', headline: 'รายงานลาดตระเวนสร้างอัตโนมัติ', desc: 'สิ้นสุดกะแต่ละครั้ง ระบบสร้างรายงานสรุปการลาดตระเวน Compliance Rate ของแต่ละ รปภ. และ Heatmap Checkpoint ที่มีปัญหาบ่อย Export เป็น PDF ได้ทันที', points: ['รายงานรายกะและรายวัน Auto-generate','Compliance Rate และ Trend Chart','Export PDF สำหรับรายงานต่อนิติบุคคล'], icon:`<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>` },
+      ].map((f, i) => (
+        <div class={`feat-row ${i % 2 !== 0 ? 'feat-reverse' : ''}`} style={i > 0 ? 'margin-top:96px;' : ''}>
+          <div class={i % 2 !== 0 ? 'reveal-right' : 'reveal-left'}>
+            <div class="overline mb-3" style={`color:${ACCENT};`}>{f.label}</div>
+            <h3 class="text-2xl font-bold text-text-1 mb-4">{f.headline}</h3>
+            <p class="text-md font-light text-text-3 mb-6">{f.desc}</p>
+            <ul class="feat-list">
+              {f.points.map((p) => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class={`feat-visual ${i % 2 !== 0 ? 'reveal-left' : 'reveal-right'}`} style={`background: linear-gradient(135deg, ${ACCENT_LIGHT} 0%, #fff 100%); border: 1.5px solid ${ACCENT}22;`}>
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(6,41,134,.1) 1px,transparent 1px);background-size:28px 28px;"></div>
+            <div style="position:relative;z-index:1;text-align:center;">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px;" set:html={f.icon}></svg>
+              <p style={`font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${ACCENT};`}>{f.label}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </section>
+
+  <InnerFAQ items={faqs} accentHex={ACCENT} />
+  <CTABanner />
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .feat-reverse { direction: rtl; }
+  .feat-reverse > * { direction: ltr; }
+  @media (max-width: 768px) { .feat-reverse { direction: ltr; } }
+</style>

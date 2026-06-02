@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+
+const ACCENT = '#1C70F7';
+const ACCENT_LIGHT = '#EEF4FF';
+
+const articles = [
+  {
+    tag: 'Property Management',
+    tagColor: '#1C70F7',
+    title: '5 ปัญหาที่นิติบุคคลเจอบ่อยที่สุด และวิธีแก้ด้วยเทคโนโลยี',
+    excerpt: 'จาก 1,000+ โครงการที่ใช้ LivingOS เราพบว่า 5 ปัญหาหลักของนิติบุคคลมีทางออกที่ง่ายกว่าที่คิด',
+    date: '1 พ.ค. 2568',
+    readTime: '5 นาที',
+    author: 'ทีม LivingOS',
+  },
+  {
+    tag: 'GuardOS',
+    tagColor: '#0369A1',
+    title: 'Face Recognition vs QR Code: ควรเลือกระบบรักษาความปลอดภัยแบบไหน?',
+    excerpt: 'เปรียบเทียบข้อดีข้อเสียของแต่ละระบบ พร้อมแนวทางเลือกที่เหมาะกับขนาดและงบประมาณของโครงการ',
+    date: '15 เม.ย. 2568',
+    readTime: '7 นาที',
+    author: 'ทีม Product',
+  },
+  {
+    tag: 'i-Vote',
+    tagColor: '#7C3AED',
+    title: 'AGM ออนไลน์: กฎหมายไทยอนุญาตแล้ว และทำอย่างไรให้ถูกต้อง',
+    excerpt: 'อัปเดตกฎหมาย พ.ร.บ. อาคารชุดล่าสุด การประชุมใหญ่ออนไลน์ถูกต้องตามกฎหมายไทยแล้ว ต้องทำอย่างไร?',
+    date: '10 เม.ย. 2568',
+    readTime: '8 นาที',
+    author: 'ทีม Legal',
+  },
+  {
+    tag: 'Technology',
+    tagColor: '#0D9488',
+    title: 'IoT ในอาคารชุด: ประตูอัจฉริยะ Sensor และอนาคตของ Smart Condo',
+    excerpt: 'เทคโนโลยี IoT กำลังเปลี่ยนโฉมการจัดการอาคารชุดในไทย มาดูว่าอนาคตจะเป็นอย่างไร',
+    date: '1 เม.ย. 2568',
+    readTime: '6 นาที',
+    author: 'ทีม Engineering',
+  },
+  {
+    tag: 'Property Management',
+    tagColor: '#1C70F7',
+    title: 'PDPA กับนิติบุคคล: สิ่งที่ต้องทำเพื่อปฏิบัติตามกฎหมาย',
+    excerpt: 'นิติบุคคลมีหน้าที่อะไรภายใต้ PDPA และ LivingOS ช่วยให้ Compliant ได้อย่างไร',
+    date: '20 มี.ค. 2568',
+    readTime: '6 นาที',
+    author: 'ทีม Compliance',
+  },
+  {
+    tag: 'Best Practice',
+    tagColor: '#B45309',
+    title: 'วิธีเพิ่ม Collection Rate ค่าส่วนกลางจาก 70% เป็น 95%+',
+    excerpt: 'Case study จากโครงการที่ใช้ LivingOS และเพิ่ม Collection Rate ได้อย่างมีนัยสำคัญใน 3 เดือน',
+    date: '15 มี.ค. 2568',
+    readTime: '5 นาที',
+    author: 'ทีม Customer Success',
+  },
+];
+---
+
+<BaseLayout
+  title="Blog — The LivingOS | บทความ PropertyTech"
+  description="บทความและข้อมูลเชิงลึกสำหรับนิติบุคคลและผู้จัดการอาคาร จากทีม LivingOS"
+>
+  <InnerHero
+    badge="BLOG"
+    breadcrumb="LIVINGOS"
+    headline="ข้อมูลเชิงลึกสำหรับผู้จัดการอาคาร"
+    accentWord="เชิงลึก"
+    subheadline="บทความ แนวทาง และ Case Study จากทีม LivingOS — เพื่อช่วยให้นิติบุคคลบริหารงานได้ดีขึ้นทุกวัน"
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  />
+
+  <section class="section-pad" style="background:var(--color-warm-page);">
+    <div class="container-los">
+
+      <!-- Featured article -->
+      <div class="featured-article reveal-up">
+        <div class="featured-meta">
+          <span class="article-tag" style={`background:${articles[0].tagColor}15;color:${articles[0].tagColor};border:1px solid ${articles[0].tagColor}28;`}>{articles[0].tag}</span>
+          <span class="article-date">{articles[0].date}</span>
+          <span class="article-read">{articles[0].readTime}</span>
+        </div>
+        <h2 class="featured-title">{articles[0].title}</h2>
+        <p class="featured-excerpt">{articles[0].excerpt}</p>
+        <a href="#" class="article-link" style={`color:${ACCENT};`}>อ่านบทความ →</a>
+      </div>
+
+      <!-- Article grid -->
+      <div class="articles-grid reveal-stagger" style="margin-top:64px;">
+        {articles.slice(1).map((a) => (
+          <article class="article-card">
+            <div class="article-meta">
+              <span class="article-tag" style={`background:${a.tagColor}15;color:${a.tagColor};border:1px solid ${a.tagColor}28;`}>{a.tag}</span>
+            </div>
+            <h3 class="article-title">{a.title}</h3>
+            <p class="article-excerpt">{a.excerpt}</p>
+            <div class="article-footer">
+              <div style="display:flex;gap:12px;align-items:center;">
+                <span class="article-date">{a.date}</span>
+                <span style="color:var(--color-warm-border-mid);">·</span>
+                <span class="article-read">{a.readTime}</span>
+              </div>
+              <a href="#" class="article-link" style={`color:${ACCENT};`}>อ่าน →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Note: more articles coming -->
+      <div class="blog-note reveal-up" style="margin-top:64px;">
+        <div style={`background:${ACCENT_LIGHT};border:1.5px solid ${ACCENT}22;border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:16px;`}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <p style="font-size:14px;color:var(--color-text-2);">บทความใหม่เพิ่มทุกสัปดาห์ <a href="/company/contact" style={`color:${ACCENT};font-weight:600;`}>ติดตามรับข่าวสาร</a> หรือ <a href="/company/contact" style={`color:${ACCENT};font-weight:600;`}>ส่ง Topic ที่อยากอ่าน</a> มาหาเรา</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .featured-article {
+    background: var(--color-warm-surface);
+    border: 1.5px solid var(--color-warm-border-light);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-sm);
+  }
+  .featured-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .article-tag {
+    display: inline-flex; align-items: center;
+    padding: 4px 12px; border-radius: 9999px;
+    font-size: 11px; font-weight: 600;
+    font-family: var(--font-mono); letter-spacing: .07em;
+  }
+  .article-date, .article-read { font-size: 12px; color: var(--color-text-4); }
+  .featured-title { font-size: clamp(22px, 2.5vw, 28px); font-weight: 700; color: var(--color-text-1); margin-bottom: 12px; line-height: 1.25; }
+  .featured-excerpt { font-size: 15px; color: var(--color-text-3); line-height: 1.65; margin-bottom: 20px; max-width: 640px; }
+  .article-link { font-size: 14px; font-weight: 600; text-decoration: none; }
+
+  .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .article-card {
+    background: #fff; border: 1.5px solid var(--color-warm-border-light);
+    border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .article-meta { display: flex; align-items: center; gap: 8px; }
+  .article-title { font-size: 16px; font-weight: 700; color: var(--color-text-1); line-height: 1.3; flex: 1; }
+  .article-excerpt { font-size: 13px; color: var(--color-text-3); line-height: 1.6; }
+  .article-footer { display: flex; justify-content: space-between; align-items: center; }
+
+  @media (max-width: 768px) { .articles-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .articles-grid { grid-template-columns: 1fr; } .featured-article { padding: 24px; } }
+</style>

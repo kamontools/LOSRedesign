@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+import InnerFAQ from '../../components/shared/InnerFAQ.astro';
+import CTABanner from '../../components/home/CTABanner.astro';
+import SolutionOverview from '../../components/shared/SolutionOverview.astro';
+
+const ACCENT = '#91BBFF';
+const ACCENT_LIGHT = '#EBF3FF';
+const SOV_BG = '#1E40AF';
+
+const scope = [
+  { icon: `<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>`, title: 'Project Management', desc: 'บริหารโครงการติดตั้งครบวงจร กำหนด Timeline และ Milestone ชัดเจน' },
+  { icon: `<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>`, title: 'Hardware Setup', desc: 'ติดตั้ง Smart Gate, Kiosk, Network Infrastructure และ IoT Devices ทุกชิ้น' },
+  { icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`, title: 'Software Configuration', desc: 'ตั้งค่า PMS, GuardOS, Urbanice App และ API Integration ตามความต้องการ' },
+  { icon: `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`, title: 'Staff Training', desc: 'ฝึกอบรมทีมนิติบุคคลและ รปภ. อย่างครบถ้วนก่อน Go Live' },
+  { icon: `<circle cx="12" cy="12" r="10"/><polyline points="20 6 9 17 4 12"/>`, title: 'Go Live Support', desc: 'ทีมงาน On-site วันแรก พร้อม Hotline 24 ชั่วโมงช่วง 30 วันแรก' },
+  { icon: `<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>`, title: 'Post-launch Maintenance', desc: 'แผน Maintenance รายปี ดูแลระบบและฮาร์ดแวร์ตลอดอายุสัญญา' },
+];
+
+const faqs = [
+  { q: 'Turnkey Setup ครอบคลุมระบบอะไรบ้าง?', a: 'ครอบคลุมทั้ง PMS, Urbanice App, GuardOS (i-Pass + i-Check + Smart Gate) และ SOS ทีมงานประเมินความต้องการและออกแบบ Package ที่เหมาะสมสำหรับแต่ละโครงการ' },
+  { q: 'ใช้เวลาติดตั้งทั้งหมดนานแค่ไหน?', a: 'โครงการขนาดกลาง (100-500 ยูนิต) ใช้เวลาประมาณ 2-4 สัปดาห์ โครงการขนาดใหญ่ 1-3 เดือน ทีม Project Manager จะวาง Timeline ให้ชัดเจนก่อนเริ่มงาน' },
+  { q: 'ระหว่างติดตั้ง โครงการต้องหยุดดำเนินการไหม?', a: 'ไม่ต้อง ทีมงานวางแผนติดตั้งโดยไม่กระทบการดำเนินงานปกติ ส่วนที่ต้องปิดชั่วคราว เช่น ประตูหลัก จะแจ้งล่วงหน้าและมีแผนทางเลือก' },
+  { q: 'รวม Hardware ในราคา Turnkey ด้วยไหม?', a: 'มีสองแบบ: แบบ Full Turnkey รวม Hardware และ Software ทั้งหมด และแบบ Software-only สำหรับโครงการที่มี Infrastructure อยู่แล้ว' },
+];
+---
+
+<BaseLayout
+  title="Turnkey Setup — ติดตั้งครบ พร้อมใช้งาน | The LivingOS"
+  description="บริการ Turnkey ติดตั้ง LivingOS ครบวงจร ตั้งแต่ Hardware, Software, ฝึกอบรมทีมงาน จนถึง Go Live"
+>
+  <InnerHero
+    badge="SERVICES · TURNKEY"
+    breadcrumb="SOLUTIONS · SERVICES"
+    headline="Turnkey Setup ติดตั้งครบ Go Live ทันที"
+    accentWord="ครบ"
+    subheadline="LivingOS Turnkey คือบริการครบวงจรที่ดูแลทุกอย่างให้ตั้งแต่ติดตั้ง Hardware, ตั้งค่า Software, ฝึกอบรมทีมงาน จนถึงวัน Go Live — คุณแค่เตรียมโครงการ เราเตรียมระบบ"
+    cta1={{ label: 'ขอใบเสนอราคา', href: '/request-demo' }}
+    cta2={{ label: 'ดู Scope of Work', href: '#scope' }}
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  />
+
+  <SolutionOverview
+    headline="ติดตั้งครบ พร้อมใช้งาน ไม่ต้องจัดการเอง"
+    subheadline="LivingOS Turnkey ดูแลทุกอย่างตั้งแต่ Hardware, Software, ฝึกอบรม จนถึงวัน Go Live"
+    bgColor={SOV_BG}
+    cards={[
+      {
+        title: 'ครอบคลุมทุกระบบ LivingOS',
+        description: 'PMS, Urbanice, GuardOS และ SOS ติดตั้งและ Configure ครบวงจรในแพ็กเกจเดียว',
+        emoji: '⚙️',
+        badge: 'Full Stack',
+        badgeHex: SOV_BG,
+      },
+      {
+        title: 'Hardware + Software + Training',
+        description: 'ติดตั้ง Hardware, ตั้งค่า Software และฝึกอบรมทีมนิติบุคคลกับ รปภ. ครบก่อน Go Live',
+        emoji: '🛠️',
+        badge: 'Turnkey',
+        badgeHex: SOV_BG,
+      },
+      {
+        title: 'Go Live ใน 2–4 สัปดาห์',
+        description: 'โครงการขนาดกลาง Go Live ได้ภายใน 4 สัปดาห์ Project Manager ดูแล Timeline ให้',
+        emoji: '🚀',
+        badge: 'Fast Delivery',
+        badgeHex: SOV_BG,
+      },
+      {
+        title: 'On-site + 30 วัน Hotline',
+        description: 'ทีมงาน On-site วันแรก พร้อม Hotline 24 ชั่วโมงช่วง 30 วันแรกหลัง Go Live',
+        emoji: '📞',
+        badge: '30-Day Support',
+        badgeHex: SOV_BG,
+      },
+    ]}
+  />
+
+  <!-- Scope of Work -->
+  <section id="scope" class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+      <div class="text-center mb-14 reveal-up">
+        <div class="overline mb-3" style={`color:${ACCENT};`}>Scope of Work</div>
+        <h2 class="text-3xl font-bold text-text-1 mb-4">ทุกอย่างที่รวมอยู่ใน Turnkey</h2>
+        <p class="text-md text-text-3 font-light max-w-lg mx-auto">ไม่มีค่าใช้จ่ายซ่อนเร้น Scope ชัดเจนตั้งแต่วันแรก</p>
+      </div>
+
+      <div class="scope-grid reveal-stagger">
+        {scope.map((s) => (
+          <div class="scope-card">
+            <div class="scope-icon" style={`background:rgba(145,187,255,.10);color:${ACCENT};`}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.icon}></svg>
+            </div>
+            <h3 class="scope-title">{s.title}</h3>
+            <p class="scope-desc">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Request a Quote -->
+  <section class="section-pad" style="background:var(--color-warm-page);">
+    <div class="container-los max-w-2xl mx-auto text-center reveal-up">
+      <div class="overline mb-3" style={`color:${ACCENT};`}>Request a Quote</div>
+      <h2 class="text-3xl font-bold text-text-1 mb-4">ขอใบเสนอราคา Turnkey</h2>
+      <p class="text-md text-text-3 font-light mb-8">บอกเราขนาดโครงการและระบบที่ต้องการ ทีมงานจะประเมินและส่งใบเสนอราคาโดยละเอียดภายใน 2 วันทำการ</p>
+      <a href="/request-demo" style={`background:${ACCENT};color:#fff;padding:14px 32px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 4px 18px rgba(145,187,255,.35);display:inline-flex;align-items:center;gap:8px;`}>ขอใบเสนอราคาฟรี</a>
+    </div>
+  </section>
+
+  <InnerFAQ items={faqs} accentHex={ACCENT} />
+  <CTABanner />
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .scope-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .scope-card {
+    background: #fff;
+    border: 1.5px solid var(--color-warm-border-light);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .scope-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .scope-title { font-size: 15px; font-weight: 700; color: var(--color-text-1); margin-bottom: 8px; }
+  .scope-desc { font-size: 13px; color: var(--color-text-3); line-height: 1.6; }
+
+  @media (max-width: 768px) { .scope-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .scope-grid { grid-template-columns: 1fr; } }
+</style>

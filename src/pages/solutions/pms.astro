@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+import InnerFAQ from '../../components/shared/InnerFAQ.astro';
+import CTABanner from '../../components/home/CTABanner.astro';
+import SolutionOverview from '../../components/shared/SolutionOverview.astro';
+
+const ACCENT = '#1C70F7';
+const ACCENT_LIGHT = '#EEF4FF';
+
+const faqs = [
+  { q: 'PMS แตกต่างจากระบบ ERP ทั่วไปอย่างไร?', a: 'PMS ของ LivingOS ออกแบบมาเฉพาะสำหรับนิติบุคคลคอนโดมิเนียม ครอบคลุม workflow ค่าส่วนกลาง ใบแจ้งหนี้ และรายงานบัญชีตามมาตรฐาน ไม่ต้องปรับแต่งมาก ต่างจาก ERP ทั่วไปที่ต้องใช้เวลา Customize นาน' },
+  { q: 'รองรับการจัดการหลายโครงการพร้อมกันได้ไหม?', a: 'ได้ แพ็กเกจ Enterprise รองรับหลาย Site ใน Account เดียว มี Dashboard รวมภาพรวมทุกโครงการและสามารถดู Report รายโครงการหรือภาพรวมทั้งหมด' },
+  { q: 'Export รายงานบัญชีได้ในรูปแบบอะไร?', a: 'Export ได้เป็น Excel (.xlsx), PDF และ CSV รองรับรูปแบบรายงานมาตรฐานที่ผู้ตรวจสอบบัญชีใช้ รวมถึง Statement, Balance Sheet, และรายงานค้างชำระ' },
+  { q: 'ใช้งานผ่านมือถือได้ไหม?', a: 'ได้ PMS รองรับการใช้งานผ่าน Browser บนมือถือแบบ Responsive ฟีเจอร์สำคัญ เช่น อนุมัติเอกสารและดู Dashboard ใช้งานได้สะดวกบนสมาร์ทโฟน' },
+  { q: 'ต้องติดตั้ง Server เองไหม?', a: 'ไม่ต้อง LivingOS PMS เป็น Cloud-based SaaS ทำงานผ่านเบราว์เซอร์ ไม่ต้องติดตั้ง Server หรือ Software ใดๆ อัปเดตอัตโนมัติโดยทีมงาน' },
+];
+---
+
+<BaseLayout
+  title="The LivingOS PMS — ระบบจัดการนิติบุคคลครบวงจร"
+  description="Property Management System สำหรับนิติบุคคล: Dashboard ภาพรวม บัญชีและใบแจ้งหนี้ ฐานข้อมูลลูกบ้าน"
+>
+  <InnerHero
+    badge="PROPERTY MANAGEMENT SYSTEM"
+    breadcrumb="SOLUTIONS · PROPERTY MANAGEMENT"
+    headline="ระบบจัดการนิติบุคคลครบวงจร ใช้ง่าย"
+    accentWord="ครบวงจร"
+    subheadline="The LivingOS PMS รวมทุกงานนิติบุคคลไว้ในแพลตฟอร์มเดียว ตั้งแต่บัญชีและใบแจ้งหนี้ ไปจนถึงฐานข้อมูลลูกบ้าน พร้อม Dashboard ที่ออกแบบมาสำหรับผู้จัดการอาคารโดยเฉพาะ"
+    cta1={{ label: 'เริ่มทดลองใช้ฟรี', href: '/request-demo' }}
+    cta2={{ label: 'ดูฟีเจอร์ทั้งหมด', href: '#features' }}
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  >
+    <div slot="visual" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+      <div style={`background:#fff;border-radius:16px;padding:24px 32px;box-shadow:0 8px 32px rgba(28,112,247,.18);min-width:280px;`}>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+          <div style={`width:8px;height:8px;border-radius:50%;background:${ACCENT};`}></div>
+          <span style={`font-family:var(--font-mono);font-size:11px;font-weight:600;color:${ACCENT};letter-spacing:.08em;`}>JURISTIC DASHBOARD</span>
+        </div>
+        {[['ยูนิตทั้งหมด','248'],['ชำระแล้วเดือนนี้','฿ 412,800'],['ค้างชำระ','12 ยูนิต'],['งานซ่อม','3 รายการ']].map(([k,v]) => (
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E8E4DA;">
+            <span style="font-size:12px;color:#6B6B6B;">{k}</span>
+            <span style={`font-size:12px;font-weight:600;color:${ACCENT};font-family:var(--font-mono);`}>{v}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </InnerHero>
+
+  <SolutionOverview
+    headline="ศูนย์กลางการจัดการนิติบุคคล ทุกงานในที่เดียว"
+    subheadline="PMS ออกแบบมาสำหรับผู้จัดการอาคารโดยเฉพาะ ครอบคลุมทุก workflow ตั้งแต่บัญชี ลูกบ้าน ไปจนถึงรายงาน"
+    bgColor={ACCENT}
+    cards={[
+      {
+        title: 'Dashboard ภาพรวมครบในหน้าเดียว',
+        description: 'สถานะชำระค่าส่วนกลาง ค้างชำระ งานซ่อม และยอดการเงิน ดูได้ทั้งหมดโดยไม่ต้องสลับหน้าจอ',
+        emoji: '📊',
+        badge: 'Real-time',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'ออกใบแจ้งหนี้และรับชำระอัตโนมัติ',
+        description: 'Bulk billing ทั้งโครงการ ส่งถึงลูกบ้านผ่านแอป รับชำระออนไลน์ ออกใบเสร็จทันที',
+        emoji: '🧾',
+        badge: 'Automated',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'ฐานข้อมูลลูกบ้านครบถ้วน',
+        description: 'เจ้าของห้อง ผู้เช่า ผู้พักอาศัย ทะเบียนรถ และเอกสาร PDPA ค้นหาได้ทันที',
+        emoji: '👥',
+        badge: 'PDPA Ready',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'รองรับหลายโครงการในบัญชีเดียว',
+        description: 'บริหาร Multi-site จาก Dashboard เดียว ดูรายงานรวมหรือแยกโครงการได้ยืดหยุ่น',
+        emoji: '🏢',
+        badge: 'Multi-site',
+        badgeHex: ACCENT,
+      },
+    ]}
+  />
+
+  <!-- Stats -->
+  <section class="section-pad" style="padding-top:40px;padding-bottom:64px;background:var(--color-warm-page);">
+    <div class="container-los">
+      <div class="stats-row reveal-up">
+        <div class="stat-cell">
+          <div class="stat-num" style={`color:${ACCENT};`}>1,000+</div>
+          <div class="stat-lbl">นิติบุคคลที่ใช้งาน</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num" style={`color:${ACCENT};`}>50K+</div>
+          <div class="stat-lbl">ยูนิตที่จัดการ</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num" style={`color:${ACCENT};`}>99.9%</div>
+          <div class="stat-lbl">Uptime SLA</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num" style={`color:${ACCENT};`}>&lt;7</div>
+          <div class="stat-lbl">วัน Go Live</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+
+      <!-- Juristic Dashboard -->
+      <div class="feat-row reveal-up">
+        <div class="reveal-left">
+          <div class="overline mb-3" style={`color:${ACCENT};`}>Juristic Dashboard</div>
+          <h2 class="text-2xl font-bold text-text-1 mb-4">ภาพรวมโครงการครบในหน้าเดียว</h2>
+          <p class="text-md font-light text-text-3 mb-6">Dashboard ออกแบบมาสำหรับผู้จัดการอาคารโดยเฉพาะ — ดูสถานะชำระค่าส่วนกลาง ค้างชำระ งานซ่อมที่รอดำเนินการ และยอดรวมการเงินของเดือน ทั้งหมดในหน้าจอเดียว</p>
+          <ul class="feat-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Widget ปรับแต่งได้ตามความต้องการ</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>กราฟและตาราง Export ได้ทันที</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>รองรับ Multi-site ในบัญชีเดียว</li>
+          </ul>
+        </div>
+        <div class="feat-visual reveal-right" style={`background: linear-gradient(135deg, ${ACCENT_LIGHT} 0%, #fff 100%); border: 1.5px solid ${ACCENT}22;`}>
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(28,112,247,.1) 1px,transparent 1px);background-size:28px 28px;"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px;"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            <p style={`font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${ACCENT};`}>DASHBOARD</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Billing & Accounts -->
+      <div class="feat-row feat-reverse" style="margin-top:96px;">
+        <div class="reveal-right">
+          <div class="overline mb-3" style={`color:${ACCENT};`}>Billing & Accounts</div>
+          <h2 class="text-2xl font-bold text-text-1 mb-4">ออกใบแจ้งหนี้และรับชำระอัตโนมัติ</h2>
+          <p class="text-md font-light text-text-3 mb-6">ระบบออกใบแจ้งหนี้ค่าส่วนกลาง ค่าน้ำ ค่าไฟ และค่าบริการอื่นๆ พร้อมส่งอัตโนมัติถึงลูกบ้านผ่าน Urbanice App รับชำระออนไลน์และออกใบเสร็จทันที</p>
+          <ul class="feat-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>ออกใบแจ้งหนี้ Bulk ทีเดียวทั้งโครงการ</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>รายงานบัญชีมาตรฐาน Export Excel/PDF</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>ติดตามยอดค้างชำระพร้อม Aging Report</li>
+          </ul>
+        </div>
+        <div class="feat-visual reveal-left" style={`background: linear-gradient(135deg, ${ACCENT_LIGHT} 0%, #fff 100%); border: 1.5px solid ${ACCENT}22;`}>
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(28,112,247,.1) 1px,transparent 1px);background-size:28px 28px;"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px;"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <p style={`font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${ACCENT};`}>BILLING</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resident Directory -->
+      <div class="feat-row" style="margin-top:96px;">
+        <div class="reveal-left">
+          <div class="overline mb-3" style={`color:${ACCENT};`}>Resident Directory</div>
+          <h2 class="text-2xl font-bold text-text-1 mb-4">ฐานข้อมูลลูกบ้านและทรัพย์สินครบถ้วน</h2>
+          <p class="text-md font-light text-text-3 mb-6">เก็บข้อมูลเจ้าของห้อง ผู้เช่า และผู้พักอาศัย พร้อมเอกสารสัญญา ทะเบียนยานพาหนะ และประวัติการชำระ ค้นหาและกรองข้อมูลได้ทันที</p>
+          <ul class="feat-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>ข้อมูลเจ้าของ ผู้เช่า และผู้พักอาศัย</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>แนบเอกสารสัญญาและ PDPA Consent</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Import จาก Excel หรือระบบเดิมได้ฟรี</li>
+          </ul>
+        </div>
+        <div class="feat-visual reveal-right" style={`background: linear-gradient(135deg, ${ACCENT_LIGHT} 0%, #fff 100%); border: 1.5px solid ${ACCENT}22;`}>
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(28,112,247,.1) 1px,transparent 1px);background-size:28px 28px;"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <p style={`font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${ACCENT};`}>DIRECTORY</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <InnerFAQ items={faqs} accentHex={ACCENT} />
+  <CTABanner />
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .feat-reverse { direction: rtl; }
+  .feat-reverse > * { direction: ltr; }
+  @media (max-width: 768px) { .feat-reverse { direction: ltr; } }
+</style>

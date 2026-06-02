@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+import InnerFAQ from '../../components/shared/InnerFAQ.astro';
+import CTABanner from '../../components/home/CTABanner.astro';
+import SolutionOverview from '../../components/shared/SolutionOverview.astro';
+
+const ACCENT = '#1C70F7';
+const ACCENT_LIGHT = '#EEF4FF';
+
+const faqs = [
+  { q: 'API รองรับ Authentication แบบไหน?', a: 'รองรับ OAuth 2.0 และ API Key-based Authentication ทีมงานจะออก Access Token ที่มี Scope จำกัดเฉพาะที่จำเป็น เพื่อความปลอดภัยสูงสุด' },
+  { q: 'มี Rate Limit ไหม?', a: 'มีตามแพ็กเกจ: Standard — 1,000 request/min, Enterprise — Unlimited พร้อม Burst Quota กรณีโหลดสูง ทีมงานสามารถปรับ Limit ได้ตามความต้องการ' },
+  { q: 'Webhook ส่ง Event อะไรได้บ้าง?', a: 'ส่ง Event หลัก เช่น payment.paid, repair.status_changed, booking.created, parcel.arrived และ visitor.checked_in พร้อมเพิ่มเติม Event ตามความต้องการของ Enterprise' },
+  { q: 'มี Sandbox สำหรับทดสอบไหม?', a: 'มี Sandbox Environment สำหรับ Developer ทดสอบ API โดยไม่กระทบข้อมูลจริง พร้อม Mock Data ของโครงการตัวอย่าง' },
+];
+
+const endpoints = [
+  { method: 'GET', path: '/v1/residents', desc: 'ดึงรายชื่อลูกบ้านทั้งหมด' },
+  { method: 'GET', path: '/v1/invoices', desc: 'ดึงใบแจ้งหนี้พร้อมสถานะชำระ' },
+  { method: 'POST', path: '/v1/announcements', desc: 'ส่งประกาศถึงลูกบ้าน' },
+  { method: 'GET', path: '/v1/bookings', desc: 'ดูการจอง Facility' },
+  { method: 'POST', path: '/v1/webhooks', desc: 'ลงทะเบียน Webhook Endpoint' },
+];
+---
+
+<BaseLayout
+  title="API Solution — เชื่อมต่อ LivingOS กับทุกระบบ | The LivingOS"
+  description="REST API และ Webhook ของ LivingOS สำหรับนักพัฒนา — เชื่อม ERP, Line OA, Payment Gateway และระบบ IoT"
+>
+  <InnerHero
+    badge="API SOLUTION"
+    breadcrumb="SOLUTIONS · PROPERTY MANAGEMENT"
+    headline="เชื่อมต่อทุกระบบด้วย LivingOS API"
+    accentWord="LivingOS API"
+    subheadline="REST API มาตรฐาน + Webhook แบบ Real-time ให้นักพัฒนาเชื่อม LivingOS กับ ERP, Line OA, Payment Gateway, Smart Home และระบบอื่นๆ ได้อย่างยืดหยุ่น"
+    cta1={{ label: 'ดู API Documentation', href: '#docs' }}
+    cta2={{ label: 'ติดต่อทีม Integrations', href: '/company/contact' }}
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  >
+    <div slot="visual" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+      <div style={`background:#1A1A2E;border-radius:16px;padding:20px 24px;min-width:300px;font-family:var(--font-mono);font-size:12px;box-shadow:0 8px 32px rgba(28,112,247,.25);`}>
+        <div style="color:#9A9A9A;margin-bottom:12px;font-size:10px;letter-spacing:.1em;">LIVINGOS REST API v1</div>
+        {endpoints.map((e) => (
+          <div style="display:flex;gap:12px;margin-bottom:8px;align-items:center;">
+            <span style={`background:${e.method === 'GET' ? '#1E40AF' : '#065F46'};color:#fff;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:600;min-width:38px;text-align:center;`}>{e.method}</span>
+            <span style="color:#A5B4FC;flex:1;">{e.path}</span>
+            <span style="color:#6B7280;font-size:10px;">{e.desc}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </InnerHero>
+
+  <SolutionOverview
+    headline="API มาตรฐาน ยืดหยุ่น เชื่อมทุกระบบได้ทันที"
+    subheadline="REST API พร้อม OpenAPI Spec และ Webhook Real-time ครอบคลุมทุก Module สำหรับนักพัฒนา"
+    bgColor={ACCENT}
+    cards={[
+      {
+        title: 'REST API ครอบคลุมทุก Module',
+        description: 'ลูกบ้าน ใบแจ้งหนี้ การจอง ผู้เยี่ยมชม และรายงานบัญชี ทุก Endpoint พร้อม OpenAPI 3.0 Spec',
+        emoji: '🔌',
+        badge: 'Full Coverage',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'Webhook Real-time Events',
+        description: 'รับ Event ทันทีเมื่อมีการชำระเงิน แจ้งซ่อม หรือผู้เยี่ยมชมเข้า-ออก ไม่ต้อง Poll',
+        emoji: '⚡',
+        badge: 'Real-time',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'SDK หลายภาษา + Sandbox',
+        description: 'SDK สำหรับ Node.js, Python, PHP พร้อม Sandbox ทดสอบได้ทันที ไม่กระทบข้อมูลจริง',
+        emoji: '🧑‍💻',
+        badge: 'Multi-language',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'Enterprise-grade Security',
+        description: 'OAuth 2.0, API Key Scoped, Webhook Signature Verification และ Rate Limit ตามแพ็กเกจ',
+        emoji: '🔒',
+        badge: 'Secure',
+        badgeHex: ACCENT,
+      },
+    ]}
+  />
+
+  <!-- Features -->
+  <section id="docs" class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+
+      <div class="feat-row reveal-up">
+        <div class="reveal-left">
+          <div class="overline mb-3" style={`color:${ACCENT};`}>REST API</div>
+          <h2 class="text-2xl font-bold text-text-1 mb-4">API มาตรฐาน ครอบคลุมทุก Module</h2>
+          <p class="text-md font-light text-text-3 mb-6">RESTful API ออกแบบตามมาตรฐาน JSON API พร้อม OpenAPI Spec ที่สมบูรณ์ รองรับ OAuth 2.0 และ API Key ครอบคลุม Endpoint สำหรับลูกบ้าน ใบแจ้งหนี้ การจอง และรายงานบัญชี</p>
+          <ul class="feat-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>OpenAPI 3.0 Spec + Postman Collection</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SDK สำหรับ Node.js, Python, PHP</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sandbox Environment ทดสอบได้ทันที</li>
+          </ul>
+        </div>
+        <div class="feat-visual reveal-right" style={`background: linear-gradient(135deg, ${ACCENT_LIGHT} 0%, #fff 100%); border: 1.5px solid ${ACCENT}22;`}>
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(28,112,247,.12) 1px,transparent 1px);background-size:28px 28px;"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <p style={`font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${ACCENT};`}>REST API</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-row feat-reverse" style="margin-top:96px;">
+        <div class="reveal-right">
+          <div class="overline mb-3" style={`color:${ACCENT};`}>Webhook</div>
+          <h2 class="text-2xl font-bold text-text-1 mb-4">รับ Event แบบ Real-time ด้วย Webhook</h2>
+          <p class="text-md font-light text-text-3 mb-6">Webhook ส่ง Event ทุกครั้งที่มีความเปลี่ยนแปลงในระบบ เช่น ชำระเงิน แจ้งซ่อม หรือผู้เยี่ยมชมเข้า-ออก ช่วยให้ระบบภายนอกของคุณ Sync ได้โดยไม่ต้อง Poll</p>
+          <ul class="feat-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Event ครบทุก Module: Payment, Visitor, Repair</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Signature Verification ป้องกัน Spoofing</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Retry Logic อัตโนมัติหาก Endpoint หลุด</li>
+          </ul>
+        </div>
+        <div class="feat-visual reveal-left" style={`background: linear-gradient(135deg, ${ACCENT_LIGHT} 0%, #fff 100%); border: 1.5px solid ${ACCENT}22;`}>
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(28,112,247,.12) 1px,transparent 1px);background-size:28px 28px;"></div>
+          <div style="position:relative;z-index:1;text-align:center;">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px;"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
+            <p style={`font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${ACCENT};`}>WEBHOOK</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <InnerFAQ items={faqs} accentHex={ACCENT} />
+  <CTABanner />
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .feat-reverse { direction: rtl; }
+  .feat-reverse > * { direction: ltr; }
+  @media (max-width: 768px) { .feat-reverse { direction: ltr; } }
+</style>

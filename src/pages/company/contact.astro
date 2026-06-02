@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+
+const ACCENT = '#1C70F7';
+const ACCENT_LIGHT = '#EEF4FF';
+
+const channels = [
+  { icon: `<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6 6l.95-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16l.19.92z"/>`, title: 'โทรศัพท์', value: '02-xxx-xxxx', sub: 'จันทร์–ศุกร์ 09:00–18:00' },
+  { icon: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>`, title: 'อีเมล', value: 'hello@thelivingos.co', sub: 'ตอบกลับภายใน 1 ชั่วโมงทำการ' },
+  { icon: `<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>`, title: 'Line OA', value: '@thelivingos', sub: 'Chat ตลอด 24 ชั่วโมง' },
+  { icon: `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>`, title: 'ที่ตั้งสำนักงาน', value: 'อาคาร Park Ventures, ชั้น 18', sub: 'กรุงเทพฯ 10330' },
+];
+---
+
+<BaseLayout
+  title="Contact Us — ติดต่อ The LivingOS"
+  description="ติดต่อทีม LivingOS ผ่านโทรศัพท์ อีเมล หรือ Line OA ตอบกลับทุกช่องทางภายใน 1 ชั่วโมงทำการ"
+>
+  <InnerHero
+    badge="CONTACT US"
+    breadcrumb="COMPANY"
+    headline="ติดต่อเรา ตอบทุกคำถาม"
+    accentWord="ตอบทุกคำถาม"
+    subheadline="ไม่ว่าจะสนใจ Demo ขอใบเสนอราคา หรือต้องการความช่วยเหลือ ทีมงานพร้อมตอบคุณภายใน 1 ชั่วโมงทำการ"
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  />
+
+  <section id="contact" class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+      <div class="contact-layout">
+
+        <!-- Form -->
+        <div class="contact-form-wrap reveal-left">
+          <div style="background:#fff;border:1.5px solid var(--color-warm-border-light);border-radius:20px;padding:40px;box-shadow:var(--shadow-sm);">
+            <h2 class="text-2xl font-bold text-text-1 mb-2">ส่งข้อความถึงเรา</h2>
+            <p class="text-sm text-text-3 mb-8">ตอบกลับทุกข้อความภายใน 1 ชั่วโมงทำการ</p>
+            <form novalidate style="display:flex;flex-direction:column;gap:18px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <label style="font-size:13px;font-weight:600;color:var(--color-text-2);">ชื่อ-นามสกุล *</label>
+                  <input type="text" placeholder="ชื่อจริง นามสกุล" required class="contact-input" />
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <label style="font-size:13px;font-weight:600;color:var(--color-text-2);">อีเมล *</label>
+                  <input type="email" placeholder="your@email.com" required class="contact-input" />
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <label style="font-size:13px;font-weight:600;color:var(--color-text-2);">เรื่อง</label>
+                <select class="contact-input">
+                  <option>สอบถามราคา / Demo</option>
+                  <option>ปัญหาทางเทคนิค</option>
+                  <option>ความร่วมมือทางธุรกิจ</option>
+                  <option>Investor Relations</option>
+                  <option>อื่นๆ</option>
+                </select>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <label style="font-size:13px;font-weight:600;color:var(--color-text-2);">ข้อความ *</label>
+                <textarea rows="4" placeholder="บอกเราเพิ่มเติม..." required class="contact-input" style="resize:vertical;min-height:100px;"></textarea>
+              </div>
+              <button type="submit" style={`display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:12px;background:${ACCENT};color:#fff;font-size:15px;font-weight:600;border:none;cursor:pointer;box-shadow:0 4px 18px rgba(28,112,247,.38);transition:transform .15s,filter .15s;`}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                ส่งข้อความ
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Channels -->
+        <div class="contact-channels reveal-right">
+          <h3 class="text-xl font-bold text-text-1 mb-6">ช่องทางติดต่อ</h3>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            {channels.map((c) => (
+              <div style="display:flex;gap:16px;align-items:flex-start;padding:16px;background:#fff;border:1.5px solid var(--color-warm-border-light);border-radius:14px;box-shadow:var(--shadow-sm);">
+                <div style={`width:40px;height:40px;border-radius:10px;background:${ACCENT_LIGHT};color:${ACCENT};display:flex;align-items:center;justify-content:center;flex-shrink:0;`}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={c.icon}></svg>
+                </div>
+                <div>
+                  <div style="font-size:11px;font-family:var(--font-mono);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-4);margin-bottom:2px;">{c.title}</div>
+                  <div style="font-size:14px;font-weight:600;color:var(--color-text-1);">{c.value}</div>
+                  <div style="font-size:12px;color:var(--color-text-4);">{c.sub}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 48px;
+    align-items: start;
+  }
+  .contact-input {
+    border: 1.5px solid var(--color-warm-border-mid);
+    border-radius: 10px;
+    background: #fff;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-text-1);
+    padding: 10px 14px;
+    outline: none;
+    width: 100%;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .contact-input:focus {
+    border-color: var(--color-primary-400);
+    box-shadow: 0 0 0 3px rgba(28,112,247,.12);
+  }
+  @media (max-width: 1024px) { .contact-layout { grid-template-columns: 1fr; } }
+</style>

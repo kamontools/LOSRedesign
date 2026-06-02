@@ -1,0 +1,277 @@
+---
+/**
+ * SolutionOverview — reusable benefit-card section for any solution page.
+ *
+ * Usage:
+ *   <SolutionOverview
+ *     headline="แอปเดียว ครบทุกอย่าง"
+ *     bgColor="#F97316"
+ *     cards={[
+ *       { title: "...", description: "...", emoji: "📱", badge: "7+ ฟีเจอร์" },
+ *       ...
+ *     ]}
+ *   />
+ *
+ * The section shows up to 4 cards in a tilted, paper-clipped style on a solid
+ * color background. Designed for the top of inner solution pages.
+ *
+ * Class prefix: sov-
+ */
+
+interface OverviewCard {
+  title: string;
+  description: string;
+  emoji?: string;
+  badge?: string;
+  /** Hex color for the badge pill. Falls back to bgColor. */
+  badgeHex?: string;
+}
+
+interface Props {
+  headline: string;
+  subheadline?: string;
+  /** Solid background color of the section. Default: primary blue. */
+  bgColor?: string;
+  /** Headline + subheadline text color. Default: white. */
+  textColor?: string;
+  /** Up to 4 cards. */
+  cards: OverviewCard[];
+  /** Optional anchor id for the section. */
+  id?: string;
+}
+
+const {
+  headline,
+  subheadline,
+  bgColor = '#1C70F7',
+  textColor = '#FFFFFF',
+  cards,
+  id,
+} = Astro.props;
+
+/* Each card gets a unique natural tilt — alternating left/right. */
+const rotations = ['-5deg', '3.5deg', '-3deg', '5deg'];
+
+/* Derive a semi-transparent badge color from bgColor for default badge styling. */
+function hexAlpha(hex: string, alpha: number): string {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+---
+
+<section
+  class="sov-section"
+  style={`background:${bgColor};`}
+  {... (id ? { id } : {})}
+>
+  <div class="container-los">
+
+    <!-- Headline -->
+    <div class="sov-headline-block reveal-up">
+      <h2 class="sov-headline" style={`color:${textColor};`}>{headline}</h2>
+      {subheadline && (
+        <p class="sov-subheadline" style={`color:${textColor};`}>{subheadline}</p>
+      )}
+    </div>
+
+    <!-- Cards — reveal-stagger on the grid: GSAP stagger-animates each .sov-card-outer -->
+    <div class="sov-grid reveal-stagger">
+      {cards.slice(0, 4).map((card, i) => {
+        const badgeColor = card.badgeHex ?? bgColor;
+        return (
+          <div class="sov-card-outer">
+            <!--
+              sov-card-inner holds BOTH the clip and the card so they rotate as one unit.
+              Rotation lives here, not on sov-card-outer, to avoid conflicting with GSAP's
+              transform (y offset) which is applied to sov-card-outer by reveal-stagger.
+            -->
+            <div class="sov-card-inner" style={`--sov-rotate: ${rotations[i % 4]};`}>
+
+              <!-- Paper clip — pinned at top-right, straddling the card's top edge -->
+              <div class="sov-clip" aria-hidden="true">
+                <img src="/clip.svg" width="22" height="50" alt="" loading="lazy" decoding="async" />
+              </div>
+
+              <!-- White card -->
+              <div class="sov-card">
+                <h3 class="sov-card-title">{card.title}</h3>
+                <p class="sov-card-desc">{card.description}</p>
+                <div class="sov-card-foot">
+                  {card.badge && (
+                    <span
+                      class="sov-badge"
+                      style={`background:${hexAlpha(badgeColor, 0.10)};color:${badgeColor};border:1.5px solid ${hexAlpha(badgeColor, 0.28)};`}
+                    >
+                      {card.badge}
+                    </span>
+                  )}
+                  {card.emoji && (
+                    <span class="sov-emoji" role="img" aria-hidden="true">{card.emoji}</span>
+                  )}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ── Section shell ──────────────────────────────────────────────────────────── */
+.sov-section {
+  padding: 80px 0 96px;
+  overflow: visible; /* let rotated cards breathe */
+}
+
+/* ── Headline block ─────────────────────────────────────────────────────────── */
+.sov-headline-block {
+  margin-bottom: 64px;
+}
+
+.sov-headline {
+  font-size: clamp(30px, 4.2vw, 54px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  max-width: 680px;
+}
+
+.sov-subheadline {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.65;
+  opacity: 0.82;
+  max-width: 520px;
+  margin-top: 14px;
+}
+
+/* ── Cards grid ─────────────────────────────────────────────────────────────── */
+.sov-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+/* GSAP animates .sov-card-outer (opacity + y). Rotation lives on .sov-card-inner
+   so the two transforms don't conflict after the animation completes. */
+.sov-card-outer {
+  /* headroom above sov-card-inner so the clip (positioned at top:-22px) doesn't overflow */
+  padding-top: 26px;
+}
+
+.sov-card-inner {
+  position: relative;
+  transform: rotate(var(--sov-rotate, 0deg));
+  transition: transform 0.32s cubic-bezier(.22,.68,0,1.2);
+  transform-origin: center 60%; /* pivot slightly below center for a natural feel */
+}
+
+.sov-card-outer:hover .sov-card-inner {
+  transform: rotate(0deg) translateY(-5px);
+}
+
+/* ── Paper clip ─────────────────────────────────────────────────────────────── */
+.sov-clip {
+  position: absolute;
+  /* clip is 50px tall; 22px above + 28px below the card inner top edge */
+  top: -22px;
+  right: 16px;
+  z-index: 2;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.sov-clip img {
+  display: block;
+}
+
+/* ── White card ─────────────────────────────────────────────────────────────── */
+.sov-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px 20px 20px;
+  box-shadow:
+    0 10px 36px rgba(60,45,20,.14),
+    0 2px 8px rgba(60,45,20,.07);
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.sov-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-text-1);
+  margin-bottom: 8px;
+}
+
+.sov-card-desc {
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-text-3);
+  flex: 1;
+}
+
+/* ── Card footer: badge left, emoji right ───────────────────────────────────── */
+.sov-card-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.sov-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sov-emoji {
+  font-size: 42px;
+  line-height: 1;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.14));
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .sov-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 540px) {
+  .sov-section {
+    padding: 60px 0 72px;
+  }
+  .sov-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  /* keep cards flat on small screens — less dizzying in a single column */
+  .sov-card-inner {
+    transform: rotate(0deg) !important;
+  }
+}
+</style>

@@ -8,9 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 // Use fromTo() so the "to" state (opacity:1) is explicit regardless of CSS.
 
 (function initHero() {
-  const words = gsap.utils.toArray<HTMLElement>('.hero-word');
-  const ctas  = gsap.utils.toArray<HTMLElement>('.hero-cta');
-  const mockup = document.querySelector<HTMLElement>('.hero-mockup');
+  const words = gsap.utils.toArray<HTMLElement>('.hero-eyebrow, .hero-headline');
+  const ctas  = gsap.utils.toArray<HTMLElement>('.hero-actions, .hero-trust');
+  const mockup = document.querySelector<HTMLElement>('.hero-video');
 
   if (!words.length) return;
 
@@ -84,24 +84,42 @@ gsap.utils.toArray<HTMLElement>('.reveal-right').forEach((el) => {
 
 // ── Stat counters ────────────────────────────────────────────────────────────
 
-// ── Why LivingOS — scroll-spotlight cards ────────────────────────────────────
+// ── Why LivingOS — pin left nav while panels scroll (desktop only) ───────────
 
-(function initWhyCards() {
-  const cards = gsap.utils.toArray<HTMLElement>('.why-card');
-  if (!cards.length) return;
+const mm = gsap.matchMedia();
+mm.add('(min-width: 1280px)', () => {
+  const nav    = document.querySelector<HTMLElement>('#whyNav');
+  const layout = document.querySelector<HTMLElement>('.why-layout');
+  if (!nav || !layout) return;
 
-  cards.forEach((card) => {
-    ScrollTrigger.create({
-      trigger: card,
-      start: 'top 62%',
-      end: 'bottom 38%',
-      onEnter:     () => card.classList.add('is-active'),
-      onLeave:     () => card.classList.remove('is-active'),
-      onEnterBack: () => card.classList.add('is-active'),
-      onLeaveBack: () => card.classList.remove('is-active'),
-    });
+  const navbar = document.querySelector<HTMLElement>('#navbar') as HTMLElement | null;
+  const navH   = navbar ? navbar.offsetHeight : 72;
+
+  ScrollTrigger.create({
+    trigger: layout,
+    start: `top top+=${navH + 16}`,
+    end: 'bottom bottom',
+    pin: nav,
+    pinSpacing: false,
   });
-})();
+});
+
+mm.add('(max-width: 1279px)', () => {
+  const nav    = document.querySelector<HTMLElement>('#whyNav');
+  const layout = document.querySelector<HTMLElement>('.why-layout');
+  if (!nav || !layout) return;
+
+  const navbar = document.querySelector<HTMLElement>('#navbar') as HTMLElement | null;
+  const navH   = navbar ? navbar.offsetHeight : 64;
+
+  ScrollTrigger.create({
+    trigger: layout,
+    start: `top top+=${navH}`,
+    end: 'bottom bottom',
+    pin: nav,
+    pinSpacing: false,
+  });
+});
 
 // ── Stat counters ────────────────────────────────────────────────────────────
 

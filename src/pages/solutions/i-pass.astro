@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InnerHero from '../../components/shared/InnerHero.astro';
+import InnerFAQ from '../../components/shared/InnerFAQ.astro';
+import CTABanner from '../../components/home/CTABanner.astro';
+import SolutionOverview from '../../components/shared/SolutionOverview.astro';
+
+const ACCENT = '#062986';
+const ACCENT_LIGHT = '#E8ECFF';
+
+const faqs = [
+  { q: 'i-Pass ทำงานอย่างไรในภาพรวม?', a: 'รปภ. บันทึกข้อมูลผู้เยี่ยมชมเมื่อเข้า ระบบสร้าง Log อัตโนมัติ นิติบุคคลดูภาพรวมการเข้า-ออกแบบ Real-time บน Dashboard โดยเชื่อมกับ Urbanice App ให้ลูกบ้านออก E-Stamp ล่วงหน้าได้' },
+  { q: 'ต้องซื้อฮาร์ดแวร์เพิ่มไหม?', a: 'i-Pass ทำงานบน Tablet หรือ iPad ที่มีอยู่แล้ว ไม่ต้องซื้อฮาร์ดแวร์พิเศษ หากต้องการเชื่อมกับ LivingOS Smart Gate (ประตูอัตโนมัติ) จึงจะต้องติดตั้งฮาร์ดแวร์ Smart Gate เพิ่มเติม' },
+  { q: 'รองรับกี่ประตูในโครงการ?', a: 'รองรับหลายจุดได้ไม่จำกัด แต่ละจุดมี Instance ของตัวเอง Log รวมทั้งหมดในที่เดียวบน Dashboard ของนิติบุคคล' },
+  { q: 'มีระบบ OCR สแกนบัตรประชาชนไหม?', a: 'มี ตัวเลือก Add-on OCR สแกนบัตรประชาชนและบันทึกข้อมูลอัตโนมัติ ลด Human Error และเพิ่มความเร็วกระบวนการ Check-in อย่างมาก' },
+];
+---
+
+<BaseLayout
+  title="i-Pass — ระบบควบคุมผู้เยี่ยมชม Real-time | GuardOS"
+  description="บันทึกข้อมูลผู้เยี่ยมชมอัตโนมัติ Dashboard เรียลไทม์ E-Stamp และคำนวณค่าจอดรถ ทำงานร่วมกับ LivingOS Smart Gate"
+>
+  <InnerHero
+    badge="GUARDOS · i-PASS"
+    breadcrumb="SOLUTIONS · GUARDOS"
+    headline="ควบคุมผู้เยี่ยมชมด้วยความแม่นยำแบบเรียลไทม์"
+    accentWord="แม่นยำ"
+    subheadline="i-Pass บันทึกข้อมูลผู้เยี่ยมชมทุกคนอัตโนมัติ แสดงผลบน Dashboard แบบ Real-time พร้อม E-Stamp สำหรับลูกบ้านและการคำนวณค่าจอดรถที่แม่นยำ"
+    cta1={{ label: 'ขอ Demo i-Pass', href: '/request-demo' }}
+    cta2={{ label: 'ดูฟีเจอร์ทั้งหมด', href: '#features' }}
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  >
+    <div slot="visual" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:24px;">
+      <div style={`background:#fff;border-radius:16px;padding:20px 24px;box-shadow:0 8px 32px rgba(6,41,134,.18);min-width:200px;`}>
+        <div style={`font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.1em;color:${ACCENT};margin-bottom:12px;`}>VISITOR LOG TODAY</div>
+        {[['09:14','นาย สมชาย ว.','B1-204'],['09:28','น.ส. วิภา ก.','A3-512'],['10:05','นาย ธนา ป.','B2-101']].map(([t,n,r]) => (
+          <div style="display:flex;gap:12px;align-items:center;padding:5px 0;border-bottom:1px solid #E8E4DA;font-size:11px;">
+            <span style="color:#9A9A9A;font-family:var(--font-mono);">{t}</span>
+            <span style="flex:1;color:#1A1A1A;font-weight:500;">{n}</span>
+            <span style={`color:${ACCENT};font-weight:600;`}>{r}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </InnerHero>
+
+  <SolutionOverview
+    headline="บันทึกทุกการเข้า-ออก อย่างแม่นยำและโปร่งใส"
+    subheadline="i-Pass บันทึกข้อมูลผู้เยี่ยมชมทุกคนอัตโนมัติ นิติบุคคลเห็นภาพรวมแบบ Real-time พร้อม E-Stamp และคำนวณค่าจอดรถ"
+    bgColor={ACCENT}
+    cards={[
+      {
+        title: 'บันทึกผู้เยี่ยมชมครบทุกคน',
+        description: 'ชื่อ เลขบัตร รูปถ่าย ทะเบียนรถ และห้องปลายทาง บันทึกอัตโนมัติทุกครั้งที่เข้า-ออก ค้นหา Log ย้อนหลังไม่จำกัด',
+        emoji: '📋',
+        badge: 'Auto Log',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'Dashboard Real-time',
+        description: 'เห็นผู้ที่อยู่ในโครงการ ณ ขณะนั้น Heat Map ช่วงเวลา และ Alert ผิดปกติทันที',
+        emoji: '📡',
+        badge: 'Live View',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'E-Stamp ออกผ่านแอปลูกบ้าน',
+        description: 'ลูกบ้านออก QR Visitor Pass จาก Urbanice App ล่วงหน้า รปภ. สแกนยืนยันในวินาทีเดียว กำหนดวันหมดอายุได้',
+        emoji: '🔐',
+        badge: 'Urbanice Connect',
+        badgeHex: ACCENT,
+      },
+      {
+        title: 'คำนวณค่าจอดรถอัตโนมัติ',
+        description: 'บันทึกเวลาเข้า-ออกยานพาหนะ คำนวณค่าจอดตามตาราง ออกใบเสร็จทันที รองรับชำระ QR PromptPay',
+        emoji: '🚗',
+        badge: 'Auto Billing',
+        badgeHex: ACCENT,
+      },
+    ]}
+  />
+
+  <!-- Stats -->
+  <section class="section-pad" style="padding-top:40px;padding-bottom:64px;background:var(--color-warm-page);">
+    <div class="container-los">
+      <div class="stats-row reveal-up">
+        <div class="stat-cell"><div class="stat-num" style={`color:${ACCENT};`}>2M+</div><div class="stat-lbl">รายการผ่านประตู</div></div>
+        <div class="stat-cell"><div class="stat-num" style={`color:${ACCENT};`}>500+</div><div class="stat-lbl">โครงการที่ใช้งาน</div></div>
+        <div class="stat-cell"><div class="stat-num" style={`color:${ACCENT};`}>&lt;3s</div><div class="stat-lbl">เวลาสแกนเฉลี่ย</div></div>
+        <div class="stat-cell"><div class="stat-num" style={`color:${ACCENT};`}>99.9%</div><div class="stat-lbl">Accuracy Rate</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+
+      {[
+        { label: 'Complete Visitor Records', headline: 'บันทึกข้อมูลผู้เยี่ยมชมครบถ้วนอัตโนมัติ', desc: 'ชื่อ-นามสกุล เลขบัตรประชาชน หรือ Passport รูปถ่าย ทะเบียนรถ และห้องปลายทาง บันทึกอัตโนมัติทุกครั้งที่มีผู้เข้า-ออก สร้าง Log ที่ตรวจสอบได้ตลอดเวลา', points: ['OCR สแกนบัตรประชาชน (Add-on)', 'บันทึกรูปถ่ายผู้เยี่ยมชม', 'ค้นหา Log ย้อนหลังได้ไม่จำกัด'], icon: `<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>` },
+        { label: 'Real-Time Dashboard', headline: 'ดูการเข้า-ออกแบบ Real-time', desc: 'Dashboard แสดงผู้ที่อยู่ในโครงการ ณ ขณะนั้น จำนวนผู้เยี่ยมชมตามช่วงเวลา และ Alert เมื่อมีผู้ไม่ได้รับอนุญาต นิติบุคคลและรปภ. เห็นข้อมูลเดียวกัน', points: ['Live Count ผู้อยู่ในโครงการ', 'Heat Map ช่วงเวลาที่คนเยอะ', 'Alert ผิดปกติทันที'], icon: `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>` },
+        { label: 'E-Stamp for Visitors', headline: 'ออก E-Stamp ผู้เยี่ยมชมจากแอปลูกบ้าน', desc: 'ลูกบ้านออก QR Code Visitor Pass ให้แขกล่วงหน้าผ่าน Urbanice App รปภ. สแกน QR แล้วระบบยืนยันอัตโนมัติ ลดเวลารอคิวและยืนยันตัวตนเร็วขึ้น 80%', points: ['กำหนดวันเวลาหมดอายุ QR ได้', 'รปภ. ยืนยันด้วยการสแกนหน้าจอเดียว', 'Log E-Stamp เชื่อมกับ Visitor Record อัตโนมัติ'], icon: `<path d="M3 3h7v7H3z"/><path d="M14 3h7v7h-7z"/><path d="M3 14h7v7H3z"/><rect x="16" y="16" width="4" height="4"/>` },
+        { label: 'Automatic Parking Fee', headline: 'คำนวณค่าจอดรถอัตโนมัติแม่นยำ', desc: 'ระบบบันทึกเวลาเข้า-ออกของยานพาหนะ คำนวณค่าจอดตามตารางที่กำหนด และออกใบเสร็จทันที ลดข้อพิพาทและความผิดพลาดในการเก็บเงิน', points: ['ตารางราคาปรับแต่งได้ตามโครงการ', 'รองรับการชำระผ่าน QR PromptPay', 'สรุปรายรับค่าจอดรถรายวัน/รายเดือน'], icon: `<rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-4"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>` },
+      ].map((f, i) => (
+        <div class={`feat-row ${i % 2 !== 0 ? 'feat-reverse' : ''}`} style={i > 0 ? 'margin-top:96px;' : ''}>
+          <div class={i % 2 !== 0 ? 'reveal-right' : 'reveal-left'}>
+            <div class="overline mb-3" style={`color:${ACCENT};`}>{f.label}</div>
+            <h3 class="text-2xl font-bold text-text-1 mb-4">{f.headline}</h3>
+            <p class="text-md font-light text-text-3 mb-6">{f.desc}</p>
+            <ul class="feat-list">
+              {f.points.map((p) => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class={`feat-visual ${i % 2 !== 0 ? 'reveal-left' : 'reveal-right'}`} style={`background: linear-gradient(135deg, ${ACCENT_LIGHT} 0%, #fff 100%); border: 1.5px solid ${ACCENT}22;`}>
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(6,41,134,.1) 1px,transparent 1px);background-size:28px 28px;"></div>
+            <div style="position:relative;z-index:1;text-align:center;">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px;" set:html={f.icon}></svg>
+              <p style={`font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:${ACCENT};`}>{f.label}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </section>
+
+  <InnerFAQ items={faqs} accentHex={ACCENT} />
+  <CTABanner />
+</BaseLayout>
+
+<script>
+  import '../../scripts/gsap-init';
+</script>
+
+<style>
+  .feat-reverse { direction: rtl; }
+  .feat-reverse > * { direction: ltr; }
+  @media (max-width: 768px) { .feat-reverse { direction: ltr; } }
+</style>

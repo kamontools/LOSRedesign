@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerHero from '../components/shared/InnerHero.astro';
+
+const ACCENT = '#1C70F7';
+const ACCENT_LIGHT = '#EEF4FF';
+---
+
+<BaseLayout
+  title="ขอ Demo ฟรี — The LivingOS"
+  description="นัด Demo กับทีมงาน LivingOS เพื่อดูระบบจริง ไม่มีข้อผูกมัด ตอบกลับภายใน 1 ชั่วโมงทำการ"
+>
+  <InnerHero
+    badge="REQUEST A DEMO"
+    breadcrumb="SOLUTIONS"
+    headline="ดู LivingOS ในชีวิตจริง ทดลองได้เลย"
+    accentWord="ชีวิตจริง"
+    subheadline="กรอกข้อมูลด้านล่าง ทีมงานจะติดต่อกลับภายใน 1 ชั่วโมงทำการเพื่อนัด Demo ตามเวลาที่สะดวก ไม่มีข้อผูกมัด ไม่มีค่าใช้จ่าย"
+    accentHex={ACCENT}
+    accentLightHex={ACCENT_LIGHT}
+  />
+
+  <section class="section-pad" style="background:var(--color-warm-surface);">
+    <div class="container-los">
+      <div class="demo-layout">
+
+        <!-- Form -->
+        <div class="demo-form-wrap reveal-left">
+          <div class="demo-form-card">
+            <h2 class="text-2xl font-bold text-text-1 mb-2">กรอกข้อมูลเพื่อนัด Demo</h2>
+            <p class="text-sm text-text-3 mb-8">ทีมงานจะติดต่อกลับภายใน 1 ชั่วโมงทำการ</p>
+
+            <form class="demo-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fname">ชื่อ *</label>
+                  <input type="text" id="fname" name="firstName" placeholder="ชื่อจริง" required />
+                </div>
+                <div class="form-group">
+                  <label for="lname">นามสกุล *</label>
+                  <input type="text" id="lname" name="lastName" placeholder="นามสกุล" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">อีเมล *</label>
+                <input type="email" id="email" name="email" placeholder="your@company.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">เบอร์โทรศัพท์ *</label>
+                <input type="tel" id="phone" name="phone" placeholder="08x-xxx-xxxx" required />
+              </div>
+
+              <div class="form-group">
+                <label for="project">ชื่อโครงการ / บริษัท *</label>
+                <input type="text" id="project" name="project" placeholder="เช่น คอนโด The Green Hill" required />
+              </div>
+
+              <div class="form-group">
+                <label for="units">จำนวนยูนิตในโครงการ</label>
+                <select id="units" name="units">
+                  <option value="">เลือกจำนวนยูนิต</option>
+                  <option>น้อยกว่า 50 ยูนิต</option>
+                  <option>50 – 200 ยูนิต</option>
+                  <option>200 – 500 ยูนิต</option>
+                  <option>500 – 1,000 ยูนิต</option>
+                  <option>มากกว่า 1,000 ยูนิต</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="product">ระบบที่สนใจ</label>
+                <select id="product" name="product">
+                  <option value="">เลือกระบบที่สนใจ</option>
+                  <option>The LivingOS PMS</option>
+                  <option>Urbanice App</option>
+                  <option>GuardOS / i-Pass</option>
+                  <option>LivingOS Smart Gate</option>
+                  <option>i-Vote</option>
+                  <option>ครบทุกระบบ</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">ข้อความเพิ่มเติม</label>
+                <textarea id="message" name="message" rows="3" placeholder="บอกเราเพิ่มเติมเกี่ยวกับโครงการและความต้องการของคุณ"></textarea>
+              </div>
+
+              <button type="submit" class="demo-submit">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg>
+                ส่งคำขอ Demo ฟรี
+              </button>
+
+              <p class="form-note">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                ข้อมูลของคุณได้รับการปกป้องตาม PDPA ไม่มีการส่งต่อข้อมูลให้บุคคลที่สาม
+              </p>
+            </form>
+          </div>
+        </div>
+
+        <!-- Info sidebar -->
+        <div class="demo-info reveal-right">
+          <h3 class="text-xl font-bold text-text-1 mb-6">Demo ครอบคลุมอะไรบ้าง?</h3>
+          <ul class="demo-checklist">
+            {[
+              'ทัวร์ระบบ PMS Dashboard จริง',
+              'Demo ฟีเจอร์ Urbanice App',
+              'แสดง GuardOS i-Pass สด',
+              'คำนวณราคาตามขนาดโครงการ',
+              'ตอบทุกข้อสงสัยจากทีม Product',
+              'Timeline การติดตั้งและ Onboarding',
+            ].map((item) => (
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={ACCENT} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div class="demo-trust-cards">
+            <div class="demo-trust-card">
+              <div class="demo-trust-num">30 นาที</div>
+              <div class="demo-trust-lbl">Demo ออนไลน์</div>
+            </div>
+            <div class="demo-trust-card">
+              <div class="demo-trust-num">&lt;1 ชม.</div>
+              <div class="demo-trust-lbl">ตอบกลับ</div>
+            </div>
+            <div class="demo-trust-card">
+              <div class="demo-trust-num">ฟรี</div>
+              <div class="demo-trust-lbl">ไม่มีข้อผูกมัด</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import '../scripts/gsap-init';
+</script>
+
+<style>
+  .demo-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .demo-form-card {
+    background: #fff;
+    border: 1.5px solid var(--color-warm-border-light);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .demo-form { display: flex; flex-direction: column; gap: 20px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-2);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    border: 1.5px solid var(--color-warm-border-mid);
+    border-radius: 10px;
+    background: #fff;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-text-1);
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--color-primary-400);
+    box-shadow: 0 0 0 3px rgba(28,112,247,.12);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 80px; }
+
+  .demo-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(28,112,247,.38);
+    transition: transform .15s, filter .15s;
+  }
+  .demo-submit:hover { transform: translateY(-1px); filter: brightness(1.08); }
+
+  .form-note {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--color-text-4);
+  }
+
+  /* Info sidebar */
+  .demo-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .demo-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--color-text-2);
+  }
+
+  .demo-trust-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .demo-trust-card {
+    background: #fff;
+    border: 1.5px solid var(--color-warm-border-light);
+    border-radius: 14px;
+    padding: 16px 12px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .demo-trust-num {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+  }
+
+  .demo-trust-lbl { font-size: 11px; color: var(--color-text-3); }
+
+  @media (max-width: 1024px) {
+    .demo-layout { grid-template-columns: 1fr; }
+    .demo-info { order: -1; }
+  }
+
+  @media (max-width: 480px) {
+    .form-row { grid-template-columns: 1fr; }
+    .demo-form-card { padding: 24px 20px; }
+    .demo-trust-cards { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
