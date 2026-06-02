@@ -1,11 +1,39 @@
 ---
-const navLinks = [
+const solutionGroups = [
   {
-    label: 'Solutions',
-    href: '/solutions',
-    children: ['Urbanice App', 'The LivingOS PMS', 'GuardOS', 'Services', 'API Solution'],
+    group: 'Property Management',
+    color: '#1C70F7',
+    items: [
+      { label: 'Urbanice App', desc: 'แอปสำหรับลูกบ้าน', href: '/solutions/urbanice', icon: 'U', bg: '#DDEAFF', fg: '#1C70F7' },
+      { label: 'Living Mart', desc: 'บริการสั่งซื้อในโครงการ', href: '/solutions/living-mart', icon: 'M', bg: '#FFF7ED', fg: '#F97316' },
+      { label: 'The LivingOS PMS', desc: 'ระบบบริหารจัดการนิติฯ', href: '/solutions/pms', icon: 'P', bg: '#EEF4FF', fg: '#1560D8' },
+      { label: 'API Solution', desc: 'เชื่อมต่อระบบภายนอก', href: '/solutions/api', icon: 'A', bg: '#F0FDF4', fg: '#16A34A' },
+    ],
   },
-  { label: 'Company', href: '/company' },
+  {
+    group: 'GuardOS',
+    color: '#1A3A5C',
+    items: [
+      { label: 'i-Pass', desc: 'บันทึกผู้เยี่ยมชม', href: '/solutions/i-pass', icon: 'iP', bg: '#EEF4FF', fg: '#1C70F7' },
+      { label: 'Smart Gate', desc: 'ประตูอัตโนมัติอัจฉริยะ', href: '/solutions/smart-gate', icon: 'G', bg: '#F0FDF4', fg: '#16A34A' },
+      { label: 'i-Check', desc: 'ตรวจรอบยาม real-time', href: '/solutions/i-check', icon: 'iC', bg: '#FEFCE8', fg: '#A16207' },
+      { label: 'SOS', desc: 'แจ้งเหตุฉุกเฉิน', href: '/solutions/sos', icon: 'SOS', bg: '#FEF2F2', fg: '#DC2626' },
+    ],
+  },
+  {
+    group: 'Services',
+    color: '#F97316',
+    items: [
+      { label: 'i-Vote', desc: 'ลงคะแนนออนไลน์ AGM', href: '/solutions/i-vote', icon: 'iV', bg: '#DDEAFF', fg: '#1C70F7' },
+      { label: 'EIA', desc: 'บริการ EIA ครบวงจร', href: '/solutions/eia', icon: 'EIA', bg: '#FFF7ED', fg: '#F97316' },
+      { label: 'Turnkey', desc: 'รับเหมาติดตั้งทั้งระบบ', href: '/solutions/turnkey', icon: 'TK', bg: '#F0FDF4', fg: '#16A34A' },
+      { label: 'Academy', desc: 'อบรม & ใบรับรองวิชาชีพ', href: '/solutions/academy', icon: 'Ac', bg: '#FEFCE8', fg: '#A16207' },
+    ],
+  },
+];
+
+const navLinks = [
+  { label: 'Company', href: '/company/about' },
   { label: 'Blog', href: '/blog' },
 ];
 ---
@@ -15,7 +43,7 @@ const navLinks = [
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
 >
   <div class="container-los">
-    <nav class="flex items-center justify-between h-16 lg:h-18">
+    <nav class="flex items-center justify-between h-16 desktop:h-18">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 shrink-0">
         <img src="/logo-livingos.svg" alt="The LivingOS" width="32" height="32" style="border-radius:9px;display:block;" />
@@ -23,7 +51,74 @@ const navLinks = [
       </a>
 
       <!-- Desktop Nav Pills -->
-      <div class="hidden lg:flex items-center gap-1 bg-warm-overlay border border-warm-border-light rounded-lg px-1 py-1">
+      <div class="hidden desktop:flex items-center gap-1 bg-warm-overlay border border-warm-border-light rounded-lg px-1 py-1">
+        <!-- Solutions with megamenu trigger -->
+        <div class="relative" id="solutions-trigger">
+          <button
+            id="solutions-btn"
+            class="px-4 py-1.5 text-sm font-medium text-text-3 rounded-md transition-all hover:text-text-1 hover:bg-white hover:shadow-sm flex items-center gap-1"
+            aria-expanded="false"
+            aria-controls="megamenu"
+          >
+            Solutions
+            <svg id="solutions-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" class="transition-transform duration-200 text-text-4">
+              <path d="M2 4.5L6 8L10 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <!-- Megamenu — tooltip style, 720px, centered under trigger -->
+          <!-- Outer wrapper: top:100% so no DOM gap (mouseleave gap bug); padding-top creates the visual spacing -->
+          <div
+            id="megamenu"
+            role="dialog"
+            aria-label="Solutions menu"
+            class="megamenu-panel hidden absolute z-50"
+            style="top:100%;left:50%;margin-left:-360px;width:720px;padding-top:10px;"
+          >
+            <div style="background:rgba(255,255,255,0.98);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);box-shadow:0 20px 60px rgba(60,45,20,0.13),0 0 0 1px rgba(60,45,20,0.07);border-radius:28px;">
+            <div class="py-7 px-8">
+              <div class="grid grid-cols-3 gap-8">
+                {solutionGroups.map((group) => (
+                  <div>
+                    <p class="overline mb-4" style="color:var(--color-text-4);">{group.group}</p>
+                    <div class="flex flex-col gap-1">
+                      {group.items.map((item) => (
+                        <a
+                          href={item.href}
+                          class="megamenu-item flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-150 hover:bg-warm-surface group"
+                        >
+                          <span
+                            class="flex items-center justify-center shrink-0 rounded-xl text-xs font-bold"
+                            style={`width:36px;height:36px;background:${item.bg};color:${item.fg};font-family:'IBM Plex Mono',monospace;letter-spacing:0;`}
+                          >
+                            {item.icon}
+                          </span>
+                          <span class="min-w-0">
+                            <span class="block text-sm font-semibold text-text-1 group-hover:text-primary transition-colors">{item.label}</span>
+                            <span class="block text-xs text-text-4 mt-0.5 leading-tight">{item.desc}</span>
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div class="mt-6 pt-5 border-t border-warm-border-light flex items-center justify-between">
+                <p class="text-sm text-text-4">ต้องการคำแนะนำเพิ่มเติม? ทีมงานเราพร้อมช่วยเหลือ</p>
+                <a
+                  href="https://share.hsforms.com/1I6RGdz5FSa2YDtFRp307IA3509c"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-3d px-5 py-2 text-sm font-semibold text-white bg-primary rounded-md"
+                >
+                  ขอ Demo ฟรี →
+                </a>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
         {navLinks.map((link) => (
           <a
             href={link.href}
@@ -35,92 +130,250 @@ const navLinks = [
       </div>
 
       <!-- Desktop Right CTAs -->
-      <div class="hidden lg:flex items-center gap-3">
+      <div class="hidden desktop:flex items-center gap-3">
         <a
-          href="/login"
+          href="https://share.hsforms.com/1I6RGdz5FSa2YDtFRp307IA3509c"
+          target="_blank"
+          rel="noopener noreferrer"
           class="text-sm font-medium text-text-2 hover:text-text-1 transition-colors px-3 py-1.5"
         >
-          Log in
+          ขอ Demo
         </a>
         <a
-          href="/demo"
+          href="https://pms.thelivingos.com"
+          target="_blank"
+          rel="noopener noreferrer"
           class="btn-3d px-4 py-2 text-sm font-semibold text-white bg-primary rounded-md"
         >
-          ขอ Demo
+          เข้าสู่ระบบ
         </a>
       </div>
 
       <!-- Mobile Hamburger -->
       <button
         id="hamburger"
-        class="lg:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-warm-surface transition-colors"
+        class="desktop:hidden flex flex-col items-center gap-1.5 p-2 rounded-md hover:bg-warm-surface transition-colors"
         aria-label="Toggle menu"
       >
-        <span class="hamburger-line w-5 h-0.5 bg-text-2 rounded transition-all duration-300 block"></span>
-        <span class="hamburger-line w-5 h-0.5 bg-text-2 rounded transition-all duration-300 block"></span>
-        <span class="hamburger-line w-4 h-0.5 bg-text-2 rounded transition-all duration-300 block"></span>
+        <span class="hamburger-line w-5 h-0.5 bg-text-2 rounded block"></span>
+        <span class="hamburger-line w-5 h-0.5 bg-text-2 rounded block"></span>
+        <span class="hamburger-line w-5 h-0.5 bg-text-2 rounded block"></span>
       </button>
     </nav>
   </div>
 
-  <!-- Mobile Drawer -->
-  <div
-    id="mobile-drawer"
-    class="lg:hidden fixed inset-0 top-16 bg-warm-page border-t border-warm-border-light z-40 translate-x-full transition-transform duration-300 ease-in-out"
-  >
-    <div class="container-los py-6 flex flex-col gap-2">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class="py-3 px-4 text-base font-medium text-text-2 hover:text-primary hover:bg-primary-50 rounded-lg transition-all"
-        >
-          {link.label}
-        </a>
-      ))}
-      <div class="h-px bg-warm-border-light my-2"></div>
-      <a
-        href="/login"
-        class="py-3 px-4 text-base font-medium text-text-2 hover:text-text-1 rounded-lg transition-all"
-      >
-        Log in
-      </a>
-      <a
-        href="/demo"
-        class="btn-3d mt-2 py-3 px-4 text-base font-semibold text-white bg-primary rounded-lg text-center"
-      >
-        ขอ Demo ฟรี
-      </a>
-    </div>
-  </div>
 </header>
 
+<!-- Mobile Drawer — intentionally outside <header> to avoid backdrop-filter stacking context trapping fixed children -->
+<div
+  id="mobile-drawer"
+  class="desktop:hidden fixed inset-0 top-16 bg-warm-page border-t border-warm-border-light z-40 translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto"
+>
+  <div class="container-los py-6 flex flex-col gap-1">
+    <!-- Solutions accordion -->
+    <button
+      id="mobile-solutions-btn"
+      class="flex items-center justify-between py-3 px-4 text-base font-medium text-text-2 hover:text-primary hover:bg-primary-50 rounded-lg transition-all w-full text-left"
+    >
+      Solutions
+      <svg id="mobile-solutions-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" class="transition-transform duration-200 text-text-4">
+        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div id="mobile-solutions-drawer" class="hidden pb-2 flex-col gap-0.5">
+      {solutionGroups.map((group) => (
+        <div class="mb-3">
+          <p class="overline px-4 mb-2" style="color:var(--color-text-4);">{group.group}</p>
+          <div class="grid grid-cols-2 gap-1 px-1">
+            {group.items.map((item) => (
+              <a
+                href={item.href}
+                class="flex items-center gap-2.5 py-2 px-3 rounded-lg hover:bg-warm-surface transition-all"
+              >
+                <span
+                  class="flex items-center justify-center shrink-0 rounded-lg text-xs font-bold"
+                  style={`width:30px;height:30px;background:${item.bg};color:${item.fg};font-family:'IBM Plex Mono',monospace;`}
+                >
+                  {item.icon}
+                </span>
+                <span class="text-sm font-medium text-text-2 leading-tight">{item.label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class="py-3 px-4 text-base font-medium text-text-2 hover:text-primary hover:bg-primary-50 rounded-lg transition-all"
+      >
+        {link.label}
+      </a>
+    ))}
+    <div class="h-px bg-warm-border-light my-2"></div>
+    <a
+      href="https://share.hsforms.com/1I6RGdz5FSa2YDtFRp307IA3509c"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="py-3 px-4 text-base font-medium text-text-2 hover:text-text-1 rounded-lg transition-all"
+    >
+      ขอ Demo ฟรี
+    </a>
+    <a
+      href="https://pms.thelivingos.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-3d mt-2 py-3 px-4 text-base font-semibold text-white bg-primary rounded-lg text-center"
+    >
+      เข้าสู่ระบบ
+    </a>
+  </div>
+</div>
+
 <!-- Spacer for fixed navbar -->
-<div class="h-16 lg:h-18"></div>
+<div class="h-16 desktop:h-18"></div>
+
+<style>
+  #navbar.navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px) saturate(1.6);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    border-bottom: 1px solid rgba(60, 45, 20, 0.06);
+    box-shadow: 0 2px 14px rgba(60, 45, 20, 0.06);
+  }
+
+  .megamenu-panel {
+    transform-origin: top center;
+  }
+
+  .megamenu-panel.megamenu-entering {
+    animation: megamenu-in 0.20s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .megamenu-panel.megamenu-leaving {
+    animation: megamenu-out 0.14s ease-in forwards;
+  }
+
+  @keyframes megamenu-in {
+    from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes megamenu-out {
+    from { opacity: 1; transform: translateY(0) scale(1); }
+    to   { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  }
+
+  /* ── Hamburger → X morph ── */
+  .hamburger-line {
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity  0.2s ease,
+                width    0.3s ease;
+  }
+
+  #hamburger.is-open .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #hamburger.is-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  #hamburger.is-open .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+</style>
 
 <script>
-  const navbar = document.getElementById('navbar')!;
-  const hamburger = document.getElementById('hamburger')!;
-  const drawer = document.getElementById('mobile-drawer')!;
-  let isOpen = false;
+  // ── Desktop megamenu ──────────────────────────────────────────
+  const navbar      = document.getElementById('navbar')!;
+  const btn         = document.getElementById('solutions-btn')!;
+  const chevron     = document.getElementById('solutions-chevron')!;
+  const megamenu    = document.getElementById('megamenu')!;
+  let isOpen        = false;
+  let closeTimer: ReturnType<typeof setTimeout> | null = null;
 
-  // Scroll: transparent → white+shadow
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
-    } else {
-      navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+  function openMegamenu() {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    if (isOpen) return;
+    isOpen = true;
+    btn.setAttribute('aria-expanded', 'true');
+    chevron.style.transform = 'rotate(180deg)';
+    megamenu.classList.remove('hidden', 'megamenu-leaving');
+    megamenu.classList.add('megamenu-entering');
+    megamenu.addEventListener('animationend', () => {
+      if (!isOpen) return; // closeMegamenu was called before animation finished
+      megamenu.classList.remove('megamenu-entering');
+    }, { once: true });
+  }
+
+  function closeMegamenu(immediate = false) {
+    if (!isOpen) return;
+    const doClose = () => {
+      isOpen = false;
+      btn.setAttribute('aria-expanded', 'false');
+      chevron.style.transform = '';
+      megamenu.classList.remove('megamenu-entering');
+      megamenu.classList.add('megamenu-leaving');
+      megamenu.addEventListener('animationend', () => {
+        if (isOpen) return; // openMegamenu was called before close animation finished
+        megamenu.classList.remove('megamenu-leaving');
+        megamenu.classList.add('hidden');
+      }, { once: true });
+    };
+    if (immediate) { doClose(); return; }
+    closeTimer = setTimeout(doClose, 120);
+  }
+
+  // Click toggle on button
+  btn.addEventListener('click', () => isOpen ? closeMegamenu(true) : openMegamenu());
+
+  // Hover: open on trigger, stay open while over megamenu
+  const trigger = document.getElementById('solutions-trigger')!;
+  trigger.addEventListener('mouseenter', openMegamenu);
+  trigger.addEventListener('mouseleave', () => closeMegamenu());
+  megamenu.addEventListener('mouseenter', () => { if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; } });
+  megamenu.addEventListener('mouseleave', () => closeMegamenu());
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!trigger.contains(e.target as Node) && !megamenu.contains(e.target as Node)) {
+      closeMegamenu(true);
     }
   });
 
-  // Mobile drawer toggle
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMegamenu(true);
+  });
+
+  // ── Scroll: transparent → frosted ────────────────────────────
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('navbar-scrolled', window.scrollY > 60);
+  });
+
+  // ── Mobile drawer ─────────────────────────────────────────────
+  const hamburger         = document.getElementById('hamburger')!;
+  const drawer            = document.getElementById('mobile-drawer')!;
+  const mobileSolutionsBtn    = document.getElementById('mobile-solutions-btn')!;
+  const mobileSolutionsDrawer = document.getElementById('mobile-solutions-drawer')!;
+  const mobileSolutionsChevron = document.getElementById('mobile-solutions-chevron')!;
+  let drawerOpen = false;
+  let mobileSolutionsOpen = false;
+
   hamburger.addEventListener('click', () => {
-    isOpen = !isOpen;
-    if (isOpen) {
-      drawer.classList.remove('translate-x-full');
-      drawer.classList.add('translate-x-0');
-    } else {
-      drawer.classList.add('translate-x-full');
-      drawer.classList.remove('translate-x-0');
-    }
+    drawerOpen = !drawerOpen;
+    hamburger.classList.toggle('is-open', drawerOpen);
+    drawer.classList.toggle('translate-x-full', !drawerOpen);
+    drawer.classList.toggle('translate-x-0', drawerOpen);
+  });
+
+  mobileSolutionsBtn.addEventListener('click', () => {
+    mobileSolutionsOpen = !mobileSolutionsOpen;
+    mobileSolutionsDrawer.classList.toggle('hidden', !mobileSolutionsOpen);
+    mobileSolutionsDrawer.classList.toggle('flex', mobileSolutionsOpen);
+    mobileSolutionsChevron.style.transform = mobileSolutionsOpen ? 'rotate(180deg)' : '';
   });
 </script>
