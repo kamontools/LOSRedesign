@@ -263,7 +263,7 @@
   /* ── Tablet (476–1279px) — intermediate overlap ── */
   @media (max-width: 1279px) {
     .hero-copy-card {
-      width: fit-content;
+      width: auto;
       padding: 32px 32px 40px;
       margin-top: clamp(-140px, -13.5vw, -105px);
       margin-left: 72px;
@@ -276,6 +276,17 @@
     }
   }
 
+  /* ── Small tablet + large phone (≤767px) — full-width card, no overlap ── */
+  @media (max-width: 767px) {
+    .hero-copy-card {
+      margin-top: 20px;
+      margin-left: 16px;
+      margin-right: 16px;
+      padding: 24px 20px 32px;
+      border-radius: 20px;
+    }
+  }
+
   /* ── Mobile (≤475px) ── */
   @media (max-width: 475px) {
     .eyebrow-text-full  { display: none; }
@@ -285,11 +296,9 @@
       padding: 12px 12px 0;
     }
     .hero-copy-card {
-      padding: 24px 20px 32px;
-      margin-top: 28px;
-      margin-left: auto;
-      margin-right: auto;
-      border-radius: 20px;
+      margin-top: 16px;
+      margin-left: 16px;
+      margin-right: 16px;
     }
     .hero-headline {
       margin-bottom: 16px;
