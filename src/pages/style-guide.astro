@@ -4,560 +4,1085 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Style Guide — LivingOS Design System">
 
-<!-- ── Breakpoint ruler (sticky top) ── -->
+<!-- ── Breakpoint ruler ── -->
 <div class="bp-ruler">
-  <span class="bp-label" id="bpLabel">—</span>
-  <span class="bp-desc" id="bpDesc"></span>
+  <span id="bpLabel">—</span>
+  <span id="bpDesc" style="color:var(--color-text-4);margin-left:12px;"></span>
 </div>
 
 <div class="sg-wrap">
 
-  <!-- ══════════════════════════════════════════════
-       0. INTRO
-  ══════════════════════════════════════════════ -->
+  <!-- INTRO -->
   <section class="sg-section">
     <div class="sg-eyebrow">LivingOS Design System</div>
     <h1 class="sg-title">Style Guide</h1>
-    <p class="sg-intro">Single source of truth for colors, typography, spacing, components, and layout patterns used across the site. Resize the viewport to see breakpoints in the ruler above.</p>
+    <p class="sg-intro">Single source of truth for colors, typography, spacing, components, and layout patterns used across the site. Resize the viewport to watch the breakpoint ruler change.</p>
   </section>
 
-  <!-- ══════════════════════════════════════════════
+  <!-- ── Table of Contents ── -->
+  <nav class="sg-toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ol class="toc-list">
+      <li><a href="#sg-colors">1. Colors</a></li>
+      <li><a href="#sg-typography">2. Typography</a></li>
+      <li><a href="#sg-spacing">3. Spacing & Radius</a></li>
+      <li><a href="#sg-buttons">4. Buttons</a></li>
+      <li><a href="#sg-badges">5. Badges & Pills</a></li>
+      <li><a href="#sg-backgrounds">6. Section Backgrounds</a></li>
+      <li><a href="#sg-cards">7. Cards</a></li>
+      <li><a href="#sg-layouts">8. Layout Patterns</a></li>
+      <li><a href="#sg-faq-section">9. FAQ Accordion</a></li>
+      <li><a href="#sg-breakpoints">10. Breakpoints</a></li>
+      <li><a href="#sg-rules">11. Do / Don't</a></li>
+    </ol>
+  </nav>
+
+  <!-- ════════════════════════════════
        1. COLORS
-  ══════════════════════════════════════════════ -->
-  <section class="sg-section">
-    <h2 class="sg-h2">1. Color Tokens</h2>
+  ════════════════════════════════ -->
+  <section class="sg-section" id="sg-colors">
+    <h2 class="sg-h2">1. Colors</h2>
 
     <h3 class="sg-h3">Primary Blue</h3>
-    <div class="swatch-row">
-      <div class="swatch" style="background:#1C70F7;"><span class="swatch-label light">--color-primary<br/>#1C70F7</span></div>
-      <div class="swatch" style="background:#1560D8;"><span class="swatch-label light">--color-primary-600<br/>#1560D8</span></div>
-      <div class="swatch" style="background:#4D8EF9;"><span class="swatch-label light">--color-primary-400<br/>#4D8EF9</span></div>
-      <div class="swatch" style="background:#DDEAFF;"><span class="swatch-label">--color-primary-100<br/>#DDEAFF</span></div>
-      <div class="swatch" style="background:#EEF4FF;"><span class="swatch-label">--color-primary-50<br/>#EEF4FF</span></div>
-    </div>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        {[
+          ['--color-primary','#1C70F7','light'],
+          ['--color-primary-600','#1560D8','light'],
+          ['--color-primary-400','#4D8EF9','light'],
+          ['--color-primary-100','#DDEAFF','dark'],
+          ['--color-primary-50','#EEF4FF','dark'],
+        ].map(([name, hex, lbl]) => (
+          <tr>
+            <td><code>{name}</code><span class="hex-chip">{hex}</span></td>
+            <td><div class="swatch" style={`background:${hex};${hex==='#EEF4FF'||hex==='#DDEAFF'?'border:1.5px solid #C8DAFF;':''}`}><span class={`sw-lbl ${lbl}`}>{hex}</span></div></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
 
     <h3 class="sg-h3">Warm Neutrals</h3>
-    <div class="swatch-row">
-      <div class="swatch" style="background:#FFFFFF;border:1.5px solid #E8E4DA;"><span class="swatch-label">--color-warm-page<br/>#FFFFFF</span></div>
-      <div class="swatch" style="background:#F5F3EE;"><span class="swatch-label">--color-warm-surface<br/>#F5F3EE</span></div>
-      <div class="swatch" style="background:#EEEAE2;"><span class="swatch-label">--color-warm-overlay<br/>#EEEAE2</span></div>
-      <div class="swatch" style="background:#E8E4DA;"><span class="swatch-label">--color-warm-border-light<br/>#E8E4DA</span></div>
-      <div class="swatch" style="background:#D4CFC4;"><span class="swatch-label">--color-warm-border-mid<br/>#D4CFC4</span></div>
-    </div>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        {[
+          ['--color-warm-page','#FFFFFF'],
+          ['--color-warm-surface','#F5F3EE'],
+          ['--color-warm-overlay','#EEEAE2'],
+          ['--color-warm-border-light','#E8E4DA'],
+          ['--color-warm-border-mid','#D4CFC4'],
+        ].map(([name, hex]) => (
+          <tr>
+            <td><code>{name}</code><span class="hex-chip">{hex}</span></td>
+            <td><div class="swatch" style={`background:${hex};border:1.5px solid #D4CFC4;`}><span class="sw-lbl dark">{hex}</span></div></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
 
     <h3 class="sg-h3">Orange Accent</h3>
-    <div class="swatch-row">
-      <div class="swatch" style="background:#F97316;"><span class="swatch-label light">--color-orange<br/>#F97316</span></div>
-      <div class="swatch" style="background:#FFEDD5;"><span class="swatch-label">--color-orange-100<br/>#FFEDD5</span></div>
-      <div class="swatch" style="background:#FFF7ED;"><span class="swatch-label">--color-orange-50<br/>#FFF7ED</span></div>
-    </div>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        {[
+          ['--color-orange','#F97316','light'],
+          ['--color-orange-100','#FFEDD5','dark'],
+          ['--color-orange-50','#FFF7ED','dark'],
+        ].map(([name, hex, lbl]) => (
+          <tr>
+            <td><code>{name}</code><span class="hex-chip">{hex}</span></td>
+            <td><div class="swatch" style={`background:${hex};${lbl==='dark'?'border:1.5px solid #FDC090;':''}`}><span class={`sw-lbl ${lbl}`}>{hex}</span></div></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
 
     <h3 class="sg-h3">Text Scale</h3>
-    <div class="swatch-row">
-      <div class="swatch swatch-tall" style="background:#1A1A1A;"><span class="swatch-label light">--color-text-1<br/>#1A1A1A<br/>Heading</span></div>
-      <div class="swatch swatch-tall" style="background:#3D3D3D;"><span class="swatch-label light">--color-text-2<br/>#3D3D3D<br/>Body</span></div>
-      <div class="swatch swatch-tall" style="background:#6B6B6B;"><span class="swatch-label light">--color-text-3<br/>#6B6B6B<br/>Secondary</span></div>
-      <div class="swatch swatch-tall" style="background:#9A9A9A;"><span class="swatch-label light">--color-text-4<br/>#9A9A9A<br/>Placeholder</span></div>
-      <div class="swatch swatch-tall" style="background:#C4C4C4;"><span class="swatch-label">--color-text-5<br/>#C4C4C4<br/>Disabled</span></div>
-    </div>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        {[
+          ['--color-text-1 · Heading','#1A1A1A'],
+          ['--color-text-2 · Body','#3D3D3D'],
+          ['--color-text-3 · Secondary','#6B6B6B'],
+          ['--color-text-4 · Placeholder','#9A9A9A'],
+          ['--color-text-5 · Disabled','#C4C4C4'],
+        ].map(([name, hex]) => (
+          <tr>
+            <td><code>{name}</code><span class="hex-chip">{hex}</span></td>
+            <td><div class="swatch swatch-text" style={`background:${hex};`}><span class="sw-lbl light">{hex}</span></div></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
 
     <h3 class="sg-h3">Semantic</h3>
-    <div class="swatch-row">
-      <div class="swatch" style="background:#22C55E;"><span class="swatch-label light">success icon<br/>#22C55E</span></div>
-      <div class="swatch" style="background:#F0FDF4;border:1.5px solid #BBF7D0;"><span class="swatch-label">success bg<br/>#F0FDF4</span></div>
-      <div class="swatch" style="background:#EAB308;"><span class="swatch-label">warning icon<br/>#EAB308</span></div>
-      <div class="swatch" style="background:#FEFCE8;border:1.5px solid #FEF08A;"><span class="swatch-label">warning bg<br/>#FEFCE8</span></div>
-      <div class="swatch" style="background:#EF4444;"><span class="swatch-label light">error icon<br/>#EF4444</span></div>
-      <div class="swatch" style="background:#FEF2F2;border:1.5px solid #FCA5A5;"><span class="swatch-label">error bg<br/>#FEF2F2</span></div>
-    </div>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><code>success · icon / bg / border</code></td>
+          <td style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <div class="swatch swatch-sm" style="background:#22C55E;"></div>
+            <div class="swatch swatch-sm" style="background:#F0FDF4;border:1.5px solid #BBF7D0;"></div>
+            <span style="font-size:12px;color:var(--color-text-3);">#22C55E · #F0FDF4 · #BBF7D0</span>
+          </td>
+        </tr>
+        <tr><td><code>warning · icon / bg / border</code></td>
+          <td style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <div class="swatch swatch-sm" style="background:#EAB308;"></div>
+            <div class="swatch swatch-sm" style="background:#FEFCE8;border:1.5px solid #FEF08A;"></div>
+            <span style="font-size:12px;color:var(--color-text-3);">#EAB308 · #FEFCE8 · #FEF08A</span>
+          </td>
+        </tr>
+        <tr><td><code>error · icon / bg / border</code></td>
+          <td style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <div class="swatch swatch-sm" style="background:#EF4444;"></div>
+            <div class="swatch swatch-sm" style="background:#FEF2F2;border:1.5px solid #FCA5A5;"></div>
+            <span style="font-size:12px;color:var(--color-text-3);">#EF4444 · #FEF2F2 · #FCA5A5</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
     <h3 class="sg-h3">Shadows</h3>
-    <div class="shadow-row">
-      <div class="shadow-demo" style="box-shadow:0 1px 4px rgba(60,45,20,.07),0 1px 2px rgba(60,45,20,.05);">shadow-sm</div>
-      <div class="shadow-demo" style="box-shadow:0 4px 16px rgba(60,45,20,.10),0 2px 6px rgba(60,45,20,.06);">shadow-md</div>
-      <div class="shadow-demo" style="box-shadow:0 12px 40px rgba(60,45,20,.13),0 4px 12px rgba(60,45,20,.07);">shadow-lg</div>
-      <div class="shadow-demo" style="box-shadow:0 8px 24px rgba(28,112,247,.22),0 2px 8px rgba(28,112,247,.14);">shadow-blue</div>
-    </div>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        {[
+          ['--shadow-sm','0 1px 4px rgba(60,45,20,.07), 0 1px 2px rgba(60,45,20,.05)'],
+          ['--shadow-md','0 4px 16px rgba(60,45,20,.10), 0 2px 6px rgba(60,45,20,.06)'],
+          ['--shadow-lg','0 12px 40px rgba(60,45,20,.13), 0 4px 12px rgba(60,45,20,.07)'],
+          ['--shadow-blue','0 8px 24px rgba(28,112,247,.22), 0 2px 8px rgba(28,112,247,.14)'],
+        ].map(([name, shadow]) => (
+          <tr>
+            <td><code>{name}</code></td>
+            <td><div class="shadow-demo" style={`box-shadow:${shadow};`}>{name.replace('--shadow-','')}</div></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </section>
 
-  <!-- ══════════════════════════════════════════════
+  <!-- ════════════════════════════════
        2. TYPOGRAPHY
-  ══════════════════════════════════════════════ -->
-  <section class="sg-section">
-    <h2 class="sg-h2">2. Typography Scale</h2>
-    <p class="sg-note">Font: IBM Plex Sans Thai Looped (sans) · IBM Plex Mono (mono). All weights and sizes are defined as Tailwind v4 <code>@theme</code> tokens.</p>
+  ════════════════════════════════ -->
+  <section class="sg-section" id="sg-typography">
+    <h2 class="sg-h2">2. Typography</h2>
+    <p class="sg-note">Font: <strong>IBM Plex Sans Thai Looped</strong> (sans) · <strong>IBM Plex Mono</strong> (mono · currency, overlines, numbers)</p>
 
-    <div class="type-scale">
-      <div class="type-row">
-        <div class="type-meta"><span class="type-token">5xl</span><span class="type-spec">60px · 700 · −0.025em</span><span class="type-use">Hero / Display</span></div>
-        <div class="type-sample" style="font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;">บริหารได้ฉลาดกว่า</div>
-      </div>
-      <div class="type-row">
-        <div class="type-meta"><span class="type-token">4xl</span><span class="type-spec">48px · 700 · −0.02em</span><span class="type-use">Page title</span></div>
-        <div class="type-sample" style="font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-0.02em;line-height:1.1;">Property Management</div>
-      </div>
-      <div class="type-row">
-        <div class="type-meta"><span class="type-token">3xl</span><span class="type-spec">38px · 700 · −0.015em</span><span class="type-use">Section h1</span></div>
-        <div class="type-sample" style="font-size:clamp(24px,3.2vw,38px);font-weight:700;letter-spacing:-0.015em;line-height:1.15;">ระบบครบในที่เดียว</div>
-      </div>
-      <div class="type-row">
-        <div class="type-meta"><span class="type-token">2xl</span><span class="type-spec">30px · 600 · −0.01em</span><span class="type-use">Card title, h2</span></div>
-        <div class="type-sample" style="font-size:clamp(20px,2.5vw,30px);font-weight:600;letter-spacing:-0.01em;">Home Service</div>
-      </div>
-      <div class="type-row">
-        <div class="type-meta"><span class="type-token">xl</span><span class="type-spec">24px · 600 · 0em</span><span class="type-use">h3, subsection</span></div>
-        <div class="type-sample" style="font-size:24px;font-weight:600;">ฟีเจอร์หลัก</div>
-      </div>
-      <div class="type-row">
-        <div class="type-meta"><span class="type-token">lg</span><span class="type-spec">20px · 500 · 0em</span><span class="type-use">Lead text, h4</span></div>
-        <div class="type-sample" style="font-size:20px;font-weight:500;">สั่งทำความสะอาดได้ทันที</div>
-      </div>
-      <div class="type-row">
-        <div class="type-meta"><span class="type-token">md</span><span class="type-spec">17px · 300 · 0em</span><span class="type-use">Body large</span></div>
-        <div class="type-sample" style="font-size:17px;font-weight:300;line-height:1.65;">รองรับโครงการทุกขนาด ตั้งแต่คอนโดเล็กไปจนถึงโครงการขนาดใหญ่ ด้วยระบบที่ยืดหยุ่นและปรับแต่งได้</div>
-      </div>
-      <div class="type-row">
-        <div class="type-meta"><span class="type-token">base</span><span class="type-spec">15px · 400 · 0em</span><span class="type-use">Body default</span></div>
-        <div class="type-sample" style="font-size:15px;font-weight:400;line-height:1.65;">นิติบุคคลสามารถจัดการข้อมูลลูกบ้าน บิลค่าใช้จ่าย และรายงานการเงินได้ในที่เดียว</div>
-      </div>
-      <div class="type-row">
-        <div class="type-meta"><span class="type-token">sm</span><span class="type-spec">13px · 400 · 0em</span><span class="type-use">Caption, helper</span></div>
-        <div class="type-sample" style="font-size:13px;font-weight:400;color:var(--color-text-3);">อัปเดตล่าสุด 4 มิ.ย. 2567 · ข้อมูลแสดงเป็น real-time</div>
-      </div>
-      <div class="type-row">
-        <div class="type-meta"><span class="type-token">xs / overline</span><span class="type-spec">11px · 500–600 · +0.10em · MONO · UPPERCASE</span><span class="type-use">Overline label</span></div>
-        <div class="type-sample" style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:var(--color-text-4);">PROPERTY MANAGEMENT · SOLUTIONS</div>
-      </div>
-    </div>
-
-    <h3 class="sg-h3">Mono — Currency & Numbers</h3>
-    <div class="type-mono-demo">
-      <span style="font-family:var(--font-mono);font-size:32px;font-weight:700;color:var(--color-text-1);">฿ 2,450.00</span>
-      <span style="font-family:var(--font-mono);font-size:24px;font-weight:700;color:var(--color-primary);">1,200+</span>
-      <span style="font-family:var(--font-mono);font-size:18px;font-weight:500;color:var(--color-orange);">-25%</span>
-    </div>
+    <table class="comp-table type-table">
+      <thead><tr><th>Token · Spec</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>5xl</code><br/><span class="spec">60px · 700 · −0.025em · Hero / Display</span></td>
+          <td><span style="font-size:clamp(32px,5vw,60px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;color:var(--color-text-1);">บริหารได้ฉลาดกว่า</span></td>
+        </tr>
+        <tr>
+          <td><code>4xl</code><br/><span class="spec">48px · 700 · −0.02em · Page title</span></td>
+          <td><span style="font-size:clamp(26px,4vw,48px);font-weight:700;letter-spacing:-0.02em;line-height:1.1;color:var(--color-text-1);">Property Management</span></td>
+        </tr>
+        <tr>
+          <td><code>3xl</code><br/><span class="spec">38px · 700 · −0.015em · Section h1</span></td>
+          <td><span style="font-size:clamp(22px,3.2vw,38px);font-weight:700;letter-spacing:-0.015em;line-height:1.15;color:var(--color-text-1);">ระบบครบในที่เดียว</span></td>
+        </tr>
+        <tr>
+          <td><code>2xl</code><br/><span class="spec">30px · 600 · −0.01em · Card title, h2</span></td>
+          <td><span style="font-size:clamp(20px,2.5vw,30px);font-weight:600;letter-spacing:-0.01em;color:var(--color-text-1);">Home Service</span></td>
+        </tr>
+        <tr>
+          <td><code>xl</code><br/><span class="spec">24px · 600 · 0 · h3, subsection</span></td>
+          <td><span style="font-size:24px;font-weight:600;color:var(--color-text-1);">ฟีเจอร์หลัก</span></td>
+        </tr>
+        <tr>
+          <td><code>lg</code><br/><span class="spec">20px · 500 · 0 · Lead text, h4</span></td>
+          <td><span style="font-size:20px;font-weight:500;color:var(--color-text-1);">สั่งทำความสะอาดได้ทันที</span></td>
+        </tr>
+        <tr>
+          <td><code>md</code><br/><span class="spec">17px · 300 · 0 · Body large</span></td>
+          <td><span style="font-size:17px;font-weight:300;line-height:1.65;color:var(--color-text-3);">รองรับโครงการทุกขนาด ตั้งแต่คอนโดเล็กไปจนถึงโครงการขนาดใหญ่ ด้วยระบบที่ยืดหยุ่นและปรับแต่งได้</span></td>
+        </tr>
+        <tr>
+          <td><code>base</code><br/><span class="spec">15px · 400 · 0 · Body default</span></td>
+          <td><span style="font-size:15px;font-weight:400;line-height:1.65;color:var(--color-text-2);">นิติบุคคลสามารถจัดการข้อมูลลูกบ้าน บิลค่าใช้จ่าย และรายงานการเงินได้ในที่เดียว</span></td>
+        </tr>
+        <tr>
+          <td><code>sm</code><br/><span class="spec">13px · 400 · 0 · Caption, helper</span></td>
+          <td><span style="font-size:13px;font-weight:400;line-height:1.65;color:var(--color-text-3);">อัปเดตล่าสุด 4 มิ.ย. 2567 · ข้อมูลแสดงเป็น real-time</span></td>
+        </tr>
+        <tr>
+          <td><code>xs · overline</code><br/><span class="spec">11px · 500–600 · +0.10em · MONO · UPPERCASE</span></td>
+          <td><span style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:var(--color-text-4);">PROPERTY MANAGEMENT · SOLUTIONS</span></td>
+        </tr>
+        <tr>
+          <td><code>mono · currency</code><br/><span class="spec">IBM Plex Mono · all numbers & prices</span></td>
+          <td style="display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;">
+            <span style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--color-text-1);">฿ 2,450.00</span>
+            <span style="font-family:var(--font-mono);font-size:22px;font-weight:700;color:var(--color-primary);">1,200+</span>
+            <span style="font-family:var(--font-mono);font-size:18px;font-weight:600;color:var(--color-orange);">-25%</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
-  <!-- ══════════════════════════════════════════════
+  <!-- ════════════════════════════════
        3. SPACING & RADIUS
-  ══════════════════════════════════════════════ -->
-  <section class="sg-section">
+  ════════════════════════════════ -->
+  <section class="sg-section" id="sg-spacing">
     <h2 class="sg-h2">3. Spacing & Border Radius</h2>
 
     <h3 class="sg-h3">Spacing — base unit 4px</h3>
-    <div class="spacing-row">
-      {[
-        ['sp-1','4px'],['sp-2','8px'],['sp-3','12px'],['sp-4','16px'],
-        ['sp-6','24px'],['sp-8','32px'],['sp-10','40px'],['sp-12','48px'],
-        ['sp-16','64px'],['sp-20','80px'],
-      ].map(([token, size]) => (
-        <div class="spacing-item">
-          <div class="spacing-box" style={`width:${size};height:${size};`}></div>
-          <span class="spacing-label">{token}</span>
-          <span class="spacing-size">{size}</span>
-        </div>
-      ))}
-    </div>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        {[
+          ['sp-1','4px'],['sp-2','8px'],['sp-3','12px'],['sp-4','16px'],
+          ['sp-6','24px'],['sp-8','32px'],['sp-10','40px'],['sp-12','48px'],
+          ['sp-16','64px'],['sp-20','80px'],
+        ].map(([token, size]) => (
+          <tr>
+            <td><code>{token}</code> <span class="spec">{size}</span></td>
+            <td><div class="sp-box" style={`width:${size};height:${size};`}></div></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
 
     <h3 class="sg-h3">Border Radius</h3>
-    <div class="radius-row">
-      {[
-        ['r-sm','6px'],['r-md','10px'],['r-lg','14px'],['r-xl','20px'],
-        ['r-2xl','28px'],['r-full','9999px'],
-      ].map(([token, radius]) => (
-        <div class="radius-item">
-          <div class="radius-box" style={`border-radius:${radius};`}></div>
-          <span class="spacing-label">{token}</span>
-          <span class="spacing-size">{radius}</span>
-        </div>
-      ))}
-    </div>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        {[
+          ['r-sm / --radius-sm','6px','form inputs'],
+          ['r-md / --radius-md','10px','inputs, small buttons'],
+          ['r-lg / --radius-lg','14px','cards default, alerts'],
+          ['r-xl / --radius-xl','20px','large cards, modals'],
+          ['r-2xl / --radius-2xl','28px','hero card, cover card'],
+          ['r-full','9999px','pills, badges, chips'],
+        ].map(([token, radius, usage]) => (
+          <tr>
+            <td><code>{token}</code> <span class="spec">{radius} · {usage}</span></td>
+            <td><div class="radius-box" style={`border-radius:${radius};`}></div></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </section>
 
-  <!-- ══════════════════════════════════════════════
+  <!-- ════════════════════════════════
        4. BUTTONS
-  ══════════════════════════════════════════════ -->
-  <section class="sg-section">
+  ════════════════════════════════ -->
+  <section class="sg-section" id="sg-buttons">
     <h2 class="sg-h2">4. Buttons</h2>
 
-    <h3 class="sg-h3">Primary CTA (Hero / Inner Hero)</h3>
-    <div class="btn-row">
-      <a href="#" class="cta-primary-demo">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg>
-        เริ่มใช้งานฟรี 30 วัน
-      </a>
-      <code class="sg-code">padding: 14px 28px · r-md · bg: --color-primary · shadow: blue 35%</code>
-    </div>
-
-    <h3 class="sg-h3">Secondary CTA (Warm Surface)</h3>
-    <div class="btn-row">
-      <a href="#" class="cta-secondary-demo">ดูวิดีโอการทำงาน</a>
-      <code class="sg-code">padding: 14px 28px · r-md · bg: --color-warm-surface · border: --color-warm-border-light</code>
-    </div>
-
-    <h3 class="sg-h3">3D Emboss Button (.btn-3d)</h3>
-    <div class="btn-row">
-      <a href="#" class="btn-3d-demo btn-3d">นัดสาธิตระบบ</a>
-      <a href="#" class="btn-3d-demo btn-3d" style="background:var(--color-orange);">Living Mart</a>
-      <code class="sg-code">.btn-3d — layered gradient + inset bevel shadows. Works on any solid bg color.</code>
-    </div>
-
-    <h3 class="sg-h3">White Pill CTA (on colored section bg)</h3>
-    <div class="btn-row" style="background:#1C70F7;padding:24px;border-radius:14px;">
-      <a href="#" class="pill-cta-demo">ดูรายละเอียด →</a>
-      <code class="sg-code" style="color:rgba(255,255,255,.6);">bg: white · color: --color-text-1 · r-full · font-weight: 600</code>
-    </div>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>cta-primary</code>
+            <span class="spec">Hero / InnerHero primary action<br/>14px 28px · r-md · bg: --color-primary</span>
+          </td>
+          <td>
+            <a href="#" class="btn-cta-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg>
+              เริ่มใช้งานฟรี 30 วัน
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>cta-secondary</code>
+            <span class="spec">Warm surface, beside primary<br/>14px 28px · r-md · bg: --color-warm-surface</span>
+          </td>
+          <td>
+            <a href="#" class="btn-cta-secondary">ดูวิดีโอการทำงาน</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>.btn-3d</code>
+            <span class="spec">3D emboss style (cofounder.co technique)<br/>Works on any solid background color</span>
+          </td>
+          <td style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="#" class="btn-3d-eg btn-3d" style="background:var(--color-primary);">นัดสาธิตระบบ</a>
+            <a href="#" class="btn-3d-eg btn-3d" style="background:var(--color-orange);">Living Mart</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>card-cta · white pill</code>
+            <span class="spec">On colored section bg (WhyLivingOS panels)<br/>r-full · bg: white · color: --color-text-1</span>
+          </td>
+          <td style="background:var(--color-primary);padding:16px;border-radius:12px;">
+            <a href="#" class="btn-white-pill">
+              ขอ Demo ฟรี
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>ih-cta-secondary</code>
+            <span class="spec">Inner hero secondary — same as cta-secondary<br/>Used on solution/company inner pages</span>
+          </td>
+          <td>
+            <a href="#" class="btn-cta-secondary">ดูราคาแผน →</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
-  <!-- ══════════════════════════════════════════════
+  <!-- ════════════════════════════════
        5. BADGES & PILLS
-  ══════════════════════════════════════════════ -->
-  <section class="sg-section">
+  ════════════════════════════════ -->
+  <section class="sg-section" id="sg-badges">
     <h2 class="sg-h2">5. Badges & Pills</h2>
+    <p class="sg-note">Rule: gold eyebrow on home hero <strong>only</strong>. Blue/orange badge on inner page InnerHero. Never blue badge on home hero.</p>
 
-    <div class="badge-row">
-
-      <!-- Gold eyebrow pill -->
-      <div class="eyebrow-gold inline-flex items-center gap-2" style="position:relative;overflow:hidden;height:32px;padding:0 18px;border-radius:9999px;border:1.5px solid rgba(180,130,0,.45);background:linear-gradient(135deg,#F5E27A 0%,#E8C840 18%,#F0D060 35%,#C9A000 55%,#E8C840 72%,#F5E27A 88%,#D4A820 100%);box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 -1px 0 rgba(100,65,0,.18) inset,0 4px 16px rgba(180,130,0,.28);font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;cursor:default;">
-        <span style="color:#4A2E00;position:relative;z-index:1;text-shadow:0 1px 0 rgba(255,230,100,.6);">PMS · NO.1 IN THAILAND</span>
-        <span style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);background-size:220% 100%;background-position:-100% 0;animation:gold-shimmer 3.5s ease-in-out infinite;border-radius:9999px;" aria-hidden="true"></span>
-      </div>
-
-      <!-- Blue badge (inner page) -->
-      <span style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:9999px;background:rgba(28,112,247,.10);color:#1C70F7;border:1.5px solid rgba(28,112,247,.28);font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;">URBANICE APP</span>
-
-      <!-- Orange badge -->
-      <span style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:9999px;background:rgba(249,115,22,.10);color:#F97316;border:1.5px solid rgba(249,115,22,.28);font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;">LIVING MART</span>
-
-      <!-- Overline label -->
-      <span class="overline">SOLUTIONS · GUARD OS</span>
-
-      <!-- Trust pill -->
-      <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-3);">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        ติดตั้งได้ภายใน 1 วัน
-      </span>
-
-      <!-- Card sov-badge -->
-      <span style="display:inline-flex;align-items:center;padding:4px 10px;border-radius:9999px;background:rgba(28,112,247,.10);color:#1C70F7;border:1.5px solid rgba(28,112,247,.28);font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.05em;">7+ ฟีเจอร์</span>
-
-    </div>
-    <p class="sg-note" style="margin-top:16px;">Rule: gold eyebrow on hero only. Blue/orange badge on inner page InnerHero. Never blue badge on home hero.</p>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>eyebrow-gold</code>
+            <span class="spec">Home hero only · r-full · gold gradient<br/>shimmer sweep animation · font-mono 11px 600</span>
+          </td>
+          <td>
+            <div style="position:relative;overflow:hidden;height:32px;padding:0 18px;border-radius:9999px;border:1.5px solid rgba(180,130,0,.45);background:linear-gradient(135deg,#F5E27A 0%,#E8C840 18%,#F0D060 35%,#C9A000 55%,#E8C840 72%,#F5E27A 88%,#D4A820 100%);box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 -1px 0 rgba(100,65,0,.18) inset,0 4px 16px rgba(180,130,0,.28);display:inline-flex;align-items:center;font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;width:fit-content;">
+              <span style="color:#4A2E00;position:relative;z-index:1;text-shadow:0 1px 0 rgba(255,230,100,.6);">PMS · NO.1 IN THAILAND</span>
+              <span style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);background-size:220% 100%;background-position:-100% 0;animation:gold-shimmer 3.5s ease-in-out infinite;border-radius:9999px;" aria-hidden="true"></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>ih-badge · blue</code>
+            <span class="spec">Inner page InnerHero · r-full<br/>rgba(accent,.10) bg · rgba(accent,.28) border</span>
+          </td>
+          <td>
+            <span style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:9999px;background:rgba(28,112,247,.10);color:#1C70F7;border:1.5px solid rgba(28,112,247,.28);font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;">URBANICE APP</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>ih-badge · orange</code>
+            <span class="spec">Inner page accent (orange products)</span>
+          </td>
+          <td>
+            <span style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:9999px;background:rgba(249,115,22,.10);color:#F97316;border:1.5px solid rgba(249,115,22,.28);font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;">LIVING MART</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>.overline</code>
+            <span class="spec">Section label · font-mono 11px 500<br/>letter-spacing .10em · UPPERCASE · color-text-4</span>
+          </td>
+          <td>
+            <span class="overline">SOLUTIONS · GUARD OS</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>.trust-pill</code>
+            <span class="spec">Hero CTA row · inline-flex + checkmark svg<br/>13px · color-text-3 · hidden on tablet/mobile</span>
+          </td>
+          <td>
+            <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-3);">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              ติดตั้งได้ภายใน 1 วัน
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>.sov-badge</code>
+            <span class="spec">SolutionOverview card footer · r-full<br/>font-mono 10.5px 600 · derived from section bgColor</span>
+          </td>
+          <td>
+            <span style="display:inline-flex;align-items:center;padding:4px 10px;border-radius:9999px;background:rgba(28,112,247,.10);color:#1C70F7;border:1.5px solid rgba(28,112,247,.28);font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.05em;">7+ ฟีเจอร์</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>.g-badge · glass</code>
+            <span class="spec">WhyLivingOS glass card header<br/>rgba white bg on colored panel bg</span>
+          </td>
+          <td style="background:#1C70F7;padding:12px;border-radius:10px;">
+            <span style="font-size:10px;font-family:var(--font-mono);font-weight:600;padding:3px 8px;border-radius:5px;letter-spacing:.04em;background:rgba(255,255,255,.15);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.2);">Go-live Checklist</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       6. CARDS
-  ══════════════════════════════════════════════ -->
-  <section class="sg-section">
-    <h2 class="sg-h2">6. Cards</h2>
+  <!-- ════════════════════════════════
+       6. SECTION BACKGROUNDS
+  ════════════════════════════════ -->
+  <section class="sg-section" id="sg-backgrounds">
+    <h2 class="sg-h2">6. Section Backgrounds</h2>
+    <p class="sg-note">Never alternate plain white → gray → white without an accent break. Every neutral must have warm undertone — no #F0F0F0 or cool gray.</p>
 
-    <h3 class="sg-h3">Stats Row (.stats-row + .stat-cell)</h3>
-    <div class="stats-row">
-      <div class="stat-cell">
-        <div class="stat-num">1,200+</div>
-        <div class="stat-lbl">โครงการที่ใช้งาน</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">98%</div>
-        <div class="stat-lbl">ความพึงพอใจลูกค้า</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">฿ 2.4B</div>
-        <div class="stat-lbl">มูลค่าธุรกรรมต่อปี</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">24/7</div>
-        <div class="stat-lbl">Support</div>
-      </div>
-    </div>
-
-    <h3 class="sg-h3" style="margin-top:40px;">SolutionOverview Card (.sov-card)</h3>
-    <p class="sg-note">Tilted paper-clip cards on a colored background. Hover to straighten.</p>
-    <div style="background:#1C70F7;border-radius:20px;padding:40px 32px 48px;">
-      <div class="sov-grid-demo">
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
         {[
-          { title: 'แดชบอร์ดนิติบุคคล', desc: 'ดูภาพรวมอาคาร รายรับ-รายจ่าย และสถานะห้องพักแบบ real-time', badge: 'CORE MODULE', emoji: '🏢', rot: '-5deg' },
-          { title: 'ระบบบิลอัตโนมัติ', desc: 'ออกบิลค่าส่วนกลาง ค่าน้ำ ค่าไฟ ส่งให้ลูกบ้านอัตโนมัติทุกเดือน', badge: '99.9% UPTIME', emoji: '📄', rot: '3.5deg' },
-          { title: 'รายงานการเงิน', desc: 'Export งบกำไรขาดทุน บัญชีแยกประเภท และสรุปค้างชำระ', badge: 'EXPORT PDF', emoji: '📊', rot: '-3deg' },
-          { title: 'แจ้งซ่อมออนไลน์', desc: 'ลูกบ้านแจ้งซ่อมผ่านแอป ทีมช่างรับงาน ติดตามสถานะได้ทุกขั้นตอน', badge: 'REAL-TIME', emoji: '🔧', rot: '5deg' },
-        ].map((c) => (
-          <div class="sov-card-outer-demo">
-            <div class="sov-card-inner-demo" style={`--rot:${c.rot};`}>
-              <div class="sov-clip-demo" aria-hidden="true">
-                <svg width="22" height="50" viewBox="0 0 22 50" fill="none"><rect x="8" y="0" width="6" height="50" rx="3" fill="#C8C0B0"/><rect x="10" y="4" width="2" height="42" rx="1" fill="#E8E0D0"/></svg>
+          ['warm-page · #FFFFFF','Default page bg','#FFFFFF','1.5px solid #E8E4DA','',''],
+          ['warm-surface · #F5F3EE','Alternate section bg','#F5F3EE','none','',''],
+          ['warm-overlay · #EEEAE2','Tab bg, card bg','#EEEAE2','none','',''],
+          ['primary · #1C70F7','SolutionOverview, CTA banner','#1C70F7','none','color:#fff',''],
+          ['orange · #F97316','Living Mart accent sections','#F97316','none','color:#fff',''],
+          ['dark navy gradient','WhyLivingOS panel 3','linear-gradient(180deg,#0D2D6B 0%,#0A1F4E 100%)','none','color:#fff','background'],
+          ['primary-50 + .dot-grid','Inner section accents','#EEF4FF','none','','dot-grid'],
+        ].map(([name, use, bg, border, extra, cls]) => (
+          <tr>
+            <td><code>{name}</code><span class="spec">{use}</span></td>
+            <td>
+              <div
+                class={`bg-swatch ${cls}`}
+                style={`background:${bg};border:${border};${extra}`}
+              >
+                <span style="font-size:11px;font-family:var(--font-mono);font-weight:600;">{use}</span>
               </div>
-              <div class="sov-card-demo">
-                <h3 style="font-size:16px;font-weight:700;color:var(--color-text-1);margin-bottom:8px;">{c.title}</h3>
-                <p style="font-size:13.5px;color:var(--color-text-3);line-height:1.6;flex:1;">{c.desc}</p>
-                <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:16px;">
-                  <span style="padding:4px 10px;border-radius:9999px;background:rgba(28,112,247,.10);color:#1C70F7;border:1.5px solid rgba(28,112,247,.28);font-family:var(--font-mono);font-size:10.5px;font-weight:600;">{c.badge}</span>
-                  <span style="font-size:38px;line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,.14));">{c.emoji}</span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════════════════════════════════
+       7. CARDS
+  ════════════════════════════════ -->
+  <section class="sg-section" id="sg-cards">
+    <h2 class="sg-h2">7. Cards</h2>
+
+    <!-- 7a. Stats Row -->
+    <h3 class="sg-h3">Stats Row</h3>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>.stats-row + .stat-cell</code>
+            <span class="spec">Horizontal row · border 1.5px warm-border-light<br/>r-lg · bg white · stat-num: font-mono 32px 700</span>
+          </td>
+          <td>
+            <div class="stats-row" style="max-width:560px;">
+              <div class="stat-cell"><div class="stat-num">1,200+</div><div class="stat-lbl">โครงการ</div></div>
+              <div class="stat-cell"><div class="stat-num">98%</div><div class="stat-lbl">ความพึงพอใจ</div></div>
+              <div class="stat-cell"><div class="stat-num">24/7</div><div class="stat-lbl">Support</div></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 7b. SolutionOverview cards -->
+    <h3 class="sg-h3" style="margin-top:36px;">SolutionOverview Card (.sov-card)</h3>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>.sov-card · tilted paper-clip</code>
+            <span class="spec">4-col grid on colored bg section<br/>rotate(±3–5deg) · hover → straightens + lifts<br/>r-xl · shadow warm · badge + emoji footer</span>
+          </td>
+          <td>
+            <div style="background:#1C70F7;border-radius:16px;padding:32px 24px 40px;">
+              <div class="sov-grid-eg">
+                {[
+                  { title: 'แดชบอร์ดนิติบุคคล', desc: 'ดูภาพรวมอาคาร รายรับ-รายจ่าย และสถานะแบบ real-time', badge: 'CORE MODULE', emoji: '🏢', rot: '-5deg' },
+                  { title: 'ระบบบิลอัตโนมัติ', desc: 'ออกบิลค่าส่วนกลาง ค่าน้ำ ค่าไฟ ส่งให้ลูกบ้านอัตโนมัติ', badge: '99.9% UPTIME', emoji: '📄', rot: '3.5deg' },
+                  { title: 'รายงานการเงิน', desc: 'Export งบกำไรขาดทุน บัญชีแยกประเภท สรุปค้างชำระ', badge: 'EXPORT PDF', emoji: '📊', rot: '-3deg' },
+                  { title: 'แจ้งซ่อมออนไลน์', desc: 'ลูกบ้านแจ้งซ่อมผ่านแอป ติดตามสถานะได้ทุกขั้นตอน', badge: 'REAL-TIME', emoji: '🔧', rot: '5deg' },
+                ].map(c => (
+                  <div class="sov-outer-eg">
+                    <div class="sov-inner-eg" style={`--rot:${c.rot};`}>
+                      <div class="sov-clip-eg" aria-hidden="true">
+                        <svg width="22" height="50" viewBox="0 0 22 50" fill="none"><rect x="8" y="0" width="6" height="50" rx="3" fill="#C8C0B0"/><rect x="10" y="4" width="2" height="42" rx="1" fill="#E8E0D0"/></svg>
+                      </div>
+                      <div class="sov-card-eg">
+                        <h3 style="font-size:15px;font-weight:700;color:var(--color-text-1);margin-bottom:7px;">{c.title}</h3>
+                        <p style="font-size:12.5px;color:var(--color-text-3);line-height:1.6;flex:1;">{c.desc}</p>
+                        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:14px;">
+                          <span style="padding:3px 9px;border-radius:9999px;background:rgba(28,112,247,.10);color:#1C70F7;border:1.5px solid rgba(28,112,247,.28);font-family:var(--font-mono);font-size:9.5px;font-weight:600;">{c.badge}</span>
+                          <span style="font-size:34px;line-height:1;filter:drop-shadow(0 3px 8px rgba(0,0,0,.14));">{c.emoji}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 7c. Two-cards grid -->
+    <h3 class="sg-h3" style="margin-top:36px;">Two-Cards Grid (.service-card)</h3>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>.service-card · two-cards-grid</code>
+            <span class="spec">2-col grid on solution page<br/>flex-col: white header + colored gradient visual<br/>h2 + red dot on same row · r-xl · shadow-md</span>
+          </td>
+          <td>
+            <div class="two-cards-eg">
+              <div class="sc-eg">
+                <div style="background:#fff;padding:22px 22px 16px;flex-shrink:0;">
+                  <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+                    <h2 style="font-size:24px;font-weight:700;line-height:1.15;color:#1A1A1A;margin:0;flex:1;">Home Service</h2>
+                    <div style="width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#FF6B6B,#C0000C);box-shadow:inset 2px 2px 3px rgba(255,180,180,.65),inset -1.5px -1.5px 3px rgba(80,0,0,.45),0 3px 8px rgba(180,0,20,.35);flex-shrink:0;"></div>
+                  </div>
+                  <p style="font-size:12px;color:#6B6B6B;line-height:1.6;">สั่งทำความสะอาด ซักรีด ล้างแอร์ ได้ทันทีในแอป</p>
+                </div>
+                <div style="flex:1;background:linear-gradient(180deg,#B2E8EA 0%,#7ACFD3 100%);padding:18px;min-height:140px;display:flex;align-items:center;justify-content:center;">
+                  <div style="display:flex;flex-direction:column;gap:6px;width:100%;max-width:200px;">
+                    {['🧹 ทำความสะอาด','👕 ซักรีด','🚿 ล้างแอร์'].map(s=>(
+                      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.88);border-radius:9px;padding:6px 12px;font-size:11px;font-weight:600;color:#1A1A1A;">{s}</div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div class="sc-eg">
+                <div style="background:#fff;padding:22px 22px 16px;flex-shrink:0;">
+                  <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+                    <h2 style="font-size:24px;font-weight:700;line-height:1.15;color:#1A1A1A;margin:0;flex:1;">Living Mart</h2>
+                    <div style="width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#FF6B6B,#C0000C);box-shadow:inset 2px 2px 3px rgba(255,180,180,.65),inset -1.5px -1.5px 3px rgba(80,0,0,.45),0 3px 8px rgba(180,0,20,.35);flex-shrink:0;"></div>
+                  </div>
+                  <p style="font-size:12px;color:#6B6B6B;line-height:1.6;">ช้อปสินค้าคัดสรร ส่งตรงถึงหน้าห้อง</p>
+                </div>
+                <div style="flex:1;background:linear-gradient(180deg,#FFEDD5 0%,#FDC090 100%);padding:18px;min-height:140px;display:flex;align-items:center;justify-content:center;">
+                  <div style="display:flex;flex-direction:column;gap:6px;width:100%;max-width:200px;">
+                    {['🏠 บ้านและห้องนอน','🍳 ครัวและเครื่องใช้','✨ ไลฟ์สไตล์'].map(s=>(
+                      <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.88);border-radius:9px;padding:6px 12px;font-size:11px;font-weight:600;color:#1A1A1A;">{s}</div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-    <h3 class="sg-h3" style="margin-top:40px;">Two-Cards Grid (.two-cards-grid / .service-card)</h3>
-    <p class="sg-note">Used on Urbanice page for Home Service + Living Mart.</p>
-    <div class="two-cards-demo-grid">
-      <!-- Card 1 -->
-      <div class="service-card-demo">
-        <div style="background:#fff;padding:28px 28px 22px;flex-shrink:0;">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-            <h2 style="font-size:28px;font-weight:700;line-height:1.15;color:#1A1A1A;margin:0;flex:1;">Home Service</h2>
-            <div style="width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#FF6B6B,#C0000C);box-shadow:inset 2px 2px 3px rgba(255,180,180,.65),inset -1.5px -1.5px 3px rgba(80,0,0,.45),0 3px 8px rgba(180,0,20,.35);flex-shrink:0;"></div>
-          </div>
-          <p style="font-size:14px;color:#6B6B6B;line-height:1.65;">สั่งทำความสะอาด ซักรีด ล้างแอร์ และอีกมากมาย ได้ทันทีในแอป</p>
-        </div>
-        <div style="flex:1;background:linear-gradient(180deg,#B2E8EA 0%,#7ACFD3 100%);display:flex;align-items:center;justify-content:center;padding:24px;min-height:200px;">
-          <div style="display:flex;flex-direction:column;gap:8px;width:100%;max-width:240px;">
-            {['🧹 ทำความสะอาด','👕 ซักรีด','🚿 ล้างแอร์','🌿 ดูแลต้นไม้'].map(s => (
-              <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.88);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:600;color:#1A1A1A;">{s}</div>
-            ))}
-          </div>
-        </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="service-card-demo">
-        <div style="background:#fff;padding:28px 28px 22px;flex-shrink:0;">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-            <h2 style="font-size:28px;font-weight:700;line-height:1.15;color:#1A1A1A;margin:0;flex:1;">Living Mart</h2>
-            <div style="width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#FF6B6B,#C0000C);box-shadow:inset 2px 2px 3px rgba(255,180,180,.65),inset -1.5px -1.5px 3px rgba(80,0,0,.45),0 3px 8px rgba(180,0,20,.35);flex-shrink:0;"></div>
-          </div>
-          <p style="font-size:14px;color:#6B6B6B;line-height:1.65;">ช้อปสินค้าคัดสรรและดีลเอกสิทธิ์สำหรับลูกบ้าน ส่งตรงถึงหน้าห้อง</p>
-        </div>
-        <div style="flex:1;background:linear-gradient(180deg,#FFEDD5 0%,#FDC090 100%);display:flex;align-items:center;justify-content:center;padding:24px;min-height:200px;">
-          <div style="display:flex;flex-direction:column;gap:8px;width:100%;max-width:240px;">
-            {['🏠 บ้านและห้องนอน','🍳 ครัวและเครื่องใช้','✨ ไลฟ์สไตล์','🧴 ของใช้ประจำวัน'].map(s => (
-              <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.88);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:600;color:#1A1A1A;">{s}</div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="sg-h3" style="margin-top:40px;">Feature Row (.feat-row)</h3>
-    <p class="sg-note">2-column grid: visual (aspect-ratio 4/3) + copy with feat-list. Stacks at 900px.</p>
-    <div class="feat-row">
-      <div class="feat-visual" style="background:var(--color-primary-50);">
-        <span style="font-size:64px;">🏢</span>
-      </div>
-      <div>
-        <span class="overline" style="display:block;margin-bottom:10px;">CORE MODULE</span>
-        <h3 style="font-size:26px;font-weight:700;color:var(--color-text-1);margin-bottom:12px;">แดชบอร์ดนิติบุคคล</h3>
-        <p style="font-size:15px;color:var(--color-text-3);line-height:1.65;margin-bottom:20px;">ดูภาพรวมอาคาร รายรับ-รายจ่าย และสถานะห้องพักแบบ real-time ในหน้าเดียว</p>
-        <ul class="feat-list">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            ข้อมูลอัปเดต real-time
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Export รายงาน PDF/Excel
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            รองรับหลายโครงการในบัญชีเดียว
-          </li>
-        </ul>
-      </div>
-    </div>
+    <!-- 7d. Feature row -->
+    <h3 class="sg-h3" style="margin-top:36px;">Feature Row (.feat-row)</h3>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>.feat-row + .feat-visual + .feat-list</code>
+            <span class="spec">2-col grid: visual (aspect 4/3) + copy<br/>Stacks at 900px · gap 64px desktop</span>
+          </td>
+          <td>
+            <div class="feat-row">
+              <div class="feat-visual" style="background:var(--color-primary-50);">
+                <span style="font-size:56px;">🏢</span>
+              </div>
+              <div>
+                <span class="overline" style="display:block;margin-bottom:8px;">CORE MODULE</span>
+                <h3 style="font-size:22px;font-weight:700;color:var(--color-text-1);margin-bottom:10px;">แดชบอร์ดนิติบุคคล</h3>
+                <ul class="feat-list">
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>ข้อมูลอัปเดต real-time</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Export รายงาน PDF/Excel</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>รองรับหลายโครงการในบัญชีเดียว</li>
+                </ul>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       7. SECTION BACKGROUNDS
-  ══════════════════════════════════════════════ -->
-  <section class="sg-section">
-    <h2 class="sg-h2">7. Section Backgrounds</h2>
-    <p class="sg-note">Sections must alternate with at least one accent — never plain white/gray alternating only.</p>
-
-    <div class="bg-gallery">
-      <div class="bg-demo" style="background:#FFFFFF;border:1.5px solid #E8E4DA;">
-        <span class="bg-label">warm-page #FFFFFF</span>
-        <span class="bg-use">Default page bg</span>
-      </div>
-      <div class="bg-demo" style="background:#F5F3EE;">
-        <span class="bg-label">warm-surface #F5F3EE</span>
-        <span class="bg-use">Alternate section</span>
-      </div>
-      <div class="bg-demo" style="background:#EEEAE2;">
-        <span class="bg-label">warm-overlay #EEEAE2</span>
-        <span class="bg-use">Tab bg, card bg</span>
-      </div>
-      <div class="bg-demo" style="background:#1C70F7;">
-        <span class="bg-label" style="color:#fff;">primary #1C70F7</span>
-        <span class="bg-use" style="color:rgba(255,255,255,.6);">SolutionOverview, CTA banner</span>
-      </div>
-      <div class="bg-demo" style="background:#F97316;">
-        <span class="bg-label" style="color:#fff;">orange #F97316</span>
-        <span class="bg-use" style="color:rgba(255,255,255,.6);">Living Mart accent sections</span>
-      </div>
-      <div class="bg-demo" style="background:linear-gradient(180deg,#0D2D6B 0%,#0A1F4E 100%);">
-        <span class="bg-label" style="color:#fff;">dark navy gradient</span>
-        <span class="bg-use" style="color:rgba(255,255,255,.6);">Why panel 3 (dark-navy)</span>
-      </div>
-      <div class="bg-demo dot-grid" style="background:#EEF4FF;">
-        <span class="bg-label">primary-50 + .dot-grid</span>
-        <span class="bg-use">Inner section accents</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════
+  <!-- ════════════════════════════════
        8. LAYOUT PATTERNS
-  ══════════════════════════════════════════════ -->
-  <section class="sg-section">
+  ════════════════════════════════ -->
+  <section class="sg-section" id="sg-layouts">
     <h2 class="sg-h2">8. Layout Patterns</h2>
 
-    <h3 class="sg-h3">Hero Copy Card overlap</h3>
-    <p class="sg-note">Video/visual panel at full width → copy card overlaps from below with negative <code>margin-top</code>. Same pattern on Hero (home) and InnerHero (inner pages).</p>
-    <div class="layout-diagram">
-      <div class="ld-visual">Visual panel<br/>(16:9 or 16:6.2)<br/>border-radius: 20px</div>
-      <div class="ld-card">Copy card<br/>margin-top: -178px (inner) / -208px (home)<br/>margin-left: 64px<br/>border-radius: 24px<br/>z-index: 10</div>
-    </div>
+    <!-- 8a. Hero overlap -->
+    <h3 class="sg-h3">Hero Copy Card Overlap</h3>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>.hero-stage → .hero-copy-card</code>
+            <span class="spec">Video/visual panel full-width (16:9 or 16:6.2)<br/>Copy card: margin-top −208px (home) / −178px (inner)<br/>margin-left 64px · z-index 10 · r-2xl</span>
+          </td>
+          <td>
+            <div class="layout-hero-eg">
+              <div class="lh-visual">Visual panel · aspect-ratio 16/9 · r-xl</div>
+              <div class="lh-card">Copy card<br/><span style="font-size:10px;color:var(--color-text-4);">margin-top: −178px · margin-left: 64px · z-index: 10</span></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-    <h3 class="sg-h3" style="margin-top:40px;">WhyLivingOS — Sticky Nav + Scroll Panels</h3>
-    <p class="sg-note">CSS Grid <code>220px 1fr</code>, gap 64px. Left aside uses GSAP ScrollTrigger pin — NOT <code>position:sticky</code> (breaks in CSS Grid align-items:start).</p>
-    <div class="layout-why-diagram">
-      <div class="lwd-nav">
-        <div style="font-size:11px;font-weight:600;margin-bottom:12px;font-family:var(--font-mono);letter-spacing:.08em;color:var(--color-text-4);">GSAP PINNED</div>
-        {['ประหยัดเวลา','โปร่งใส','ลดต้นทุน','ขยายได้'].map((n,i) => (
-          <div style={`padding:10px 14px;border-radius:8px;font-size:13px;font-weight:${i===0?'700':'500'};color:${i===0?'#1C70F7':'var(--color-text-3)'};background:${i===0?'var(--color-primary-50)':'transparent'};margin-bottom:4px;`}>{n}</div>
-        ))}
-      </div>
-      <div class="lwd-panels">
-        {[
-          { bg: 'linear-gradient(135deg,#1C70F7,#0A3E9E)', label: 'Panel 1 — Blue' },
-          { bg: 'linear-gradient(135deg,#0D4A6B,#063347)', label: 'Panel 2 — Teal-Navy' },
-          { bg: 'linear-gradient(135deg,#0D2D6B,#0A1F4E)', label: 'Panel 3 — Dark-Navy' },
-          { bg: 'linear-gradient(135deg,#EA5A0C,#B83A00)', label: 'Panel 4 — Orange' },
-        ].map(p => (
-          <div style={`background:${p.bg};border-radius:16px;padding:20px;color:#fff;font-size:13px;font-weight:600;margin-bottom:8px;`}>{p.label}</div>
-        ))}
-      </div>
-    </div>
+    <!-- 8b. WhyLivingOS LIVE DEMO -->
+    <h3 class="sg-h3" style="margin-top:36px;">WhyLivingOS — Sticky Nav + Scroll Panels</h3>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>.why-layout</code>
+            <span class="spec">CSS Grid: 220px 1fr · gap 64px<br/>Left nav: GSAP ScrollTrigger pin (not CSS sticky)<br/>Right: 4 stacked .why-panel-card (colored gradient)<br/>IntersectionObserver updates nav active state<br/><br/>Tablet (≤1279px): grid collapses to 1-col,<br/>nav becomes horizontal scroll tabs<br/>Mobile (≤475px): nav labels compact</span>
+          </td>
+          <td>
+            <!-- Live demo in a scrollable container -->
+            <div class="why-demo-container" id="whyDemoBox">
+              <div class="why-demo-layout">
 
-    <h3 class="sg-h3" style="margin-top:40px;">Container & Section Pad</h3>
-    <div class="container-demo">
-      <div class="container-inner">
-        <code>.container-los</code> — max-width: 1280px, auto margin<br/>
-        padding: 20px (mobile) → 24px (tablet 476px+) → 40px (desktop 1280px+)
-      </div>
-    </div>
-    <div class="section-pad-demo">
-      <code>.section-pad</code> — padding-top/bottom: 56px (mobile) → 80px (tablet) → 96px (desktop)
-    </div>
+                <!-- Left sticky nav -->
+                <div class="why-demo-nav" id="whyDemoNav">
+                  {[
+                    { num: '01', th: 'ใช้งานง่าย', en: 'Easy to Start' },
+                    { num: '02', th: 'ครบในระบบเดียว', en: 'All-in-One' },
+                    { num: '03', th: 'ปลอดภัย', en: 'Enterprise Security' },
+                    { num: '04', th: 'ทีมไทย', en: 'Local Support' },
+                  ].map((g, i) => (
+                    <button class={`wdn-item${i===0?' wdn-active':''}`} data-wdn={i} type="button">
+                      <span class="wdn-dot"></span>
+                      <div class="wdn-body">
+                        <span class="wdn-num">{g.num}</span>
+                        <span class="wdn-th">{g.th}</span>
+                        <span class="wdn-en">{g.en}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                <!-- Right panels -->
+                <div class="why-demo-panels">
+                  {[
+                    {
+                      en: 'EASY TO START',
+                      th: 'คุ้นเคยตั้งแต่วันแรก',
+                      body: 'UI ออกแบบตาม Pattern มาตรฐาน มีคู่มือภาษาไทยพร้อมทุกขั้นตอน Go-live ได้ภายใน 7 วัน',
+                      bg: 'linear-gradient(145deg,#1C70F7 0%,#0a4eaa 100%)',
+                      idx: 0,
+                    },
+                    {
+                      en: 'ALL-IN-ONE',
+                      th: 'เชื่อมทุกงานในที่เดียว',
+                      body: 'บัญชี ลูกบ้าน รักษาความปลอดภัย และบริการ — ทุกโมดูลเชื่อมถึงกัน Real-Time Dashboard',
+                      bg: 'linear-gradient(145deg,#13A8AE 0%,#062986 100%)',
+                      idx: 1,
+                    },
+                    {
+                      en: 'ENTERPRISE SECURITY',
+                      th: 'ปลอดภัยทุกชั้น มาตรฐานองค์กร',
+                      body: 'ข้อมูลเข้ารหัสทุกชั้น สำรองข้อมูลอัตโนมัติทุกวัน ได้มาตรฐาน ISO 27001',
+                      bg: 'linear-gradient(145deg,#2d3a8c 0%,#0f172a 100%)',
+                      idx: 2,
+                    },
+                    {
+                      en: 'LOCAL SUPPORT',
+                      th: 'Support คนไทย เข้าใจปัญหาจริง',
+                      body: 'ทีม CS คนไทยตอบไว เข้าใจบริบทนิติบุคคลไทย มี SLA ชัดเจนติดตามได้',
+                      bg: 'linear-gradient(145deg,#f97316 0%,#b45309 100%)',
+                      idx: 3,
+                    },
+                  ].map(p => (
+                    <div class="wdp-anchor" data-wdp={p.idx}>
+                      <div class="wdp-card" style={`background:${p.bg};`}>
+                        <div class="wdp-top">
+                          <div>
+                            <p class="wdp-en">{p.en}</p>
+                            <h3 class="wdp-heading">{p.th}</h3>
+                            <p class="wdp-body">{p.body}</p>
+                          </div>
+                          <a href="#" class="wdp-cta">
+                            ขอ Demo ฟรี
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                          </a>
+                        </div>
+                        <!-- Mini glass card visual -->
+                        <div class="wdp-glass">
+                          {p.idx === 0 && (
+                            <div style="display:flex;flex-direction:column;gap:5px;">
+                              {['ลงทะเบียน · 30 นาที','นำเข้าข้อมูล · 2 ชม.','ตั้งค่า Billing · 1 วัน','Training · 2 วัน'].map(s=>(
+                                <div style="display:flex;align-items:center;gap:6px;padding:5px 8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;font-size:10px;color:rgba(255,255,255,.8);">
+                                  <span style="width:12px;height:12px;border-radius:50%;background:rgba(34,197,94,.25);border:1px solid rgba(34,197,94,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                    <svg width="6" height="6" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                  </span>
+                                  {s}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {p.idx === 1 && (
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+                              {[['Urbanice','Resident App','rgba(19,168,174,.5)'],['PMS','Property Mgmt','rgba(28,112,247,.5)'],['GuardOS','Security','rgba(77,109,195,.5)'],['Services','Professional','rgba(255,104,87,.5)']].map(([n,s,bg])=>(
+                                <div style={`background:${bg};border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:8px;`}>
+                                  <div style="font-size:11px;font-weight:700;color:#fff;">{n}</div>
+                                  <div style="font-size:9px;color:rgba(255,255,255,.55);font-family:var(--font-mono);">{s}</div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {p.idx === 2 && (
+                            <div style="display:flex;flex-direction:column;gap:5px;">
+                              {['AES-256 Encryption · Active','Daily Auto Backup · 02:00 AM','ISO 27001 · Certified','Audit Log · 1,247 events'].map(s=>(
+                                <div style="display:flex;align-items:center;gap:6px;padding:5px 8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:6px;font-size:10px;color:rgba(255,255,255,.75);">
+                                  <span style="width:5px;height:5px;border-radius:50%;background:#22c55e;flex-shrink:0;"></span>
+                                  {s}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                          {p.idx === 3 && (
+                            <div style="display:flex;flex-direction:column;gap:5px;">
+                              <div style="display:flex;align-items:center;gap:7px;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.1);">
+                                <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">CS</div>
+                                <div>
+                                  <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.9);">LivingOS Support</div>
+                                  <div style="font-size:9px;color:#6ee7b7;font-family:var(--font-mono);">● Online</div>
+                                </div>
+                              </div>
+                              <div style="align-self:flex-end;background:rgba(255,255,255,.18);color:#fff;font-size:10px;padding:4px 8px;border-radius:8px 8px 2px 8px;max-width:80%;">มีปัญหาเรื่องใบแจ้งหนี้ครับ</div>
+                              <div style="align-self:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);font-size:10px;padding:4px 8px;border-radius:8px 8px 8px 2px;max-width:80%;">รับทราบค่ะ แก้ไขให้แล้ว ✅</div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
+            </div>
+            <p class="why-demo-hint">↕ Scroll inside the box to see the sticky nav update</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 8c. Container + section-pad -->
+    <h3 class="sg-h3" style="margin-top:36px;">Container & Section Padding</h3>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>.container-los</code>
+            <span class="spec">max-width: 1280px · auto margin<br/>padding: 20px → 24px (476px+) → 40px (1280px+)</span>
+          </td>
+          <td>
+            <div style="background:var(--color-primary-50);border:2px dashed var(--color-primary);border-radius:10px;padding:10px;">
+              <div style="background:#fff;border-radius:8px;padding:12px 16px;font-family:var(--font-mono);font-size:11px;color:var(--color-text-3);line-height:1.7;">max-width: 1280px<br/>padding: 20px / 24px / 40px</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <code>.section-pad</code>
+            <span class="spec">padding-top/bottom: 56px → 80px (476px+) → 96px (1280px+)<br/>Used on every major section</span>
+          </td>
+          <td>
+            <div style="background:var(--color-warm-surface);border-radius:10px;padding:14px 20px;font-family:var(--font-mono);font-size:11px;color:var(--color-text-3);line-height:1.7;">56px · 80px · 96px top+bottom</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
-  <!-- ══════════════════════════════════════════════
+  <!-- ════════════════════════════════
        9. FAQ ACCORDION
-  ══════════════════════════════════════════════ -->
-  <section class="sg-section">
-    <h2 class="sg-h2">9. FAQ Accordion (.faq-item)</h2>
-    <p class="sg-note">One-open-at-a-time accordion. Height transition via <code>element.scrollHeight</code> — no CSS max-height hack.</p>
-    <div class="max-w-2xl" id="sg-faq">
-      {[
-        { q: 'ระบบรองรับโครงการกี่ยูนิต?', a: 'รองรับตั้งแต่โครงการขนาดเล็ก 20 ยูนิต ไปจนถึงโครงการขนาดใหญ่กว่า 5,000 ยูนิต ด้วยโครงสร้างฐานข้อมูลที่ออกแบบมาเพื่อ scale โดยเฉพาะ' },
-        { q: 'ใช้เวลานานแค่ไหนในการติดตั้ง?', a: 'ทีม Turnkey ของเราสามารถติดตั้งและ onboard ได้ภายใน 1 วันทำการ พร้อม training ทีมนิติบุคคลให้ใช้งานได้ทันที' },
-        { q: 'มีระบบสำรองข้อมูลหรือไม่?', a: 'มีการ backup ข้อมูลทุก 6 ชั่วโมง และ full backup รายวัน เก็บไว้ 90 วัน พร้อม disaster recovery ที่ RTO < 4 ชั่วโมง' },
-      ].map(item => (
-        <div class="faq-item border border-warm-border-light rounded-xl bg-white overflow-hidden" style="margin-bottom:8px;">
-          <button class="faq-trigger w-full flex items-start justify-between gap-4 p-5 text-left hover:bg-warm-surface transition-colors" aria-expanded="false">
-            <span class="font-medium text-text-1 text-sm leading-relaxed">{item.q}</span>
-            <svg class="faq-icon w-5 h-5 text-text-4 shrink-0 mt-0.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div class="faq-answer" style="height:0;overflow:hidden;">
-            <div class="px-5 pb-5">
-              <p class="text-sm text-text-2 leading-relaxed">{item.a}</p>
+  ════════════════════════════════ -->
+  <section class="sg-section" id="sg-faq-section">
+    <h2 class="sg-h2">9. FAQ Accordion</h2>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>.faq-item + .faq-trigger + .faq-answer</code>
+            <span class="spec">One-open-at-a-time accordion<br/>Height transition via element.scrollHeight<br/>Chevron rotates 180° on open<br/>aria-expanded drives state</span>
+          </td>
+          <td>
+            <div id="sg-faq" style="display:flex;flex-direction:column;gap:6px;max-width:520px;">
+              {[
+                { q: 'ระบบรองรับโครงการกี่ยูนิต?', a: 'รองรับตั้งแต่โครงการขนาดเล็ก 20 ยูนิต ไปจนถึงโครงการขนาดใหญ่กว่า 5,000 ยูนิต ด้วยโครงสร้างฐานข้อมูลที่ออกแบบมาเพื่อ scale โดยเฉพาะ' },
+                { q: 'ใช้เวลานานแค่ไหนในการติดตั้ง?', a: 'ทีม Turnkey สามารถติดตั้งและ onboard ได้ภายใน 1 วันทำการ พร้อม training ทีมนิติบุคคลให้ใช้งานได้ทันที' },
+                { q: 'มีระบบสำรองข้อมูลหรือไม่?', a: 'มีการ backup ข้อมูลทุก 6 ชั่วโมง และ full backup รายวัน เก็บไว้ 90 วัน พร้อม disaster recovery RTO < 4 ชั่วโมง' },
+              ].map(item => (
+                <div class="faq-item border border-warm-border-light rounded-xl bg-white overflow-hidden">
+                  <button class="faq-trigger w-full flex items-start justify-between gap-4 p-5 text-left hover:bg-warm-surface transition-colors" aria-expanded="false">
+                    <span class="font-medium text-text-1 text-sm leading-relaxed">{item.q}</span>
+                    <svg class="faq-icon w-5 h-5 text-text-4 shrink-0 mt-0.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </button>
+                  <div class="faq-answer" style="height:0;overflow:hidden;">
+                    <div class="px-5 pb-5"><p class="text-sm text-text-2 leading-relaxed">{item.a}</p></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════════════════════════════════
+       10. BREAKPOINTS
+  ════════════════════════════════ -->
+  <section class="sg-section" id="sg-breakpoints">
+    <h2 class="sg-h2">10. Breakpoints</h2>
+    <table class="comp-table">
+      <thead><tr><th>Name</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>mobile</code><span class="spec">≤ 475px</span></td>
+          <td class="bp-cell">Shorter eyebrow · hero card flush edge · single-col grids · trust pills hidden · compact WhyNav labels</td>
+        </tr>
+        <tr>
+          <td><code>tablet</code><span class="spec">476px – 1279px</span></td>
+          <td class="bp-cell">Trust pills + divider hidden · hero card hug-content · 2-col sov-grid · feat-row stacks at 900px · WhyNav becomes horizontal tabs</td>
+        </tr>
+        <tr>
+          <td><code>desktop</code><span class="spec">≥ 1280px</span></td>
+          <td class="bp-cell">Full hero overlap · 4-col sov-grid · trust pills visible · WhyLivingOS 2-col grid with GSAP pin active</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════════════════════════════════
+       11. DO / DON'T
+  ════════════════════════════════ -->
+  <section class="sg-section" id="sg-rules">
+    <h2 class="sg-h2">11. Do / Don't</h2>
+    <p class="sg-note">Rules grouped by topic. Each row shows the correct pattern, what to avoid, and why it matters.</p>
+
+    <div class="rules-grid">
+
+      <!-- SHADOWS -->
+      <div class="rule-card">
+        <div class="rule-topic">Shadows</div>
+        <div class="rule-do">
+          <span class="rule-badge do-badge">✓ Do</span>
+          <div class="rule-example">
+            <div style="width:80px;height:44px;background:#fff;border-radius:8px;box-shadow:0 4px 16px rgba(60,45,20,.10),0 2px 6px rgba(60,45,20,.06);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--color-text-4);">warm-tinted</div>
+          </div>
+          <code>rgba(60, 45, 20, …)</code>
+        </div>
+        <div class="rule-dont">
+          <span class="rule-badge dont-badge">✗ Don't</span>
+          <div class="rule-example">
+            <div style="width:80px;height:44px;background:#fff;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.10),0 2px 6px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--color-text-4);">cool gray</div>
+          </div>
+          <code>rgba(0, 0, 0, …)</code>
+        </div>
+        <p class="rule-why">Cool shadows look out-of-place on a warm palette — they make cards feel detached from the page background.</p>
+      </div>
+
+      <!-- HERO EYEBROW -->
+      <div class="rule-card">
+        <div class="rule-topic">Hero Eyebrow Badge</div>
+        <div class="rule-do">
+          <span class="rule-badge do-badge">✓ Do</span>
+          <div class="rule-example">
+            <div style="position:relative;overflow:hidden;height:26px;padding:0 14px;border-radius:9999px;border:1.5px solid rgba(180,130,0,.45);background:linear-gradient(135deg,#F5E27A 0%,#C9A000 55%,#F5E27A 100%);display:inline-flex;align-items:center;font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#4A2E00;">GOLD on hero</div>
+          </div>
+          <span class="rule-text">Gold plate pill on home hero</span>
+        </div>
+        <div class="rule-dont">
+          <span class="rule-badge dont-badge">✗ Don't</span>
+          <div class="rule-example">
+            <span style="display:inline-flex;align-items:center;padding:3px 10px;border-radius:9999px;background:rgba(28,112,247,.10);color:#1C70F7;border:1.5px solid rgba(28,112,247,.28);font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;">BLUE on hero</span>
+          </div>
+          <span class="rule-text">Blue badge on home hero</span>
+        </div>
+        <p class="rule-why">Gold = award/No.1 status on hero. Blue badge is for inner product pages (InnerHero) only.</p>
+      </div>
+
+      <!-- NEUTRAL COLORS -->
+      <div class="rule-card">
+        <div class="rule-topic">Neutral Colors</div>
+        <div class="rule-do">
+          <span class="rule-badge do-badge">✓ Do</span>
+          <div class="rule-example" style="display:flex;gap:4px;">
+            {['#F5F3EE','#EEEAE2','#E8E4DA'].map(c=>(
+              <div style={`width:28px;height:28px;border-radius:5px;background:${c};border:1px solid #D4CFC4;`}></div>
+            ))}
+          </div>
+          <span class="rule-text">Warm undertone — beige, cream</span>
+        </div>
+        <div class="rule-dont">
+          <span class="rule-badge dont-badge">✗ Don't</span>
+          <div class="rule-example" style="display:flex;gap:4px;">
+            {['#F5F5F5','#E5E5E5','#D4D4D4'].map(c=>(
+              <div style={`width:28px;height:28px;border-radius:5px;background:${c};border:1px solid #ccc;`}></div>
+            ))}
+          </div>
+          <span class="rule-text">#F0F0F0 or any cool gray</span>
+        </div>
+        <p class="rule-why">Cool grays clash with the warm page background and make the design feel like a generic SaaS template.</p>
+      </div>
+
+      <!-- GSAP ANIMATIONS -->
+      <div class="rule-card">
+        <div class="rule-topic">GSAP Animations</div>
+        <div class="rule-do">
+          <span class="rule-badge do-badge">✓ Do</span>
+          <div class="rule-example">
+            <code style="font-size:11px;background:var(--color-primary-50);color:var(--color-primary);padding:4px 8px;border-radius:6px;">gsap.fromTo(el, {'{'}opacity:0{'}'}, {'{'}opacity:1{'}'})</code>
+          </div>
+          <span class="rule-text">Always <code>fromTo()</code> — explicit start + end state</span>
+        </div>
+        <div class="rule-dont">
+          <span class="rule-badge dont-badge">✗ Don't</span>
+          <div class="rule-example">
+            <code style="font-size:11px;background:#FEF2F2;color:#DC2626;padding:4px 8px;border-radius:6px;">gsap.from(el, {'{'}opacity:0{'}'})</code>
+          </div>
+          <span class="rule-text"><code>from()</code> — can leave elements invisible if trigger never fires</span>
+        </div>
+        <p class="rule-why"><code>from()</code> sets the start state immediately in JS. If ScrollTrigger never fires (e.g. element above fold, JS error), the element stays hidden. <code>fromTo()</code> keeps the DOM visible by default.</p>
+      </div>
+
+      <!-- STICKY IN GRID -->
+      <div class="rule-card">
+        <div class="rule-topic">Sticky Nav in CSS Grid</div>
+        <div class="rule-do">
+          <span class="rule-badge do-badge">✓ Do</span>
+          <div class="rule-example">
+            <code style="font-size:11px;background:var(--color-primary-50);color:var(--color-primary);padding:4px 8px;border-radius:6px;">ScrollTrigger.create({'{'} pin: '#whyNav' {'}'})</code>
+          </div>
+          <span class="rule-text">GSAP ScrollTrigger pin for WhyLivingOS nav</span>
+        </div>
+        <div class="rule-dont">
+          <span class="rule-badge dont-badge">✗ Don't</span>
+          <div class="rule-example">
+            <code style="font-size:11px;background:#FEF2F2;color:#DC2626;padding:4px 8px;border-radius:6px;">position: sticky; top: 0;</code>
+          </div>
+          <span class="rule-text">CSS sticky inside CSS Grid <code>align-items: start</code></span>
+        </div>
+        <p class="rule-why">In a CSS Grid with <code>align-items: start</code>, a grid item's height equals its content — so sticky has no room to scroll. The element never actually sticks. Use GSAP instead.</p>
+      </div>
+
+      <!-- HERO BACKGROUND -->
+      <div class="rule-card">
+        <div class="rule-topic">Hero Background</div>
+        <div class="rule-do">
+          <span class="rule-badge do-badge">✓ Do</span>
+          <div class="rule-example">
+            <div style="width:100%;height:40px;border-radius:8px;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%2240%22><rect fill=%22%23b2d8f0%22 width=%22100%22 height=%2240%22/><rect fill=%22%23e8f4f9%22 width=%22100%22 height=%2220%22/></svg>') center/cover;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:#1A1A1A;position:relative;overflow:hidden;">
+              <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(255,255,255,.85),rgba(255,255,255,.3));"></div>
+              <span style="position:relative;z-index:1;">photo + gradient mask</span>
             </div>
           </div>
+          <span class="rule-text">Real photography with gradient overlay</span>
         </div>
-      ))}
+        <div class="rule-dont">
+          <span class="rule-badge dont-badge">✗ Don't</span>
+          <div class="rule-example">
+            <div style="width:100%;height:40px;border-radius:8px;background:radial-gradient(ellipse at 30% 50%, rgba(100,200,255,.4) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(200,150,255,.3) 0%, transparent 60%), #0a0a1a;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.6);">abstract blobs / dark canvas</div>
+          </div>
+          <span class="rule-text">Abstract blobs, noise, or dark <code>#0A0A0F</code> canvas</span>
+        </div>
+        <p class="rule-why">LivingOS targets building managers, not developers. Techy dark backgrounds signal the wrong brand personality — warm + contextual photography builds trust faster.</p>
+      </div>
+
+      <!-- TYPOGRAPHY -->
+      <div class="rule-card">
+        <div class="rule-topic">Typography & Fonts</div>
+        <div class="rule-do">
+          <span class="rule-badge do-badge">✓ Do</span>
+          <div class="rule-example" style="display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:'IBM Plex Sans Thai Looped',sans-serif;font-size:14px;font-weight:600;color:var(--color-text-1);">IBM Plex Sans</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:var(--color-primary);">฿ 2,450</span>
+          </div>
+          <span class="rule-text">IBM Plex Sans Thai Looped (UI) + Mono (numbers)</span>
+        </div>
+        <div class="rule-dont">
+          <span class="rule-badge dont-badge">✗ Don't</span>
+          <div class="rule-example" style="display:flex;align-items:baseline;gap:12px;opacity:.5;">
+            <span style="font-family:sans-serif;font-size:14px;font-weight:600;color:var(--color-text-1);">Inter / Roboto</span>
+            <span style="font-family:sans-serif;font-size:14px;font-weight:600;color:#0d6efd;">Bootstrap #0d6efd</span>
+          </div>
+          <span class="rule-text">Inter, Roboto, Sarabun, Bootstrap palette</span>
+        </div>
+        <p class="rule-why">Sarabun is common in Thai gov/corporate sites — it signals "old". IBM Plex was chosen for its modern Thai character support and clean numerics for financial data.</p>
+      </div>
+
+      <!-- SECTION RHYTHM -->
+      <div class="rule-card">
+        <div class="rule-topic">Section Rhythm</div>
+        <div class="rule-do">
+          <span class="rule-badge do-badge">✓ Do</span>
+          <div class="rule-example" style="display:flex;flex-direction:column;gap:3px;width:100%;">
+            {[['#FFFFFF','white','1px solid #E8E4DA'],['#1C70F7','blue accent','none'],['#F5F3EE','warm surface','none'],['#F97316','orange accent','none'],['#FFFFFF','white','1px solid #E8E4DA']].map(([bg,label,border])=>(
+              <div style={`background:${bg};border:${border};border-radius:4px;padding:3px 8px;font-family:var(--font-mono);font-size:9px;color:${bg==='#1C70F7'||bg==='#F97316'?'rgba(255,255,255,.8)':'var(--color-text-4)'};`}>{label}</div>
+            ))}
+          </div>
+          <span class="rule-text">Alternate neutrals with colored accent breaks</span>
+        </div>
+        <div class="rule-dont">
+          <span class="rule-badge dont-badge">✗ Don't</span>
+          <div class="rule-example" style="display:flex;flex-direction:column;gap:3px;width:100%;">
+            {[['#FFFFFF','white','1px solid #E8E4DA'],['#F5F5F5','light gray','none'],['#FFFFFF','white','1px solid #E8E4DA'],['#F5F5F5','light gray','none']].map(([bg,label,border])=>(
+              <div style={`background:${bg};border:${border};border-radius:4px;padding:3px 8px;font-family:var(--font-mono);font-size:9px;color:var(--color-text-4);`}>{label}</div>
+            ))}
+          </div>
+          <span class="rule-text">White → gray → white → gray only</span>
+        </div>
+        <p class="rule-why">Monotone alternation looks like a generic landing page template. Colored sections add visual rhythm and help users orient where they are as they scroll.</p>
+      </div>
+
+      <!-- ICONS -->
+      <div class="rule-card">
+        <div class="rule-topic">Icons</div>
+        <div class="rule-do">
+          <span class="rule-badge do-badge">✓ Do</span>
+          <div class="rule-example" style="display:flex;gap:10px;align-items:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12l2 2 4-4"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span style="font-family:var(--font-mono);font-size:9px;color:var(--color-text-4);">Lucide / Tabler outline</span>
+          </div>
+          <span class="rule-text">Lucide or Tabler — outline stroke only</span>
+        </div>
+        <div class="rule-dont">
+          <span class="rule-badge dont-badge">✗ Don't</span>
+          <div class="rule-example">
+            <span style="font-family:var(--font-mono);font-size:10px;color:#DC2626;padding:4px 8px;background:#FEF2F2;border-radius:6px;">Bootstrap Icons · Font Awesome · filled icons</span>
+          </div>
+          <span class="rule-text">Bootstrap Icons, Font Awesome, filled style</span>
+        </div>
+        <p class="rule-why">Filled icons feel heavy and corporate. Outline icons pair with the light, open visual language and scale better at small sizes in Thai UI context.</p>
+      </div>
+
     </div>
   </section>
-
-  <!-- ══════════════════════════════════════════════
-       10. BREAKPOINTS REFERENCE
-  ══════════════════════════════════════════════ -->
-  <section class="sg-section">
-    <h2 class="sg-h2">10. Breakpoints</h2>
-    <div class="bp-table">
-      <div class="bp-row bp-header">
-        <span>Name</span><span>Range</span><span>Key changes</span>
-      </div>
-      <div class="bp-row">
-        <span class="bp-name">Mobile</span>
-        <span class="bp-range">≤ 475px</span>
-        <span class="bp-changes">Shorter eyebrow text, hero card flush edge, trust pills hidden, single-column grids</span>
-      </div>
-      <div class="bp-row">
-        <span class="bp-name">Tablet</span>
-        <span class="bp-range">476px – 1279px</span>
-        <span class="bp-changes">Trust pills + divider hidden, hero card hug-content width, 2-col sov-grid, feat-row stacks at 900px</span>
-      </div>
-      <div class="bp-row">
-        <span class="bp-name">Desktop</span>
-        <span class="bp-range">≥ 1280px</span>
-        <span class="bp-changes">Full hero overlap layout, 4-col sov-grid, trust pills visible, WhyNav grid active</span>
-      </div>
-    </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       11. DO / DON'T
-  ══════════════════════════════════════════════ -->
-  <section class="sg-section">
-    <h2 class="sg-h2">11. Do / Don't</h2>
-    <div class="do-dont-grid">
-      <div class="do-col">
-        <div class="do-header">✓ Do</div>
-        <ul class="do-list">
-          <li>Warm-tinted shadows <code>rgba(60,45,20,…)</code></li>
-          <li>Gold eyebrow pill on home hero only</li>
-          <li>Real photography + gradient mask as hero bg</li>
-          <li>GSAP <code>fromTo()</code> — never <code>from()</code></li>
-          <li>GSAP ScrollTrigger for sticky nav (not CSS sticky in grid)</li>
-          <li>IBM Plex Mono for currency & numbers</li>
-          <li>Lucide / Tabler outline icons only</li>
-          <li>Warm neutral backgrounds — every neutral has warm undertone</li>
-        </ul>
-      </div>
-      <div class="dont-col">
-        <div class="dont-header">✗ Don't</div>
-        <ul class="dont-list">
-          <li>Cool gray shadows <code>rgba(0,0,0,…)</code></li>
-          <li>Blue badge on home hero (gold only)</li>
-          <li>Abstract blobs / noise as hero background</li>
-          <li>GSAP <code>from()</code> — invisible-content bug risk</li>
-          <li><code>position:sticky</code> inside CSS Grid</li>
-          <li>Bootstrap palette (#0d6efd, #6c757d) or Sarabun/Inter/Roboto</li>
-          <li>Gradient text on body copy</li>
-          <li>Ghost button with <code>background:transparent</code> on photo bg</li>
-          <li><code>#F0F0F0</code> or any cool gray — must have warm undertone</li>
-          <li>Plain white/gray section alternation with no accent break</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-</div><!-- /.sg-wrap -->
+</div>
 
 </BaseLayout>
 
-<!-- ── FAQ script (same as InnerFAQ.astro) ── -->
+<!-- ── FAQ script ── -->
 <script>
-  const container = document.getElementById('sg-faq');
-  if (container) {
-    container.querySelectorAll('.faq-trigger').forEach((trigger) => {
+  const faq = document.getElementById('sg-faq');
+  if (faq) {
+    faq.querySelectorAll('.faq-trigger').forEach((trigger) => {
       trigger.addEventListener('click', () => {
         const item = trigger.closest('.faq-item');
         const answer = item?.querySelector('.faq-answer') as HTMLElement | null;
         const icon = trigger.querySelector('.faq-icon') as HTMLElement | null;
         const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-        container.querySelectorAll('.faq-trigger').forEach((t) => {
+        faq.querySelectorAll('.faq-trigger').forEach((t) => {
           if (t !== trigger) {
             const a = t.closest('.faq-item')?.querySelector('.faq-answer') as HTMLElement | null;
             const ic = t.querySelector('.faq-icon') as HTMLElement | null;
@@ -580,40 +1105,73 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 </script>
 
-<!-- ── Breakpoint ruler script ── -->
+<!-- ── Breakpoint ruler ── -->
 <script>
   function updateBp() {
     const w = window.innerWidth;
-    const label = document.getElementById('bpLabel');
+    const lbl = document.getElementById('bpLabel');
     const desc = document.getElementById('bpDesc');
-    if (!label || !desc) return;
+    if (!lbl || !desc) return;
     if (w <= 475) {
-      label.textContent = 'MOBILE ≤ 475px';
-      label.style.color = '#EF4444';
-      desc.textContent = `${w}px`;
+      lbl.textContent = 'MOBILE ≤ 475px'; lbl.style.color = '#EF4444';
     } else if (w <= 1279) {
-      label.textContent = 'TABLET 476–1279px';
-      label.style.color = '#F97316';
-      desc.textContent = `${w}px`;
+      lbl.textContent = 'TABLET 476–1279px'; lbl.style.color = '#F97316';
     } else {
-      label.textContent = 'DESKTOP ≥ 1280px';
-      label.style.color = '#1C70F7';
-      desc.textContent = `${w}px`;
+      lbl.textContent = 'DESKTOP ≥ 1280px'; lbl.style.color = '#1C70F7';
     }
+    desc.textContent = `${w}px`;
   }
   updateBp();
   window.addEventListener('resize', updateBp);
 </script>
 
+<!-- ── WhyLivingOS demo: sticky nav + IntersectionObserver ── -->
+<script>
+  (function () {
+    const box = document.getElementById('whyDemoBox');
+    const nav = document.getElementById('whyDemoNav');
+    if (!box || !nav) return;
+
+    const navItems = Array.from(nav.querySelectorAll<HTMLElement>('.wdn-item'));
+    const anchors  = Array.from(box.querySelectorAll<HTMLElement>('[data-wdp]'));
+
+    function setActive(idx: number) {
+      navItems.forEach((n, i) => {
+        n.classList.toggle('wdn-active', i === idx);
+      });
+    }
+
+    // IntersectionObserver scoped to the scroll container
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(Number((entry.target as HTMLElement).dataset.wdp));
+          }
+        });
+      },
+      { root: box, threshold: 0.45 }
+    );
+
+    anchors.forEach((a) => observer.observe(a));
+
+    // Click nav → scroll panel into view within the container
+    navItems.forEach((item, i) => {
+      item.addEventListener('click', () => {
+        anchors[i]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+  })();
+</script>
+
 <style>
-/* ── Page shell ── */
+/* ── Page ── */
 .sg-wrap {
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 24px 120px;
 }
 
-/* ── Breakpoint ruler ── */
 .bp-ruler {
   position: sticky;
   top: 0;
@@ -622,16 +1180,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   color: #fff;
   display: flex;
   align-items: center;
-  gap: 16px;
   padding: 10px 24px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .10em;
 }
-.bp-desc { color: var(--color-text-4); }
 
-/* ── Section shell ── */
+/* ── Sections ── */
 .sg-section {
   margin-bottom: 80px;
   padding-bottom: 64px;
@@ -648,7 +1204,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   color: var(--color-text-4);
   margin-bottom: 12px;
 }
-
 .sg-title {
   font-size: clamp(32px, 4vw, 52px);
   font-weight: 700;
@@ -656,7 +1211,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   color: var(--color-text-1);
   margin-bottom: 16px;
 }
-
 .sg-intro {
   font-size: 17px;
   font-weight: 300;
@@ -664,391 +1218,588 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   color: var(--color-text-3);
   max-width: 640px;
 }
-
 .sg-h2 {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--color-text-1);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   letter-spacing: -.015em;
 }
-
 .sg-h3 {
-  font-size: 13px;
-  font-weight: 600;
   font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--color-text-4);
-  margin-bottom: 14px;
-  margin-top: 32px;
+  margin-bottom: 12px;
+  margin-top: 28px;
 }
-
 .sg-note {
   font-size: 13px;
   color: var(--color-text-3);
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   padding: 10px 14px;
   background: var(--color-warm-surface);
   border-radius: 8px;
   border-left: 3px solid var(--color-warm-border-mid);
 }
 
-.sg-code {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-text-3);
-  background: var(--color-warm-surface);
-  padding: 4px 10px;
-  border-radius: 6px;
-}
-
-/* ── Swatches ── */
-.swatch-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+/* ── Table ── */
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1.5px solid var(--color-warm-border-light);
+  border-radius: 12px;
+  overflow: hidden;
   margin-bottom: 8px;
+  table-layout: auto;
 }
-
-.swatch {
-  width: 120px;
-  height: 72px;
-  border-radius: 10px;
-  display: flex;
-  align-items: flex-end;
-  padding: 8px;
+.comp-table thead tr {
+  background: var(--color-warm-surface);
 }
-
-.swatch-tall { height: 96px; }
-
-.swatch-label {
+.comp-table th {
   font-family: var(--font-mono);
   font-size: 10px;
-  font-weight: 500;
-  color: var(--color-text-3);
-  line-height: 1.5;
-}
-
-.swatch-label.light { color: rgba(255,255,255,.85); }
-
-/* ── Shadows ── */
-.shadow-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.shadow-demo {
-  width: 160px;
-  height: 80px;
-  background: #fff;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 11px;
   font-weight: 600;
-  color: var(--color-text-3);
-}
-
-/* ── Typography ── */
-.type-scale { display: flex; flex-direction: column; gap: 0; }
-
-.type-row {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 24px;
-  align-items: center;
-  padding: 16px 0;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-text-4);
+  padding: 10px 16px;
+  text-align: left;
   border-bottom: 1px solid var(--color-warm-border-light);
 }
-
-.type-meta { display: flex; flex-direction: column; gap: 3px; }
-.type-token { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--color-primary); }
-.type-spec { font-family: var(--font-mono); font-size: 10px; color: var(--color-text-4); }
-.type-use { font-size: 11px; color: var(--color-text-3); }
-
-.type-mono-demo {
-  display: flex;
-  align-items: baseline;
-  gap: 32px;
-  flex-wrap: wrap;
-  padding: 20px;
-  background: var(--color-warm-surface);
-  border-radius: 12px;
-  margin-top: 16px;
+.comp-table td {
+  padding: 14px 16px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-warm-border-light);
+  font-size: 13px;
+  color: var(--color-text-2);
+}
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table td:first-child {
+  width: 280px;
+  min-width: 200px;
+  vertical-align: top;
+  padding-top: 16px;
+}
+.comp-table td code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: 4px;
+}
+.spec {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-4);
+  line-height: 1.6;
+  display: block;
 }
 
-/* ── Spacing ── */
-.spacing-row {
+/* type-table first col narrower */
+.type-table td:first-child { width: 220px; }
+
+/* ── Swatches ── */
+.swatch {
+  width: 120px;
+  height: 56px;
+  border-radius: 8px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  align-items: flex-end;
+  padding: 6px 8px;
+}
+.swatch-text { width: 120px; height: 40px; }
+.swatch-sm { width: 48px; height: 32px; border-radius: 6px; }
+.sw-lbl { font-family: var(--font-mono); font-size: 9px; font-weight: 600; }
+.sw-lbl.dark { color: var(--color-text-3); }
+.sw-lbl.light { color: rgba(255,255,255,.85); }
+.hex-chip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-4);
+  margin-left: 6px;
+}
+
+/* ── Shadows ── */
+.shadow-demo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 56px;
+  background: #fff;
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-text-4);
+}
+
+/* ── Spacing boxes ── */
+.sp-box {
+  background: var(--color-primary-100);
+  border: 1.5px solid var(--color-primary);
+  border-radius: 3px;
+  min-width: 4px;
+  min-height: 4px;
+}
+
+/* ── Radius boxes ── */
+.radius-box {
+  width: 60px;
+  height: 60px;
+  background: var(--color-primary-100);
+  border: 1.5px solid var(--color-primary);
+}
+
+/* ── BG swatches ── */
+.bg-swatch {
+  padding: 14px 16px;
+  border-radius: 10px;
+  min-height: 56px;
+  display: flex;
   align-items: flex-end;
 }
-.spacing-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.spacing-box { background: var(--color-primary-100); border: 1.5px solid var(--color-primary); border-radius: 4px; min-width: 4px; min-height: 4px; }
-.spacing-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: var(--color-primary); }
-.spacing-size { font-family: var(--font-mono); font-size: 10px; color: var(--color-text-4); }
-
-/* ── Border radius ── */
-.radius-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; }
-.radius-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.radius-box { width: 72px; height: 72px; background: var(--color-primary-100); border: 1.5px solid var(--color-primary); }
 
 /* ── Buttons ── */
-.btn-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 8px;
-}
-
-.cta-primary-demo {
+.btn-cta-primary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 28px;
-  border-radius: 12px;
+  padding: 12px 24px;
+  border-radius: 10px;
   background: var(--color-primary);
   color: #fff;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 4px 18px rgba(28,112,247,.35);
   transition: transform .15s, box-shadow .15s;
 }
-.cta-primary-demo:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(28,112,247,.45); }
+.btn-cta-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(28,112,247,.45); }
 
-.cta-secondary-demo {
+.btn-cta-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  border-radius: 12px;
+  padding: 12px 24px;
+  border-radius: 10px;
   background: var(--color-warm-surface);
   color: var(--color-text-1);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   text-decoration: none;
   border: 1.5px solid var(--color-warm-border-light);
   transition: background .15s, border-color .15s;
 }
-.cta-secondary-demo:hover { background: var(--color-warm-overlay); border-color: var(--color-warm-border-mid); }
+.btn-cta-secondary:hover { background: var(--color-warm-overlay); border-color: var(--color-warm-border-mid); }
 
-.btn-3d-demo {
-  display: inline-flex;
-  align-items: center;
-  padding: 14px 28px;
-  border-radius: 12px;
-  background: var(--color-primary);
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.pill-cta-demo {
+.btn-3d-eg {
   display: inline-flex;
   align-items: center;
   padding: 12px 24px;
-  border-radius: 9999px;
-  background: #fff;
-  color: var(--color-text-1);
+  border-radius: 10px;
+  color: #fff;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: var(--shadow-sm);
+}
+
+.btn-white-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  background: #fff;
+  color: var(--color-text-1);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,.18);
   transition: transform .15s;
 }
-.pill-cta-demo:hover { transform: translateY(-1px); }
-
-/* ── Badges ── */
-.badge-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-}
-
-/* ── Section backgrounds ── */
-.bg-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-.bg-demo { padding: 20px; border-radius: 12px; min-height: 80px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; }
-.bg-label { font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--color-text-1); }
-.bg-use { font-size: 11px; color: var(--color-text-3); }
+.btn-white-pill:hover { transform: translateY(-1px); }
 
 /* ── SolutionOverview card demo ── */
-.sov-grid-demo {
+.sov-grid-eg {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  gap: 20px;
   align-items: start;
 }
-@media (max-width: 900px) { .sov-grid-demo { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
-@media (max-width: 500px) { .sov-grid-demo { grid-template-columns: 1fr; } }
+@media (max-width: 800px) { .sov-grid-eg { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px) { .sov-grid-eg { grid-template-columns: 1fr; } }
 
-.sov-card-outer-demo { padding-top: 26px; }
-
-.sov-card-inner-demo {
+.sov-outer-eg { padding-top: 26px; }
+.sov-inner-eg {
   position: relative;
   transform: rotate(var(--rot, 0deg));
   transition: transform .32s cubic-bezier(.22,.68,0,1.2);
   transform-origin: center 60%;
 }
-.sov-card-outer-demo:hover .sov-card-inner-demo { transform: rotate(0deg) translateY(-5px); }
-
-.sov-clip-demo {
-  position: absolute;
-  top: -22px;
-  right: 16px;
-  z-index: 2;
-  line-height: 0;
-  pointer-events: none;
-}
-
-.sov-card-demo {
+.sov-outer-eg:hover .sov-inner-eg { transform: rotate(0deg) translateY(-5px); }
+.sov-clip-eg { position: absolute; top: -22px; right: 16px; z-index: 2; line-height: 0; pointer-events: none; }
+.sov-card-eg {
   background: #fff;
-  border-radius: 20px;
-  padding: 24px 20px 20px;
+  border-radius: 18px;
+  padding: 20px 18px 18px;
   box-shadow: 0 10px 36px rgba(60,45,20,.14), 0 2px 8px rgba(60,45,20,.07);
-  min-height: 210px;
+  min-height: 190px;
   display: flex;
   flex-direction: column;
 }
 
 /* ── Two-cards grid demo ── */
-.two-cards-demo-grid {
+.two-cards-eg {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 16px;
 }
-@media (max-width: 600px) { .two-cards-demo-grid { grid-template-columns: 1fr; } }
+@media (max-width: 500px) { .two-cards-eg { grid-template-columns: 1fr; } }
 
-.service-card-demo {
+.sc-eg {
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 1.5px solid var(--color-warm-border-light);
 }
 
-/* ── Layout diagrams ── */
-.layout-diagram {
-  position: relative;
+/* ── Hero overlap diagram ── */
+.layout-hero-eg {
   background: var(--color-warm-surface);
-  border-radius: 14px;
-  padding: 24px;
-  overflow: hidden;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 480px;
 }
-
-.ld-visual {
+.lh-visual {
   background: var(--color-primary-100);
   border: 2px dashed var(--color-primary);
-  border-radius: 12px;
-  padding: 24px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-primary);
+  border-radius: 10px;
+  padding: 20px;
   text-align: center;
-  margin-bottom: 0;
-  aspect-ratio: 16 / 5;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-primary);
+  aspect-ratio: 16/5;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1.6;
 }
-
-.ld-card {
+.lh-card {
   background: #fff;
   border: 2px dashed var(--color-warm-border-mid);
-  border-radius: 16px;
-  padding: 20px 24px;
+  border-radius: 14px;
+  padding: 14px 18px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-text-3);
   line-height: 1.7;
-  margin-top: -60px;
-  margin-left: 40px;
+  margin-top: -48px;
+  margin-left: 32px;
   width: fit-content;
   position: relative;
   z-index: 2;
   box-shadow: var(--shadow-md);
 }
 
-/* ── WhyLivingOS layout diagram ── */
-.layout-why-diagram {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 24px;
-  background: var(--color-warm-surface);
+/* ── WhyLivingOS DEMO ── */
+.why-demo-container {
+  height: 480px;
+  overflow-y: auto;
+  border: 1.5px solid var(--color-warm-border-light);
   border-radius: 14px;
-  padding: 24px;
+  background: var(--color-warm-page);
+  scroll-behavior: smooth;
 }
-.lwd-nav { background: #fff; border-radius: 10px; padding: 16px; box-shadow: var(--shadow-sm); }
-.lwd-panels { display: flex; flex-direction: column; }
+/* Custom scrollbar so it's visible */
+.why-demo-container::-webkit-scrollbar { width: 5px; }
+.why-demo-container::-webkit-scrollbar-track { background: var(--color-warm-surface); }
+.why-demo-container::-webkit-scrollbar-thumb { background: var(--color-warm-border-mid); border-radius: 9999px; }
 
-/* ── Container/section-pad demos ── */
-.container-demo {
-  background: var(--color-primary-50);
-  border: 2px dashed var(--color-primary);
-  border-radius: 10px;
-  padding: 12px;
-  margin-bottom: 12px;
-}
-.container-inner {
-  background: #fff;
-  border-radius: 8px;
-  padding: 16px 20px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-text-3);
-  line-height: 1.7;
-}
-.section-pad-demo {
-  background: var(--color-warm-surface);
-  border-radius: 10px;
-  padding: 20px 24px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-text-3);
-  line-height: 1.7;
-}
-
-/* ── Breakpoints table ── */
-.bp-table { border: 1.5px solid var(--color-warm-border-light); border-radius: 12px; overflow: hidden; }
-.bp-row {
+.why-demo-layout {
   display: grid;
-  grid-template-columns: 100px 160px 1fr;
-  gap: 16px;
-  padding: 14px 20px;
-  border-bottom: 1px solid var(--color-warm-border-light);
-  font-size: 13px;
-  line-height: 1.55;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  padding: 24px;
+  align-items: start;
 }
-.bp-row:last-child { border-bottom: none; }
-.bp-header { background: var(--color-warm-surface); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--color-text-4); }
-.bp-name { font-weight: 700; color: var(--color-text-1); }
-.bp-range { font-family: var(--font-mono); font-size: 12px; color: var(--color-primary); }
-.bp-changes { color: var(--color-text-3); }
 
-/* ── Do / Don't ── */
-.do-dont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-@media (max-width: 600px) { .do-dont-grid { grid-template-columns: 1fr; } }
+/* Sticky nav sticks within the scroll container (.why-demo-container) */
+.why-demo-nav {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+}
 
-.do-col, .dont-col { border-radius: 14px; overflow: hidden; }
-.do-header { background: #F0FDF4; color: #16A34A; font-weight: 700; font-size: 14px; padding: 14px 20px; border-bottom: 1px solid #BBF7D0; }
-.dont-header { background: #FEF2F2; color: #DC2626; font-weight: 700; font-size: 14px; padding: 14px 20px; border-bottom: 1px solid #FCA5A5; }
-.do-list, .dont-list { list-style: none; padding: 0; margin: 0; background: #fff; border: 1.5px solid var(--color-warm-border-light); border-top: none; border-radius: 0 0 14px 14px; }
-.do-list li, .dont-list li { padding: 10px 20px; font-size: 13px; color: var(--color-text-2); border-bottom: 1px solid var(--color-warm-border-light); line-height: 1.55; }
-.do-list li:last-child, .dont-list li:last-child { border-bottom: none; }
-.do-list code, .dont-list code { font-family: var(--font-mono); font-size: 11px; background: var(--color-warm-surface); padding: 1px 6px; border-radius: 4px; }
+.wdn-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 10px 14px 16px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-left: 2px solid var(--color-warm-border-light);
+  cursor: pointer;
+  transition: border-color .25s;
+}
+.wdn-item:hover:not(.wdn-active) { border-left-color: var(--color-warm-border-mid); }
+.wdn-active { border-left-color: var(--color-primary) !important; }
 
-/* ── Gold shimmer (reused from Hero.astro) ── */
+.wdn-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-text-5);
+  flex-shrink: 0;
+  margin-top: 5px;
+  transition: background .25s, transform .25s;
+}
+.wdn-active .wdn-dot { background: var(--color-primary); transform: scale(1.25); }
+
+.wdn-body { display: flex; flex-direction: column; gap: 1px; }
+.wdn-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-text-4);
+  transition: color .25s;
+}
+.wdn-active .wdn-num { color: var(--color-primary); }
+.wdn-th {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-4);
+  line-height: 1.3;
+  transition: color .25s;
+}
+.wdn-active .wdn-th { color: var(--color-text-1); }
+.wdn-en {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--color-text-5);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.why-demo-panels { display: flex; flex-direction: column; gap: 20px; }
+.wdp-anchor { /* natural height for IntersectionObserver */ }
+
+.wdp-card {
+  border-radius: 16px;
+  padding: 28px 24px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.wdp-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.wdp-en {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 6px;
+}
+.wdp-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  letter-spacing: -.01em;
+}
+.wdp-body {
+  font-size: 12px;
+  color: rgba(255,255,255,.7);
+  line-height: 1.65;
+  max-width: 280px;
+}
+.wdp-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: #fff;
+  color: var(--color-text-1);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,.18);
+  transition: transform .15s;
+}
+.wdp-cta:hover { transform: translateY(-1px); }
+
+.wdp-glass {
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 12px;
+  padding: 14px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.why-demo-hint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-4);
+  text-align: center;
+  margin-top: 6px;
+  letter-spacing: .04em;
+}
+
+/* ── FAQ ── */
+.bp-cell {
+  font-size: 13px;
+  color: var(--color-text-3);
+  line-height: 1.6;
+}
+
+/* ── Table of Contents ── */
+.sg-toc {
+  margin-bottom: 64px;
+  padding: 24px 28px;
+  background: var(--color-warm-surface);
+  border: 1.5px solid var(--color-warm-border-light);
+  border-radius: 14px;
+}
+.toc-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--color-text-4);
+  margin-bottom: 14px;
+}
+.toc-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 6px 24px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  counter-reset: none;
+}
+.toc-list li a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-2);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.toc-list li a:hover {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary-100);
+}
+
+/* ── Do / Don't rules grid ── */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+
+.rule-card {
+  border: 1.5px solid var(--color-warm-border-light);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.rule-topic {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-text-4);
+  background: var(--color-warm-surface);
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--color-warm-border-light);
+}
+
+.rule-do,
+.rule-dont {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-bottom: 1px solid var(--color-warm-border-light);
+}
+.rule-dont { background: #FFFBFB; }
+
+.rule-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  width: fit-content;
+}
+.do-badge { background: #F0FDF4; color: #16A34A; border: 1px solid #BBF7D0; }
+.dont-badge { background: #FEF2F2; color: #DC2626; border: 1px solid #FCA5A5; }
+
+.rule-example {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rule-text, .rule-do span:not(.rule-badge), .rule-dont span:not(.rule-badge) {
+  font-size: 12px;
+  color: var(--color-text-2);
+  line-height: 1.5;
+}
+
+.rule-why {
+  font-size: 12px;
+  color: var(--color-text-3);
+  line-height: 1.6;
+  padding: 10px 16px;
+  margin: 0;
+  background: var(--color-warm-surface);
+  border-top: none;
+}
+.rule-why::before {
+  content: 'Why: ';
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-text-4);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* ── Gold shimmer keyframe ── */
 @keyframes gold-shimmer {
   0%   { background-position: -120% 0; }
   40%  { background-position: 220% 0; }
