@@ -9,6 +9,7 @@ interface Props {
   cta2?: { label: string; href: string };
   accentHex?: string;
   accentLightHex?: string;
+  buttonHex?: string;
 }
 
 const {
@@ -21,7 +22,10 @@ const {
   cta2,
   accentHex = '#1C70F7',
   accentLightHex = '#EEF4FF',
+  buttonHex,
 } = Astro.props;
+
+const ctaHex = buttonHex ?? accentHex;
 
 function hexToRgb(hex: string): string {
   const h = hex.replace('#', '');
@@ -76,7 +80,7 @@ const headlineHtml = accentWord
             <a
               href={cta1.href}
               class="ih-cta-primary"
-              style={`background:${accentHex}; box-shadow: 0 4px 18px rgba(${rgb},.38);`}
+              style={`background:${ctaHex}; box-shadow: 0 4px 18px rgba(28,112,247,.38);`}
             >
               {cta1.label}
             </a>
