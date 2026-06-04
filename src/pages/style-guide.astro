@@ -1,0 +1,1057 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Style Guide — LivingOS Design System">
+
+<!-- ── Breakpoint ruler (sticky top) ── -->
+<div class="bp-ruler">
+  <span class="bp-label" id="bpLabel">—</span>
+  <span class="bp-desc" id="bpDesc"></span>
+</div>
+
+<div class="sg-wrap">
+
+  <!-- ══════════════════════════════════════════════
+       0. INTRO
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <div class="sg-eyebrow">LivingOS Design System</div>
+    <h1 class="sg-title">Style Guide</h1>
+    <p class="sg-intro">Single source of truth for colors, typography, spacing, components, and layout patterns used across the site. Resize the viewport to see breakpoints in the ruler above.</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       1. COLORS
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-h2">1. Color Tokens</h2>
+
+    <h3 class="sg-h3">Primary Blue</h3>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#1C70F7;"><span class="swatch-label light">--color-primary<br/>#1C70F7</span></div>
+      <div class="swatch" style="background:#1560D8;"><span class="swatch-label light">--color-primary-600<br/>#1560D8</span></div>
+      <div class="swatch" style="background:#4D8EF9;"><span class="swatch-label light">--color-primary-400<br/>#4D8EF9</span></div>
+      <div class="swatch" style="background:#DDEAFF;"><span class="swatch-label">--color-primary-100<br/>#DDEAFF</span></div>
+      <div class="swatch" style="background:#EEF4FF;"><span class="swatch-label">--color-primary-50<br/>#EEF4FF</span></div>
+    </div>
+
+    <h3 class="sg-h3">Warm Neutrals</h3>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#FFFFFF;border:1.5px solid #E8E4DA;"><span class="swatch-label">--color-warm-page<br/>#FFFFFF</span></div>
+      <div class="swatch" style="background:#F5F3EE;"><span class="swatch-label">--color-warm-surface<br/>#F5F3EE</span></div>
+      <div class="swatch" style="background:#EEEAE2;"><span class="swatch-label">--color-warm-overlay<br/>#EEEAE2</span></div>
+      <div class="swatch" style="background:#E8E4DA;"><span class="swatch-label">--color-warm-border-light<br/>#E8E4DA</span></div>
+      <div class="swatch" style="background:#D4CFC4;"><span class="swatch-label">--color-warm-border-mid<br/>#D4CFC4</span></div>
+    </div>
+
+    <h3 class="sg-h3">Orange Accent</h3>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#F97316;"><span class="swatch-label light">--color-orange<br/>#F97316</span></div>
+      <div class="swatch" style="background:#FFEDD5;"><span class="swatch-label">--color-orange-100<br/>#FFEDD5</span></div>
+      <div class="swatch" style="background:#FFF7ED;"><span class="swatch-label">--color-orange-50<br/>#FFF7ED</span></div>
+    </div>
+
+    <h3 class="sg-h3">Text Scale</h3>
+    <div class="swatch-row">
+      <div class="swatch swatch-tall" style="background:#1A1A1A;"><span class="swatch-label light">--color-text-1<br/>#1A1A1A<br/>Heading</span></div>
+      <div class="swatch swatch-tall" style="background:#3D3D3D;"><span class="swatch-label light">--color-text-2<br/>#3D3D3D<br/>Body</span></div>
+      <div class="swatch swatch-tall" style="background:#6B6B6B;"><span class="swatch-label light">--color-text-3<br/>#6B6B6B<br/>Secondary</span></div>
+      <div class="swatch swatch-tall" style="background:#9A9A9A;"><span class="swatch-label light">--color-text-4<br/>#9A9A9A<br/>Placeholder</span></div>
+      <div class="swatch swatch-tall" style="background:#C4C4C4;"><span class="swatch-label">--color-text-5<br/>#C4C4C4<br/>Disabled</span></div>
+    </div>
+
+    <h3 class="sg-h3">Semantic</h3>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#22C55E;"><span class="swatch-label light">success icon<br/>#22C55E</span></div>
+      <div class="swatch" style="background:#F0FDF4;border:1.5px solid #BBF7D0;"><span class="swatch-label">success bg<br/>#F0FDF4</span></div>
+      <div class="swatch" style="background:#EAB308;"><span class="swatch-label">warning icon<br/>#EAB308</span></div>
+      <div class="swatch" style="background:#FEFCE8;border:1.5px solid #FEF08A;"><span class="swatch-label">warning bg<br/>#FEFCE8</span></div>
+      <div class="swatch" style="background:#EF4444;"><span class="swatch-label light">error icon<br/>#EF4444</span></div>
+      <div class="swatch" style="background:#FEF2F2;border:1.5px solid #FCA5A5;"><span class="swatch-label">error bg<br/>#FEF2F2</span></div>
+    </div>
+
+    <h3 class="sg-h3">Shadows</h3>
+    <div class="shadow-row">
+      <div class="shadow-demo" style="box-shadow:0 1px 4px rgba(60,45,20,.07),0 1px 2px rgba(60,45,20,.05);">shadow-sm</div>
+      <div class="shadow-demo" style="box-shadow:0 4px 16px rgba(60,45,20,.10),0 2px 6px rgba(60,45,20,.06);">shadow-md</div>
+      <div class="shadow-demo" style="box-shadow:0 12px 40px rgba(60,45,20,.13),0 4px 12px rgba(60,45,20,.07);">shadow-lg</div>
+      <div class="shadow-demo" style="box-shadow:0 8px 24px rgba(28,112,247,.22),0 2px 8px rgba(28,112,247,.14);">shadow-blue</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       2. TYPOGRAPHY
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-h2">2. Typography Scale</h2>
+    <p class="sg-note">Font: IBM Plex Sans Thai Looped (sans) · IBM Plex Mono (mono). All weights and sizes are defined as Tailwind v4 <code>@theme</code> tokens.</p>
+
+    <div class="type-scale">
+      <div class="type-row">
+        <div class="type-meta"><span class="type-token">5xl</span><span class="type-spec">60px · 700 · −0.025em</span><span class="type-use">Hero / Display</span></div>
+        <div class="type-sample" style="font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;">บริหารได้ฉลาดกว่า</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-token">4xl</span><span class="type-spec">48px · 700 · −0.02em</span><span class="type-use">Page title</span></div>
+        <div class="type-sample" style="font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-0.02em;line-height:1.1;">Property Management</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-token">3xl</span><span class="type-spec">38px · 700 · −0.015em</span><span class="type-use">Section h1</span></div>
+        <div class="type-sample" style="font-size:clamp(24px,3.2vw,38px);font-weight:700;letter-spacing:-0.015em;line-height:1.15;">ระบบครบในที่เดียว</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-token">2xl</span><span class="type-spec">30px · 600 · −0.01em</span><span class="type-use">Card title, h2</span></div>
+        <div class="type-sample" style="font-size:clamp(20px,2.5vw,30px);font-weight:600;letter-spacing:-0.01em;">Home Service</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-token">xl</span><span class="type-spec">24px · 600 · 0em</span><span class="type-use">h3, subsection</span></div>
+        <div class="type-sample" style="font-size:24px;font-weight:600;">ฟีเจอร์หลัก</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-token">lg</span><span class="type-spec">20px · 500 · 0em</span><span class="type-use">Lead text, h4</span></div>
+        <div class="type-sample" style="font-size:20px;font-weight:500;">สั่งทำความสะอาดได้ทันที</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-token">md</span><span class="type-spec">17px · 300 · 0em</span><span class="type-use">Body large</span></div>
+        <div class="type-sample" style="font-size:17px;font-weight:300;line-height:1.65;">รองรับโครงการทุกขนาด ตั้งแต่คอนโดเล็กไปจนถึงโครงการขนาดใหญ่ ด้วยระบบที่ยืดหยุ่นและปรับแต่งได้</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-token">base</span><span class="type-spec">15px · 400 · 0em</span><span class="type-use">Body default</span></div>
+        <div class="type-sample" style="font-size:15px;font-weight:400;line-height:1.65;">นิติบุคคลสามารถจัดการข้อมูลลูกบ้าน บิลค่าใช้จ่าย และรายงานการเงินได้ในที่เดียว</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-token">sm</span><span class="type-spec">13px · 400 · 0em</span><span class="type-use">Caption, helper</span></div>
+        <div class="type-sample" style="font-size:13px;font-weight:400;color:var(--color-text-3);">อัปเดตล่าสุด 4 มิ.ย. 2567 · ข้อมูลแสดงเป็น real-time</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><span class="type-token">xs / overline</span><span class="type-spec">11px · 500–600 · +0.10em · MONO · UPPERCASE</span><span class="type-use">Overline label</span></div>
+        <div class="type-sample" style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:var(--color-text-4);">PROPERTY MANAGEMENT · SOLUTIONS</div>
+      </div>
+    </div>
+
+    <h3 class="sg-h3">Mono — Currency & Numbers</h3>
+    <div class="type-mono-demo">
+      <span style="font-family:var(--font-mono);font-size:32px;font-weight:700;color:var(--color-text-1);">฿ 2,450.00</span>
+      <span style="font-family:var(--font-mono);font-size:24px;font-weight:700;color:var(--color-primary);">1,200+</span>
+      <span style="font-family:var(--font-mono);font-size:18px;font-weight:500;color:var(--color-orange);">-25%</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       3. SPACING & RADIUS
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-h2">3. Spacing & Border Radius</h2>
+
+    <h3 class="sg-h3">Spacing — base unit 4px</h3>
+    <div class="spacing-row">
+      {[
+        ['sp-1','4px'],['sp-2','8px'],['sp-3','12px'],['sp-4','16px'],
+        ['sp-6','24px'],['sp-8','32px'],['sp-10','40px'],['sp-12','48px'],
+        ['sp-16','64px'],['sp-20','80px'],
+      ].map(([token, size]) => (
+        <div class="spacing-item">
+          <div class="spacing-box" style={`width:${size};height:${size};`}></div>
+          <span class="spacing-label">{token}</span>
+          <span class="spacing-size">{size}</span>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="sg-h3">Border Radius</h3>
+    <div class="radius-row">
+      {[
+        ['r-sm','6px'],['r-md','10px'],['r-lg','14px'],['r-xl','20px'],
+        ['r-2xl','28px'],['r-full','9999px'],
+      ].map(([token, radius]) => (
+        <div class="radius-item">
+          <div class="radius-box" style={`border-radius:${radius};`}></div>
+          <span class="spacing-label">{token}</span>
+          <span class="spacing-size">{radius}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       4. BUTTONS
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-h2">4. Buttons</h2>
+
+    <h3 class="sg-h3">Primary CTA (Hero / Inner Hero)</h3>
+    <div class="btn-row">
+      <a href="#" class="cta-primary-demo">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3l14 9-14 9V3z"/></svg>
+        เริ่มใช้งานฟรี 30 วัน
+      </a>
+      <code class="sg-code">padding: 14px 28px · r-md · bg: --color-primary · shadow: blue 35%</code>
+    </div>
+
+    <h3 class="sg-h3">Secondary CTA (Warm Surface)</h3>
+    <div class="btn-row">
+      <a href="#" class="cta-secondary-demo">ดูวิดีโอการทำงาน</a>
+      <code class="sg-code">padding: 14px 28px · r-md · bg: --color-warm-surface · border: --color-warm-border-light</code>
+    </div>
+
+    <h3 class="sg-h3">3D Emboss Button (.btn-3d)</h3>
+    <div class="btn-row">
+      <a href="#" class="btn-3d-demo btn-3d">นัดสาธิตระบบ</a>
+      <a href="#" class="btn-3d-demo btn-3d" style="background:var(--color-orange);">Living Mart</a>
+      <code class="sg-code">.btn-3d — layered gradient + inset bevel shadows. Works on any solid bg color.</code>
+    </div>
+
+    <h3 class="sg-h3">White Pill CTA (on colored section bg)</h3>
+    <div class="btn-row" style="background:#1C70F7;padding:24px;border-radius:14px;">
+      <a href="#" class="pill-cta-demo">ดูรายละเอียด →</a>
+      <code class="sg-code" style="color:rgba(255,255,255,.6);">bg: white · color: --color-text-1 · r-full · font-weight: 600</code>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       5. BADGES & PILLS
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-h2">5. Badges & Pills</h2>
+
+    <div class="badge-row">
+
+      <!-- Gold eyebrow pill -->
+      <div class="eyebrow-gold inline-flex items-center gap-2" style="position:relative;overflow:hidden;height:32px;padding:0 18px;border-radius:9999px;border:1.5px solid rgba(180,130,0,.45);background:linear-gradient(135deg,#F5E27A 0%,#E8C840 18%,#F0D060 35%,#C9A000 55%,#E8C840 72%,#F5E27A 88%,#D4A820 100%);box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 -1px 0 rgba(100,65,0,.18) inset,0 4px 16px rgba(180,130,0,.28);font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;cursor:default;">
+        <span style="color:#4A2E00;position:relative;z-index:1;text-shadow:0 1px 0 rgba(255,230,100,.6);">PMS · NO.1 IN THAILAND</span>
+        <span style="position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);background-size:220% 100%;background-position:-100% 0;animation:gold-shimmer 3.5s ease-in-out infinite;border-radius:9999px;" aria-hidden="true"></span>
+      </div>
+
+      <!-- Blue badge (inner page) -->
+      <span style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:9999px;background:rgba(28,112,247,.10);color:#1C70F7;border:1.5px solid rgba(28,112,247,.28);font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;">URBANICE APP</span>
+
+      <!-- Orange badge -->
+      <span style="display:inline-flex;align-items:center;padding:5px 14px;border-radius:9999px;background:rgba(249,115,22,.10);color:#F97316;border:1.5px solid rgba(249,115,22,.28);font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;">LIVING MART</span>
+
+      <!-- Overline label -->
+      <span class="overline">SOLUTIONS · GUARD OS</span>
+
+      <!-- Trust pill -->
+      <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text-3);">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        ติดตั้งได้ภายใน 1 วัน
+      </span>
+
+      <!-- Card sov-badge -->
+      <span style="display:inline-flex;align-items:center;padding:4px 10px;border-radius:9999px;background:rgba(28,112,247,.10);color:#1C70F7;border:1.5px solid rgba(28,112,247,.28);font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.05em;">7+ ฟีเจอร์</span>
+
+    </div>
+    <p class="sg-note" style="margin-top:16px;">Rule: gold eyebrow on hero only. Blue/orange badge on inner page InnerHero. Never blue badge on home hero.</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       6. CARDS
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-h2">6. Cards</h2>
+
+    <h3 class="sg-h3">Stats Row (.stats-row + .stat-cell)</h3>
+    <div class="stats-row">
+      <div class="stat-cell">
+        <div class="stat-num">1,200+</div>
+        <div class="stat-lbl">โครงการที่ใช้งาน</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">98%</div>
+        <div class="stat-lbl">ความพึงพอใจลูกค้า</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">฿ 2.4B</div>
+        <div class="stat-lbl">มูลค่าธุรกรรมต่อปี</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">24/7</div>
+        <div class="stat-lbl">Support</div>
+      </div>
+    </div>
+
+    <h3 class="sg-h3" style="margin-top:40px;">SolutionOverview Card (.sov-card)</h3>
+    <p class="sg-note">Tilted paper-clip cards on a colored background. Hover to straighten.</p>
+    <div style="background:#1C70F7;border-radius:20px;padding:40px 32px 48px;">
+      <div class="sov-grid-demo">
+        {[
+          { title: 'แดชบอร์ดนิติบุคคล', desc: 'ดูภาพรวมอาคาร รายรับ-รายจ่าย และสถานะห้องพักแบบ real-time', badge: 'CORE MODULE', emoji: '🏢', rot: '-5deg' },
+          { title: 'ระบบบิลอัตโนมัติ', desc: 'ออกบิลค่าส่วนกลาง ค่าน้ำ ค่าไฟ ส่งให้ลูกบ้านอัตโนมัติทุกเดือน', badge: '99.9% UPTIME', emoji: '📄', rot: '3.5deg' },
+          { title: 'รายงานการเงิน', desc: 'Export งบกำไรขาดทุน บัญชีแยกประเภท และสรุปค้างชำระ', badge: 'EXPORT PDF', emoji: '📊', rot: '-3deg' },
+          { title: 'แจ้งซ่อมออนไลน์', desc: 'ลูกบ้านแจ้งซ่อมผ่านแอป ทีมช่างรับงาน ติดตามสถานะได้ทุกขั้นตอน', badge: 'REAL-TIME', emoji: '🔧', rot: '5deg' },
+        ].map((c) => (
+          <div class="sov-card-outer-demo">
+            <div class="sov-card-inner-demo" style={`--rot:${c.rot};`}>
+              <div class="sov-clip-demo" aria-hidden="true">
+                <svg width="22" height="50" viewBox="0 0 22 50" fill="none"><rect x="8" y="0" width="6" height="50" rx="3" fill="#C8C0B0"/><rect x="10" y="4" width="2" height="42" rx="1" fill="#E8E0D0"/></svg>
+              </div>
+              <div class="sov-card-demo">
+                <h3 style="font-size:16px;font-weight:700;color:var(--color-text-1);margin-bottom:8px;">{c.title}</h3>
+                <p style="font-size:13.5px;color:var(--color-text-3);line-height:1.6;flex:1;">{c.desc}</p>
+                <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:16px;">
+                  <span style="padding:4px 10px;border-radius:9999px;background:rgba(28,112,247,.10);color:#1C70F7;border:1.5px solid rgba(28,112,247,.28);font-family:var(--font-mono);font-size:10.5px;font-weight:600;">{c.badge}</span>
+                  <span style="font-size:38px;line-height:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,.14));">{c.emoji}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <h3 class="sg-h3" style="margin-top:40px;">Two-Cards Grid (.two-cards-grid / .service-card)</h3>
+    <p class="sg-note">Used on Urbanice page for Home Service + Living Mart.</p>
+    <div class="two-cards-demo-grid">
+      <!-- Card 1 -->
+      <div class="service-card-demo">
+        <div style="background:#fff;padding:28px 28px 22px;flex-shrink:0;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+            <h2 style="font-size:28px;font-weight:700;line-height:1.15;color:#1A1A1A;margin:0;flex:1;">Home Service</h2>
+            <div style="width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#FF6B6B,#C0000C);box-shadow:inset 2px 2px 3px rgba(255,180,180,.65),inset -1.5px -1.5px 3px rgba(80,0,0,.45),0 3px 8px rgba(180,0,20,.35);flex-shrink:0;"></div>
+          </div>
+          <p style="font-size:14px;color:#6B6B6B;line-height:1.65;">สั่งทำความสะอาด ซักรีด ล้างแอร์ และอีกมากมาย ได้ทันทีในแอป</p>
+        </div>
+        <div style="flex:1;background:linear-gradient(180deg,#B2E8EA 0%,#7ACFD3 100%);display:flex;align-items:center;justify-content:center;padding:24px;min-height:200px;">
+          <div style="display:flex;flex-direction:column;gap:8px;width:100%;max-width:240px;">
+            {['🧹 ทำความสะอาด','👕 ซักรีด','🚿 ล้างแอร์','🌿 ดูแลต้นไม้'].map(s => (
+              <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.88);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:600;color:#1A1A1A;">{s}</div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="service-card-demo">
+        <div style="background:#fff;padding:28px 28px 22px;flex-shrink:0;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+            <h2 style="font-size:28px;font-weight:700;line-height:1.15;color:#1A1A1A;margin:0;flex:1;">Living Mart</h2>
+            <div style="width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#FF6B6B,#C0000C);box-shadow:inset 2px 2px 3px rgba(255,180,180,.65),inset -1.5px -1.5px 3px rgba(80,0,0,.45),0 3px 8px rgba(180,0,20,.35);flex-shrink:0;"></div>
+          </div>
+          <p style="font-size:14px;color:#6B6B6B;line-height:1.65;">ช้อปสินค้าคัดสรรและดีลเอกสิทธิ์สำหรับลูกบ้าน ส่งตรงถึงหน้าห้อง</p>
+        </div>
+        <div style="flex:1;background:linear-gradient(180deg,#FFEDD5 0%,#FDC090 100%);display:flex;align-items:center;justify-content:center;padding:24px;min-height:200px;">
+          <div style="display:flex;flex-direction:column;gap:8px;width:100%;max-width:240px;">
+            {['🏠 บ้านและห้องนอน','🍳 ครัวและเครื่องใช้','✨ ไลฟ์สไตล์','🧴 ของใช้ประจำวัน'].map(s => (
+              <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.88);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:600;color:#1A1A1A;">{s}</div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sg-h3" style="margin-top:40px;">Feature Row (.feat-row)</h3>
+    <p class="sg-note">2-column grid: visual (aspect-ratio 4/3) + copy with feat-list. Stacks at 900px.</p>
+    <div class="feat-row">
+      <div class="feat-visual" style="background:var(--color-primary-50);">
+        <span style="font-size:64px;">🏢</span>
+      </div>
+      <div>
+        <span class="overline" style="display:block;margin-bottom:10px;">CORE MODULE</span>
+        <h3 style="font-size:26px;font-weight:700;color:var(--color-text-1);margin-bottom:12px;">แดชบอร์ดนิติบุคคล</h3>
+        <p style="font-size:15px;color:var(--color-text-3);line-height:1.65;margin-bottom:20px;">ดูภาพรวมอาคาร รายรับ-รายจ่าย และสถานะห้องพักแบบ real-time ในหน้าเดียว</p>
+        <ul class="feat-list">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            ข้อมูลอัปเดต real-time
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Export รายงาน PDF/Excel
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C70F7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            รองรับหลายโครงการในบัญชีเดียว
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       7. SECTION BACKGROUNDS
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-h2">7. Section Backgrounds</h2>
+    <p class="sg-note">Sections must alternate with at least one accent — never plain white/gray alternating only.</p>
+
+    <div class="bg-gallery">
+      <div class="bg-demo" style="background:#FFFFFF;border:1.5px solid #E8E4DA;">
+        <span class="bg-label">warm-page #FFFFFF</span>
+        <span class="bg-use">Default page bg</span>
+      </div>
+      <div class="bg-demo" style="background:#F5F3EE;">
+        <span class="bg-label">warm-surface #F5F3EE</span>
+        <span class="bg-use">Alternate section</span>
+      </div>
+      <div class="bg-demo" style="background:#EEEAE2;">
+        <span class="bg-label">warm-overlay #EEEAE2</span>
+        <span class="bg-use">Tab bg, card bg</span>
+      </div>
+      <div class="bg-demo" style="background:#1C70F7;">
+        <span class="bg-label" style="color:#fff;">primary #1C70F7</span>
+        <span class="bg-use" style="color:rgba(255,255,255,.6);">SolutionOverview, CTA banner</span>
+      </div>
+      <div class="bg-demo" style="background:#F97316;">
+        <span class="bg-label" style="color:#fff;">orange #F97316</span>
+        <span class="bg-use" style="color:rgba(255,255,255,.6);">Living Mart accent sections</span>
+      </div>
+      <div class="bg-demo" style="background:linear-gradient(180deg,#0D2D6B 0%,#0A1F4E 100%);">
+        <span class="bg-label" style="color:#fff;">dark navy gradient</span>
+        <span class="bg-use" style="color:rgba(255,255,255,.6);">Why panel 3 (dark-navy)</span>
+      </div>
+      <div class="bg-demo dot-grid" style="background:#EEF4FF;">
+        <span class="bg-label">primary-50 + .dot-grid</span>
+        <span class="bg-use">Inner section accents</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       8. LAYOUT PATTERNS
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-h2">8. Layout Patterns</h2>
+
+    <h3 class="sg-h3">Hero Copy Card overlap</h3>
+    <p class="sg-note">Video/visual panel at full width → copy card overlaps from below with negative <code>margin-top</code>. Same pattern on Hero (home) and InnerHero (inner pages).</p>
+    <div class="layout-diagram">
+      <div class="ld-visual">Visual panel<br/>(16:9 or 16:6.2)<br/>border-radius: 20px</div>
+      <div class="ld-card">Copy card<br/>margin-top: -178px (inner) / -208px (home)<br/>margin-left: 64px<br/>border-radius: 24px<br/>z-index: 10</div>
+    </div>
+
+    <h3 class="sg-h3" style="margin-top:40px;">WhyLivingOS — Sticky Nav + Scroll Panels</h3>
+    <p class="sg-note">CSS Grid <code>220px 1fr</code>, gap 64px. Left aside uses GSAP ScrollTrigger pin — NOT <code>position:sticky</code> (breaks in CSS Grid align-items:start).</p>
+    <div class="layout-why-diagram">
+      <div class="lwd-nav">
+        <div style="font-size:11px;font-weight:600;margin-bottom:12px;font-family:var(--font-mono);letter-spacing:.08em;color:var(--color-text-4);">GSAP PINNED</div>
+        {['ประหยัดเวลา','โปร่งใส','ลดต้นทุน','ขยายได้'].map((n,i) => (
+          <div style={`padding:10px 14px;border-radius:8px;font-size:13px;font-weight:${i===0?'700':'500'};color:${i===0?'#1C70F7':'var(--color-text-3)'};background:${i===0?'var(--color-primary-50)':'transparent'};margin-bottom:4px;`}>{n}</div>
+        ))}
+      </div>
+      <div class="lwd-panels">
+        {[
+          { bg: 'linear-gradient(135deg,#1C70F7,#0A3E9E)', label: 'Panel 1 — Blue' },
+          { bg: 'linear-gradient(135deg,#0D4A6B,#063347)', label: 'Panel 2 — Teal-Navy' },
+          { bg: 'linear-gradient(135deg,#0D2D6B,#0A1F4E)', label: 'Panel 3 — Dark-Navy' },
+          { bg: 'linear-gradient(135deg,#EA5A0C,#B83A00)', label: 'Panel 4 — Orange' },
+        ].map(p => (
+          <div style={`background:${p.bg};border-radius:16px;padding:20px;color:#fff;font-size:13px;font-weight:600;margin-bottom:8px;`}>{p.label}</div>
+        ))}
+      </div>
+    </div>
+
+    <h3 class="sg-h3" style="margin-top:40px;">Container & Section Pad</h3>
+    <div class="container-demo">
+      <div class="container-inner">
+        <code>.container-los</code> — max-width: 1280px, auto margin<br/>
+        padding: 20px (mobile) → 24px (tablet 476px+) → 40px (desktop 1280px+)
+      </div>
+    </div>
+    <div class="section-pad-demo">
+      <code>.section-pad</code> — padding-top/bottom: 56px (mobile) → 80px (tablet) → 96px (desktop)
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       9. FAQ ACCORDION
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-h2">9. FAQ Accordion (.faq-item)</h2>
+    <p class="sg-note">One-open-at-a-time accordion. Height transition via <code>element.scrollHeight</code> — no CSS max-height hack.</p>
+    <div class="max-w-2xl" id="sg-faq">
+      {[
+        { q: 'ระบบรองรับโครงการกี่ยูนิต?', a: 'รองรับตั้งแต่โครงการขนาดเล็ก 20 ยูนิต ไปจนถึงโครงการขนาดใหญ่กว่า 5,000 ยูนิต ด้วยโครงสร้างฐานข้อมูลที่ออกแบบมาเพื่อ scale โดยเฉพาะ' },
+        { q: 'ใช้เวลานานแค่ไหนในการติดตั้ง?', a: 'ทีม Turnkey ของเราสามารถติดตั้งและ onboard ได้ภายใน 1 วันทำการ พร้อม training ทีมนิติบุคคลให้ใช้งานได้ทันที' },
+        { q: 'มีระบบสำรองข้อมูลหรือไม่?', a: 'มีการ backup ข้อมูลทุก 6 ชั่วโมง และ full backup รายวัน เก็บไว้ 90 วัน พร้อม disaster recovery ที่ RTO < 4 ชั่วโมง' },
+      ].map(item => (
+        <div class="faq-item border border-warm-border-light rounded-xl bg-white overflow-hidden" style="margin-bottom:8px;">
+          <button class="faq-trigger w-full flex items-start justify-between gap-4 p-5 text-left hover:bg-warm-surface transition-colors" aria-expanded="false">
+            <span class="font-medium text-text-1 text-sm leading-relaxed">{item.q}</span>
+            <svg class="faq-icon w-5 h-5 text-text-4 shrink-0 mt-0.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer" style="height:0;overflow:hidden;">
+            <div class="px-5 pb-5">
+              <p class="text-sm text-text-2 leading-relaxed">{item.a}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       10. BREAKPOINTS REFERENCE
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-h2">10. Breakpoints</h2>
+    <div class="bp-table">
+      <div class="bp-row bp-header">
+        <span>Name</span><span>Range</span><span>Key changes</span>
+      </div>
+      <div class="bp-row">
+        <span class="bp-name">Mobile</span>
+        <span class="bp-range">≤ 475px</span>
+        <span class="bp-changes">Shorter eyebrow text, hero card flush edge, trust pills hidden, single-column grids</span>
+      </div>
+      <div class="bp-row">
+        <span class="bp-name">Tablet</span>
+        <span class="bp-range">476px – 1279px</span>
+        <span class="bp-changes">Trust pills + divider hidden, hero card hug-content width, 2-col sov-grid, feat-row stacks at 900px</span>
+      </div>
+      <div class="bp-row">
+        <span class="bp-name">Desktop</span>
+        <span class="bp-range">≥ 1280px</span>
+        <span class="bp-changes">Full hero overlap layout, 4-col sov-grid, trust pills visible, WhyNav grid active</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       11. DO / DON'T
+  ══════════════════════════════════════════════ -->
+  <section class="sg-section">
+    <h2 class="sg-h2">11. Do / Don't</h2>
+    <div class="do-dont-grid">
+      <div class="do-col">
+        <div class="do-header">✓ Do</div>
+        <ul class="do-list">
+          <li>Warm-tinted shadows <code>rgba(60,45,20,…)</code></li>
+          <li>Gold eyebrow pill on home hero only</li>
+          <li>Real photography + gradient mask as hero bg</li>
+          <li>GSAP <code>fromTo()</code> — never <code>from()</code></li>
+          <li>GSAP ScrollTrigger for sticky nav (not CSS sticky in grid)</li>
+          <li>IBM Plex Mono for currency & numbers</li>
+          <li>Lucide / Tabler outline icons only</li>
+          <li>Warm neutral backgrounds — every neutral has warm undertone</li>
+        </ul>
+      </div>
+      <div class="dont-col">
+        <div class="dont-header">✗ Don't</div>
+        <ul class="dont-list">
+          <li>Cool gray shadows <code>rgba(0,0,0,…)</code></li>
+          <li>Blue badge on home hero (gold only)</li>
+          <li>Abstract blobs / noise as hero background</li>
+          <li>GSAP <code>from()</code> — invisible-content bug risk</li>
+          <li><code>position:sticky</code> inside CSS Grid</li>
+          <li>Bootstrap palette (#0d6efd, #6c757d) or Sarabun/Inter/Roboto</li>
+          <li>Gradient text on body copy</li>
+          <li>Ghost button with <code>background:transparent</code> on photo bg</li>
+          <li><code>#F0F0F0</code> or any cool gray — must have warm undertone</li>
+          <li>Plain white/gray section alternation with no accent break</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.sg-wrap -->
+
+</BaseLayout>
+
+<!-- ── FAQ script (same as InnerFAQ.astro) ── -->
+<script>
+  const container = document.getElementById('sg-faq');
+  if (container) {
+    container.querySelectorAll('.faq-trigger').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const answer = item?.querySelector('.faq-answer') as HTMLElement | null;
+        const icon = trigger.querySelector('.faq-icon') as HTMLElement | null;
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        container.querySelectorAll('.faq-trigger').forEach((t) => {
+          if (t !== trigger) {
+            const a = t.closest('.faq-item')?.querySelector('.faq-answer') as HTMLElement | null;
+            const ic = t.querySelector('.faq-icon') as HTMLElement | null;
+            t.setAttribute('aria-expanded', 'false');
+            if (a) a.style.height = '0';
+            if (ic) ic.style.transform = 'rotate(0deg)';
+          }
+        });
+        if (isOpen) {
+          trigger.setAttribute('aria-expanded', 'false');
+          if (answer) answer.style.height = '0';
+          if (icon) icon.style.transform = 'rotate(0deg)';
+        } else {
+          trigger.setAttribute('aria-expanded', 'true');
+          if (answer) answer.style.height = answer.scrollHeight + 'px';
+          if (icon) icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  }
+</script>
+
+<!-- ── Breakpoint ruler script ── -->
+<script>
+  function updateBp() {
+    const w = window.innerWidth;
+    const label = document.getElementById('bpLabel');
+    const desc = document.getElementById('bpDesc');
+    if (!label || !desc) return;
+    if (w <= 475) {
+      label.textContent = 'MOBILE ≤ 475px';
+      label.style.color = '#EF4444';
+      desc.textContent = `${w}px`;
+    } else if (w <= 1279) {
+      label.textContent = 'TABLET 476–1279px';
+      label.style.color = '#F97316';
+      desc.textContent = `${w}px`;
+    } else {
+      label.textContent = 'DESKTOP ≥ 1280px';
+      label.style.color = '#1C70F7';
+      desc.textContent = `${w}px`;
+    }
+  }
+  updateBp();
+  window.addEventListener('resize', updateBp);
+</script>
+
+<style>
+/* ── Page shell ── */
+.sg-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+}
+
+/* ── Breakpoint ruler ── */
+.bp-ruler {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--color-text-1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .10em;
+}
+.bp-desc { color: var(--color-text-4); }
+
+/* ── Section shell ── */
+.sg-section {
+  margin-bottom: 80px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--color-warm-border-light);
+}
+.sg-section:last-child { border-bottom: none; }
+
+.sg-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--color-text-4);
+  margin-bottom: 12px;
+}
+
+.sg-title {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  letter-spacing: -.025em;
+  color: var(--color-text-1);
+  margin-bottom: 16px;
+}
+
+.sg-intro {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--color-text-3);
+  max-width: 640px;
+}
+
+.sg-h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text-1);
+  margin-bottom: 28px;
+  letter-spacing: -.015em;
+}
+
+.sg-h3 {
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-text-4);
+  margin-bottom: 14px;
+  margin-top: 32px;
+}
+
+.sg-note {
+  font-size: 13px;
+  color: var(--color-text-3);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  background: var(--color-warm-surface);
+  border-radius: 8px;
+  border-left: 3px solid var(--color-warm-border-mid);
+}
+
+.sg-code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-3);
+  background: var(--color-warm-surface);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* ── Swatches ── */
+.swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.swatch {
+  width: 120px;
+  height: 72px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+}
+
+.swatch-tall { height: 96px; }
+
+.swatch-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-text-3);
+  line-height: 1.5;
+}
+
+.swatch-label.light { color: rgba(255,255,255,.85); }
+
+/* ── Shadows ── */
+.shadow-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.shadow-demo {
+  width: 160px;
+  height: 80px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-3);
+}
+
+/* ── Typography ── */
+.type-scale { display: flex; flex-direction: column; gap: 0; }
+
+.type-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-warm-border-light);
+}
+
+.type-meta { display: flex; flex-direction: column; gap: 3px; }
+.type-token { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--color-primary); }
+.type-spec { font-family: var(--font-mono); font-size: 10px; color: var(--color-text-4); }
+.type-use { font-size: 11px; color: var(--color-text-3); }
+
+.type-mono-demo {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 20px;
+  background: var(--color-warm-surface);
+  border-radius: 12px;
+  margin-top: 16px;
+}
+
+/* ── Spacing ── */
+.spacing-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+.spacing-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.spacing-box { background: var(--color-primary-100); border: 1.5px solid var(--color-primary); border-radius: 4px; min-width: 4px; min-height: 4px; }
+.spacing-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: var(--color-primary); }
+.spacing-size { font-family: var(--font-mono); font-size: 10px; color: var(--color-text-4); }
+
+/* ── Border radius ── */
+.radius-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; }
+.radius-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.radius-box { width: 72px; height: 72px; background: var(--color-primary-100); border: 1.5px solid var(--color-primary); }
+
+/* ── Buttons ── */
+.btn-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.cta-primary-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(28,112,247,.35);
+  transition: transform .15s, box-shadow .15s;
+}
+.cta-primary-demo:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(28,112,247,.45); }
+
+.cta-secondary-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: var(--color-warm-surface);
+  color: var(--color-text-1);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid var(--color-warm-border-light);
+  transition: background .15s, border-color .15s;
+}
+.cta-secondary-demo:hover { background: var(--color-warm-overlay); border-color: var(--color-warm-border-mid); }
+
+.btn-3d-demo {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pill-cta-demo {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  background: #fff;
+  color: var(--color-text-1);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: transform .15s;
+}
+.pill-cta-demo:hover { transform: translateY(-1px); }
+
+/* ── Badges ── */
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ── Section backgrounds ── */
+.bg-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.bg-demo { padding: 20px; border-radius: 12px; min-height: 80px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; }
+.bg-label { font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--color-text-1); }
+.bg-use { font-size: 11px; color: var(--color-text-3); }
+
+/* ── SolutionOverview card demo ── */
+.sov-grid-demo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 900px) { .sov-grid-demo { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+@media (max-width: 500px) { .sov-grid-demo { grid-template-columns: 1fr; } }
+
+.sov-card-outer-demo { padding-top: 26px; }
+
+.sov-card-inner-demo {
+  position: relative;
+  transform: rotate(var(--rot, 0deg));
+  transition: transform .32s cubic-bezier(.22,.68,0,1.2);
+  transform-origin: center 60%;
+}
+.sov-card-outer-demo:hover .sov-card-inner-demo { transform: rotate(0deg) translateY(-5px); }
+
+.sov-clip-demo {
+  position: absolute;
+  top: -22px;
+  right: 16px;
+  z-index: 2;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.sov-card-demo {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 20px 20px;
+  box-shadow: 0 10px 36px rgba(60,45,20,.14), 0 2px 8px rgba(60,45,20,.07);
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Two-cards grid demo ── */
+.two-cards-demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 600px) { .two-cards-demo-grid { grid-template-columns: 1fr; } }
+
+.service-card-demo {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1.5px solid var(--color-warm-border-light);
+}
+
+/* ── Layout diagrams ── */
+.layout-diagram {
+  position: relative;
+  background: var(--color-warm-surface);
+  border-radius: 14px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.ld-visual {
+  background: var(--color-primary-100);
+  border: 2px dashed var(--color-primary);
+  border-radius: 12px;
+  padding: 24px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 0;
+  aspect-ratio: 16 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.6;
+}
+
+.ld-card {
+  background: #fff;
+  border: 2px dashed var(--color-warm-border-mid);
+  border-radius: 16px;
+  padding: 20px 24px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-3);
+  line-height: 1.7;
+  margin-top: -60px;
+  margin-left: 40px;
+  width: fit-content;
+  position: relative;
+  z-index: 2;
+  box-shadow: var(--shadow-md);
+}
+
+/* ── WhyLivingOS layout diagram ── */
+.layout-why-diagram {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  background: var(--color-warm-surface);
+  border-radius: 14px;
+  padding: 24px;
+}
+.lwd-nav { background: #fff; border-radius: 10px; padding: 16px; box-shadow: var(--shadow-sm); }
+.lwd-panels { display: flex; flex-direction: column; }
+
+/* ── Container/section-pad demos ── */
+.container-demo {
+  background: var(--color-primary-50);
+  border: 2px dashed var(--color-primary);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+.container-inner {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-3);
+  line-height: 1.7;
+}
+.section-pad-demo {
+  background: var(--color-warm-surface);
+  border-radius: 10px;
+  padding: 20px 24px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-3);
+  line-height: 1.7;
+}
+
+/* ── Breakpoints table ── */
+.bp-table { border: 1.5px solid var(--color-warm-border-light); border-radius: 12px; overflow: hidden; }
+.bp-row {
+  display: grid;
+  grid-template-columns: 100px 160px 1fr;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--color-warm-border-light);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.bp-row:last-child { border-bottom: none; }
+.bp-header { background: var(--color-warm-surface); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--color-text-4); }
+.bp-name { font-weight: 700; color: var(--color-text-1); }
+.bp-range { font-family: var(--font-mono); font-size: 12px; color: var(--color-primary); }
+.bp-changes { color: var(--color-text-3); }
+
+/* ── Do / Don't ── */
+.do-dont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 600px) { .do-dont-grid { grid-template-columns: 1fr; } }
+
+.do-col, .dont-col { border-radius: 14px; overflow: hidden; }
+.do-header { background: #F0FDF4; color: #16A34A; font-weight: 700; font-size: 14px; padding: 14px 20px; border-bottom: 1px solid #BBF7D0; }
+.dont-header { background: #FEF2F2; color: #DC2626; font-weight: 700; font-size: 14px; padding: 14px 20px; border-bottom: 1px solid #FCA5A5; }
+.do-list, .dont-list { list-style: none; padding: 0; margin: 0; background: #fff; border: 1.5px solid var(--color-warm-border-light); border-top: none; border-radius: 0 0 14px 14px; }
+.do-list li, .dont-list li { padding: 10px 20px; font-size: 13px; color: var(--color-text-2); border-bottom: 1px solid var(--color-warm-border-light); line-height: 1.55; }
+.do-list li:last-child, .dont-list li:last-child { border-bottom: none; }
+.do-list code, .dont-list code { font-family: var(--font-mono); font-size: 11px; background: var(--color-warm-surface); padding: 1px 6px; border-radius: 4px; }
+
+/* ── Gold shimmer (reused from Hero.astro) ── */
+@keyframes gold-shimmer {
+  0%   { background-position: -120% 0; }
+  40%  { background-position: 220% 0; }
+  100% { background-position: 220% 0; }
+}
+</style>
